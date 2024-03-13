@@ -1,0 +1,28 @@
+-- Higher Order Functions :
+-- Map:
+-- The map function applies a given function to each element of a list, returning a new list with the transformed elements. 
+-- It takes a function and a list as arguments and returns a new list.
+
+map :: (a -> b) -> [a] -> [b]
+map f [x1, x2, ..., xn] = [f x1, f x2, ..., f xn]
+-- Example
+doubleList = map (*2) [1, 2, 3, 4]
+-- Output: [2, 4, 6, 8]
+
+-- Curry and Uncurry:
+-- The curry function takes a function that takes a pair of arguments and returns a function that takes the arguments individually.
+-- The uncurry function does the opposite: it takes a function that takes two arguments individually and returns a function that takes a pair of arguments.
+
+curry :: ((a, b) -> c) -> a -> b -> c
+curry f x y = f (x, y)
+
+uncurry :: (a -> b -> c) -> (a, b) -> c
+uncurry f (x, y) = f x y
+
+-- Example
+add = curry (+)
+add3 = add 3  -- add3 is a function that adds 3 to its argument
+add3 4  -- Output: 7
+
+subtractFromTen = uncurry (-)  10
+subtractFromTen (5, 3)  -- Output: 2
