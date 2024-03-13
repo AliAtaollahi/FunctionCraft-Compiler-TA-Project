@@ -1,0 +1,21 @@
+-- Algebraic data type:
+-- In this example, Shape is a data type that can represent either a circle or a rectangle. It has two data constructors:
+-- The deriving (Show) clause automatically generates an instance of the Show typeclass for our Shape data type, allowing us to print values of this type.
+
+data Shape = Circle Float
+           | Rectangle Float Float
+  deriving (Show)
+
+-- Create some shapes
+myCircle = Circle 5.5
+myRectangle = Rectangle 6.0 3.5
+
+-- Print the shapes
+print myCircle     -- Output: Circle 5.5
+print myRectangle  -- Output: Rectangle 6.0 3.5
+
+-- We can also define functions that operate on values of the Shape data type. For example, here's a function that calculates the area of a shape:
+
+area :: Shape -> Float
+area (Circle r) = pi * r ^ 2
+area (Rectangle l w) = l * w
