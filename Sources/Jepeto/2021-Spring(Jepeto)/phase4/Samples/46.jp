@@ -1,0 +1,15 @@
+func result(i, j, l, l_size):
+{
+    if i < l_size:
+        if j < l_size:
+            if l[j] < l[i]:
+                return 1 + result(i, j + 1, l, l.size);
+            else:
+                return result(i, j + 1, l, l.size);
+        else:
+            return result(i + 1, i + 2, l, l.size);
+    else:
+        return 0;
+    return 0;
+}
+main : print(result(0, 1, [11, 19, 16, 14, 15], 5));

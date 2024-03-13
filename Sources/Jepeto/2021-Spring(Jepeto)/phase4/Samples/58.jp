@@ -1,0 +1,12 @@
+main : f();
+
+func f():{
+    g((a, b, c)->{if (c) : return a + b; else: return a-b; return -1;});
+    return void;
+}
+
+func g(a):{
+    print(a(50, 60, true));
+    return a(50, 60, true);
+}
+

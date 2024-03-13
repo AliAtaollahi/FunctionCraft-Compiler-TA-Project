@@ -1,0 +1,106 @@
+
+#Declaracao variaveis Questionario, e questoes(em1,vf1,tx1,tx2).
+q1 as Questionario.
+
+em1 as Questao:EscolhaMultipla.
+vf1 as Questao:VerdadeiroFalso.
+tx1 as Questao:CurtaTextual.
+tx2 as Questao:LongaTextual.
+
+#Criacao Pergunta do tipo EscolhaMultipla. Atribuição pergunta, dificuldade, pontuacao, listarespostas, tempo Maximo. (alguns são opcionais)
+em1->pergunta := "Questao1...?".
+em1->dificuldade := DIFICIL.
+em1->pontuacao := 50.
+lr as Lista<Resposta:EscolhaMultipla>.
+lr := { "Nee.", 40 ; "Ja.", -20 ; "Ik ben een konijn.", 80; "Outra", -30 } .
+em1->respostas := lr.
+em1->tempomaximo := 30.
+
+
+#Criacao Pergunta do tipo VerdadeiroFalso. Atribuição tema, pergunta, dificuldade, pontuacao, listarespostas. (alguns são opcionais)
+vf1->pergunta := "Questao2...?".
+vf1->dificuldade := MEDIO.
+vf1->tema := [temaC->abc].
+vf1->pontuacao := 10.
+lr2 as Lista<Resposta:VerdadeiroFalso>.
+lr2 := { "FRASE1", false, 60, -30 ; "FRASE2", true, 40, -20}.
+vf1->respostas := lr2.
+
+
+#Criacao Pergunta do tipo CurtaTextual. Atribuição tema, pergunta, pontuacao, dificuldade e lista respostas. (alguns são opcionais)
+tx1->tema := [temac].
+tx1->pergunta := "Questao3...?".
+tx1->dificuldade := FACIL.
+tx1->pontuacao := 20.
+lr3 as Lista<Resposta:CurtaTextual>.
+lr3 := { "Nee.", 100 } .
+tx1->respostas := lr3.
+
+#Criacao Pergunta do tipo LongaTextual. Atribuição pergunta, dificuldade, tema. (alguns são opcionais)
+tx2->pergunta := "Questao4..?".
+tx2->dificuldade := DIFICIL.
+tx2->tema := [temaC].
+
+
+#Método adicionarquestao, adiciona as questoes ao questionário q1.
+q1%adicionarquestao(em1).
+q1%adicionarquestao(vf1).
+q1%adicionarquestao(tx1).
+q1%adicionarquestao(tx2).
+
+#Criação de um grupo de perguntas e adicionar todas as perguntas do Questionario q1 e cujo tema é "Tema C".
+q2 as Questionario.
+g2 as Grupo.
+g2 % adicionarquestoes(q1, tema = [Tema_C], dificuldade = FACIL, tipo = "VerdadeiroFalso").
+
+
+#Ciclo "para" percorre as questoes do Questionario q1. Estrutura "se" verifica a dificuldade de cada pergunta. Perguntas que correspondam aos "filtros" é aplicado o método adicionarquestao que adiciona esta questão ao grupo de questões a apresentar ao utilizador.
+
+g1 as Grupo.
+para (q as Questao em q1->questoes) 
+    inicio
+	dif as Dificuldade.
+	dif := DIFICIL.
+	se (q->dificuldade == dif)
+		inicio
+			g1 % adicionarquestao (q).
+		fim
+    fim
+
+
+#Apresentação do Menu de Perguntas e Respostas da primeira fase ao utilizador.
+apresentarMenu( g1).
+
+
+#Estrutura "se" verifica a pontuação do participante. Caso tenha pontuação superior à pontuação minima, pode prosseguir para a segunda fase do questionario.
+
+valor as Inteiro.
+valor := 0.
+se (g1->pontuacao > valor)
+	inicio
+		#Apresentação da pontuação final desta fase/grupo e mensagem de insucesso.
+		apresentar("Nao pode prosseguir! A sua pontuaçao final foi de: " & str(g1->pontuacao)).
+	fim
+senao
+	inicio
+		apresentar("Parabéns, chegou à segunda fase do teste!").
+		
+		#Apresentação do Menu de Perguntas e Respostas da segunda fase ao utilizador.
+		apresentarMenu(g2) .
+
+		#Apresentação da pontuação final.
+		apresentar("A sua pontuaçao final foi de :" & str(q1->pontuacao)).
+	fim
+
+
+#Apresentar todas as respostas dadas às Questões do tipo LongaTextual.
+para (q as Questao em q1->questoes) 
+    inicio
+	t as String.
+	t := "LongaTextual" .
+        se (q->tipo == t)
+        inicio
+            apresentar("Repostas dadas: " & str(q->respostadada)).
+        fim
+    fim
+

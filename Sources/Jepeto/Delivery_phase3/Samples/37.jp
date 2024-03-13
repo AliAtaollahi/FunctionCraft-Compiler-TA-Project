@@ -1,0 +1,28 @@
+main : start(start(1));
+
+func start(arg1) : {
+    f(arg1);
+    return arg1;
+}
+
+func f(arg1) : {
+    if (arg1) :
+        return g;
+    else : {
+        if (arg1 * true + arg1 > 10) :
+            k(arg1 , arg1, true);
+        return arg1;
+    }
+
+}
+
+func g(a, b) : {
+    if(a) :
+        return a;
+    return b.size;
+}
+
+func k(a, b, c) : {
+    return f(a)(b, c);
+    return [1, "str", c][~c];
+}

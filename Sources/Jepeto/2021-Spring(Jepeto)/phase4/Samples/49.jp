@@ -1,0 +1,33 @@
+main : f(2, 5);
+
+func f(i, j) : {
+    if (i * 12 > j * 20 - 90) :{
+        print("hi");
+    }
+    else:
+        if (i < j): {
+            print("bye");
+    }
+    print(g([2, 4, 5], [6, 7, 8], 0));
+    print(k()(b = 20, a = 3)[i]);
+    return -i + j;
+}
+
+func g(li1, li2, i) : {
+    if (i is 3) :
+        return i;
+    print(li1[i] + li2[i]);
+    g(li1, li2, i + 1);
+    return i;
+}
+
+func k() : {
+    return t;
+}
+
+func t(a, b) : {
+    return [a, b, a*b/ a, a * a];
+}
+
+
+

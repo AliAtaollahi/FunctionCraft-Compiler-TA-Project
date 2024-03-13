@@ -1,0 +1,15 @@
+main : f();
+
+func f() : {
+    if (true) :
+        return 1;
+    else :
+        return "str";
+    return void;
+    g();
+}
+
+func g() : {
+    return void;
+    return 1 * true;
+}

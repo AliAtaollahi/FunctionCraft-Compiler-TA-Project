@@ -1,0 +1,10 @@
+main : f(b = 1);
+
+func f(a) : {
+    return (b) -> {return f;};
+}
+
+func f(b) : {
+    return f(1, 2, 3);
+}
+

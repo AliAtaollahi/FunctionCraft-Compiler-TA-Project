@@ -1,0 +1,11 @@
+f
+[FptrType]
+NoType
+g
+[NoType]
+NoType
+Line 4: Cannot use return value of a function having void return type
+Line 4: Cannot use return value of a function having void return type
+Line 4: Unsupported operand type for operator mult
+Line 5: Cannot use return value of a function having void return type
+Line 5: Unsupported operand type for operator mult

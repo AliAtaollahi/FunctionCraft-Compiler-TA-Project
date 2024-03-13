@@ -1,0 +1,15 @@
+func f(a, b) : {
+    if ([c, d] :: a) :
+        print(a[c* d]);
+    else :
+        print(d.size);
+    return f(f());
+}
+
+
+main : f(c = 10 , b = 3);
+
+
+func f(c, b) : {
+    return k(c = 1);
+}

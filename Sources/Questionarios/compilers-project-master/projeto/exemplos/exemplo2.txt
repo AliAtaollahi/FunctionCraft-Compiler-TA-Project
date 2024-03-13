@@ -1,0 +1,60 @@
+#Declaracao variaveis Questionario.
+q1 as Questionario.
+
+
+#Importe das perguntas através de um método import da classe "Questionário". 
+q1%importar("./exemplos_base_dados/Geografia.txt").
+
+#Indicação do número de perguntas a apresentar.
+g as Grupo.
+g->nrperguntasaapresentar := 3.
+
+#Formação de um grupo de perguntas com número de perguntas igual ao defenido na variavel "q->numeroperguntas".
+q1->questoes % baralhar() .
+g % adicionarquestoes(q1).
+
+#Apresentação do Menu de Perguntas e Respostas ao utilizador.
+apresentarMenu(g, 20).
+
+#Apresentação da pontuação final.
+apresentar("A sua pontuaçao final foi de :" & str(g->pontuacao)).
+
+guardarrespostas(g, "ficheiro.txt"). # guarda todas as respostas/questoes 
+                                     # no ficheiro passado (faz append)
+
+c as Real.
+c := 0.
+para (r as Questao em g->questoes)
+inicio
+    apresentar ("pontuacao total: " & str(r->pontuacao) &  "; pont. obtida: " & str(r->respostadada->pontuacao) ).
+    c := c + r->pontuacao * r->respostadada->pontuacao/100 .
+
+    
+fim
+
+apresentar("pontuacao calculada: " & str(c)).
+
+aa as Real.
+bb as Real.
+aa := 5.
+bb := 2.
+
+cc as Real.
+cc := aa // bb. # símbolo do resto! (//)
+
+apresentar(str(cc)).
+
+
+g3 as Grupo.
+g3 % adicionarquestoes(q1, tema = [CIENCIA->ANIMAIS]).
+
+
+
+
+
+
+
+
+
+					
+					

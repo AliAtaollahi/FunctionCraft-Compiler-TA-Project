@@ -1,0 +1,24 @@
+main : f(1);
+
+func f(a) : {
+    return g();
+    return a;
+}
+
+func g() : {
+    return k();
+}
+
+func k() : {
+    return f(4);
+    final();
+}
+
+func final() : {
+    if (f(a = 3)) :
+        return k() and true;
+    else :
+        if([[true, false]][0]) :
+            return true;
+        return false;
+}

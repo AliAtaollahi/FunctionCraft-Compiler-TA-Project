@@ -1,0 +1,133 @@
+questao:EscolhaMultipla facil pontuacao=10 [HISTORIA->PORTUGAL->Q1] "Em que ano se deu a conquista de ceuta?" 
+
+inicio
+
+  "1911" false pontuacao=-50; 
+
+  "1810" false pontuacao=-40; 
+
+  "1514" false pontuacao=-20; 
+
+  "1415" true pontuacao=100; 
+
+fim
+
+
+questao:VerdadeiroFalso medio pontuacao=40 [HISTORIA->PORTUGAL->Q2] "Questões de Verdadeiro ou Falso..."
+
+inicio
+
+  "O primeiro rei de Portugal foi D.Sancho I" false pontuacao=(20,-10); 
+
+  "A terceira invasão francesa ocorreu no ano de 1810" true pontuacao=(40,-5); 
+
+  "Rui Rio é o atual primeiro-ministro" false pontuacao=(20,-10); 
+
+  "Os Descobrimentos foram uma época de revolução industrial" false pontuacao=(10,-5); 
+
+  "A língua portuguesa é derivada do Latim" true pontuacao=(10,-5); 
+
+fim
+
+
+questao:EscolhaMultipla medio pontuacao=20 [HISTORIA->PORTUGAL->Q3] "Quem foi o primeiro presidente da República Portuguesa?" 
+
+inicio
+
+  "Manuel de Arriaga" pontuacao=100; 
+
+  "Afonso Henriques" false pontuacao=-30; 
+
+  "Bernardino Machado" false pontuacao=-20; 
+
+  "Óscar Carmona" false pontuacao=-20; 
+  
+  "Américo Thomas" false pontuacao=-20;
+
+fim
+
+
+questao:EscolhaMultipla dificil pontuacao=40 [HISTORIA->PORTUGAL->Q4] "Qual dos seguintes instrumentos de navegação foi inventado pelos portugueses?" 
+
+inicio
+  "Astrolábio" false pontuacao=0; 
+
+  "Quadrante" false pontuacao=0; 
+
+  "Balestilha" true pontuacao=100; 
+
+  "Bússola" false pontuacao=0; 
+
+fim
+
+questao:EscolhaMultipla medio pontuacao=20 [HISTORIA->MUNDIAL->Q1] "Quem foram os países Aliados na primeira guerra mundial?" 
+
+inicio
+
+  "França, Alemanha, Espanha" false pontuacao=-40; 
+
+  "Inglaterra, França, Rússia" true pontuacao=100; 
+
+  "Itália, Alemanha, Japão" false pontuacao=-50; 
+
+  "Rússia, Itália, Portugal" false pontuacao=-50; 
+
+fim
+
+questao:EscolhaMultipla facil pontuacao=10 [HISTORIA->MUNDIAL->Q2] "Quais das seguintes cidades foram atacadas como resposta ao bombardeamento de Pearl Harbor?" 
+
+inicio
+
+  "Hiroshima" true pontuacao=50;
+
+  "Fukushima" false pontuacao=-30; 
+
+  "Chernobyl" false pontuacao=-30; 
+
+  "Yamanashi" false pontuacao=-30; 
+  
+  "Nagasaki" true pontuacao=50;
+
+fim
+
+
+questao:VerdadeiroFalso dificil pontuacao=40 [HISTORIA->MUNDIAL->Q3] "Questões de Verdadeiro ou Falso..."
+
+inicio
+  "Portugal envolveu-se diretamente na Segunda Guerra Mundial" false pontuacao=(10,-10); 
+
+  "O Ataque de Pearl Harbour foi efetuado no dia 7 de Dezembro de 1941" true pontuacao=(35,-5); 
+
+  "Mussolini foi o líder Alemão durante a Segunda Guerra Mundial" false pontuacao=(10,-10); 
+
+  "O nome da força aérea alemã durante a Segunda Guerra Mundial era de Luftwaffe " true pontuacao=(35,-5); 
+
+  "A primeira Guerra Mundial teve iníco no ano de 1913" false pontuacao=(10,-5); 
+
+fim
+
+
+questao:EscolhaMultipla medio pontuacao=20 [HISTORIA->MUNDIAL->Q4] "A União Europeia é uma união económica e política de características únicas, constituída, atualmente, por...?" 
+
+inicio
+
+  "21 países" false pontuacao=-30; 
+
+  "19 países" false pontuacao=-30; 
+
+  "22 países" false pontuacao=-30; 
+
+  "27 países" true pontuacao=100; 
+  
+  "26 países" false pontuacao=-20;
+
+fim
+
+
+questao:CurtaTextual facil pontuacao=10 [HISTORIA->MUNDIAL->Q5]  "Em que ano foi descoberto o caminho marítimo para a Índia?"
+
+inicio
+
+  "1498" pontuacao=100;
+
+fim

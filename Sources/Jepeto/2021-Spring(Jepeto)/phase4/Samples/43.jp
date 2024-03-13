@@ -1,0 +1,3 @@
+func getLastElement(L):
+    return L[L.size-1];
+main: print(getLastElement(["A","B","C"]));

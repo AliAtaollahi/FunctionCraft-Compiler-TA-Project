@@ -1,0 +1,164 @@
+questao:EscolhaMultipla dificil pontuacao=40 [DESPORTO->FUTEBOL->Q1] "A que minuto de jogo, Éder marcou o golo que deu a vitória a Portugal na final do Euro 2016? " 
+
+inicio
+
+  "109" true pontuacao=100 ;
+
+  "106" false pontuacao=0; 
+
+  "115" false pontuacao=0; 
+
+  "112" false pontuacao=0; 
+
+  "114" false pontuacao=0;
+
+fim
+
+
+questao:VerdadeiroFalso facil pontuacao=10 [DESPORTO->FUTEBOL->Q2] "Verdadeiro e Falso sobre futebol."
+
+inicio
+
+  "A duração do tempo regular de um jogo de futebol é de 90 minutos" true pontuacao=(20,-10); 
+
+  "Sport Lisboa e Benfica é o atual campeão em título" true pontuacao=(20,-10); 
+
+  "O único jogador que pode utilizar os membros superiores para tocar na bola é o Avançado" false pontuacao=(20,-10); 
+
+  "Atualmente, o campeonato português é constituído por 20 equipas" false pontuacao=(20,-10); 
+
+  "O atual presidente do Sporting Clube de Portugal é Frederico Varandas" true pontuacao=(20,-10); 
+
+fim
+
+
+questao:EscolhaMultipla medio pontuacao=20 [DESPORTO->FUTEBOL->Q3] "Qual(is) dos seguintes países tem 4 Mundiais de Futebol ganhos?" 
+
+inicio 
+
+  "Itália" true pontuacao=100;
+
+  "Brasil" false pontuacao=-10; 
+
+  "Espanha" false pontuacao=-10; 
+
+  "França" false pontuacao=-10; 
+ 
+  "Argentina" false pontuacao=-10;
+
+  "Alemanha" true pontuacao=60;
+
+fim
+
+
+questao:CurtaTextual facil pontuacao=10 [DESPORTO->FUTEBOL->Q4]  "Quais são os considerados 4 maiores clubes de Portugal?"
+
+inicio
+
+  "Sport Lisboa e Benfica" pontuacao=25;
+  
+  "Futebol Clube do Porto" pontuacao=25;
+
+  "Sporting Clube de Portugal" pontuacao=25;
+
+  "Sporting Clube de Braga" pontuacao=25;
+
+fim
+
+
+questao:EscolhaMultipla facil pontuacao=10 [DESPORTO->FUTEBOL->Q4] "Qual(is) dos seguintes jogadores pertence(m) ao TOP10 jogadores com mais presenças na seleção portuguesa de futebol?" 
+
+inicio
+
+  "Cristiano Ronaldo" true pontuacao=50;
+
+  "Ricardo Quaresma" false pontuacao=-40; 
+
+  "Rui Patrício" false pontuacao=-20; 
+
+  "Pepe" true pontuacao=80; 
+  
+  "Ricardo Carvalho" true pontuacao=100;
+
+fim
+
+
+
+
+questao:LongaTextual dificil [DESPORTO->FUTEBOL->Q5]  "Como descreve o processo de transição ofensiva no futebol?"
+
+
+
+
+
+questao:EscolhaMultipla dificil pontuacao=40 [DESPORTO->BASQUETEBOL->Q1] "Qual foi o maior placard da história da NBA?" 
+
+inicio
+
+  "185x184" false pontuacao=-10; 
+
+  "184x183" false pontuacao=-10; 
+
+  "185x183" false pontuacao=-10; 
+
+  "186x184" true pontuacao=100;
+  
+  "184x182" false pontuacao=-10;
+
+fim
+
+
+questao:EscolhaMultipla medio pontuacao=20 [DESPORTO->BASQUETEBOL->Q2] "Qual é o jogador com maior número de pontos marcados na NBA?" 
+
+inicio
+
+  "Michael Jordan" false pontuacao=-20; 
+
+  "Lebron James" true pontuacao=100;
+
+  "Kobe Bryant" false pontuacao=-20; 
+
+  "Stephen Curry" false pontuacao=-40; 
+  
+  "Wilt Chamberlain" false pontuacao=-40;
+
+fim
+
+
+questao:VerdadeiroFalso medio pontuacao=20 [DESPORTO->BASQUETEBOL->Q3] "Perguntas de Verdadeiro e Falso sobre basquetebol."
+
+inicio
+
+  "Um jogo de Basquetebol é constituído por 4 períodos de 15 minutos" false pontuacao=(10,-20); 
+
+  "Um jogo de Basquetebol é constituído por 4 períodos de 10 minutos" true pontuacao=(30,-20); 
+
+  "Um triplo é um cesto efetuado dentro da aérea" false pontuacao=(10,-10); 
+
+  "Lance livre é uma tentativa de cesto efetuada sem qualquer oposição e que vale 1 ponto" true pontuacao=(20,-10); 
+
+  "Cada equipa pode fazer um número de substituições ilimitado" true pontuacao=(30,-10); 
+
+fim
+
+
+questao:EscolhaMultipla medio pontuacao=20 [DESPORTO->BASQUETEBOL->Q4] "Qual(is) dos seguintes jogadores joga(m) na Liga Portuguesa de Basquetebol?" 
+
+inicio
+
+  "Micah Downs" true pontuacao=50; 
+
+  "Anthony Davis" false pontuacao=-20; 
+
+  "Travante Wiliiams" true pontuacao=50;  
+
+  "Russell Westbrook" false pontuacao=-20; 
+  
+  "Brad Tinsley" true pontuacao=50; 
+
+fim
+
+
+
+
+

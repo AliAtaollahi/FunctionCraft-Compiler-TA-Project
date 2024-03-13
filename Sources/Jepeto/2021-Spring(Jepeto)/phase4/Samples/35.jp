@@ -1,0 +1,9 @@
+main : print(f());
+
+func f():{
+    if(13 > 9):{
+        print("Hello");
+        return 10;
+    }
+    return 999;
+}

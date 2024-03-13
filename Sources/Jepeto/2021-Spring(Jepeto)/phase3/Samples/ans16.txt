@@ -1,0 +1,10 @@
+f
+[IntType, IntType]
+StringType
+k
+[]
+NoType
+g
+[IntType, IntType]
+IntType
+Line 10: Unsupported operand type for operator eq

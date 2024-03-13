@@ -1,0 +1,16 @@
+main : create2dList([], 0, 0);
+
+func create2dList(l, i, j) : {
+    if i not 10 :
+        create2dList(l[i]::i::j * 2, i + 1, j + 1);
+    else :
+        printList(l, i);
+    return void;
+}
+
+func printList(l, i) : {
+    print(l[i][0]);
+    print(l[i][1]);
+    printList(l, i - 1);
+    return void;
+}

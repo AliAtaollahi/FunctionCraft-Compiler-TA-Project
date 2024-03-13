@@ -1,0 +1,13 @@
+main : f([1, 2]);
+
+func f(tt) : {
+    return (a, b) -> {return a;};
+    kk();
+}
+
+func kk(a, b, c) : {
+    f([[1, 2]])(4, 5, 3);
+    return f([])(c = c);
+    f([[1, 2]]);
+    return f([])(b = 2, a = true);
+}

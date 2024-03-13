@@ -1,0 +1,28 @@
+main : print(f(c = 1, b = 5, a = 3)[g(true)]);
+
+func f(a, b, c) : {
+    print(a * b + (c / b * a + b) - -a);
+    return [] :: k(true) :: k(false) :: (-a);
+}
+
+func g(a) : {
+    if (a and test(10)) :
+        if (a or test(3)) :
+            return 1;
+        else :
+            return 0;
+    else :
+        return 2;
+    return 3;
+}
+
+func test(arg) : {
+    if (arg > 5) :
+        return true;
+    return false;
+}
+
+func k(f1) : {
+    print(f1);
+    return 10 * (10 + 4);
+}

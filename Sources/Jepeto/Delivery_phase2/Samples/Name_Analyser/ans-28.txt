@@ -1,0 +1,6 @@
+Line 4: Argument e not declared in function f3
+Line 4: Argument g not declared in function f3
+Line 4: Argument x not declared in function f3
+Line 12: Variable e not declared
+Line 13: Variable f not declared
+Line 14: Variable x not declared

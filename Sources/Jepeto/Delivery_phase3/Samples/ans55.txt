@@ -1,0 +1,10 @@
+f
+[ListType]
+FptrType
+kk
+[NoType, NoType, NoType]
+NoType
+Line 5: Args in function call do not match with definition
+Line 9: Args in function call do not match with definition
+Line 10: Args in function call do not match with definition
+Line 11: Args in function call do not match with definition

@@ -1,0 +1,9 @@
+main : f();
+
+func f() : {
+    return k()(true, [] :: true);
+}
+
+func k() : {
+    return (a, b) -> {if (~a or ~b) : return a; else : return a and a;};
+}

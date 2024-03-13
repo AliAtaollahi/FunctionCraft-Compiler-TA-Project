@@ -1,0 +1,7 @@
+main : f([]);
+
+func f(a):{
+    print(a);
+    print([]);
+    return void;
+}

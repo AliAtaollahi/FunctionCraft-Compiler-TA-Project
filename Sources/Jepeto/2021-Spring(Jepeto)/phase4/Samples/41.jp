@@ -1,0 +1,64 @@
+main : print(f());
+
+func f() : {
+   g(arg3 = 3, arg1 = 9, arg2 = 2);
+   h()(7, 8, 11);
+   h()(arg2 = 3, arg1 = 9, arg3 = 2);
+   c1(1);
+   c2(1);
+   c3(1);
+   print(selector(5, 3, 5 > 3, true)(10));
+   print(selector(3, 5, 3 > 5, true)(10));
+   print(selector(2, 2, 2 > 2, true)(10));
+   x(0, [1,2,3,4]::5::6::7);
+   return true;
+}
+
+func g(arg1, arg2, arg3) : {
+    print(arg1 * arg2  + arg3 - arg1);
+    return void;
+    print("unreachable");
+}
+
+func h() :{
+    return g;
+}
+
+func c1(a):{
+    print("we are in c1");
+    return 2 * a;
+}
+
+func c2(a):{
+    print("we are in c2");
+    return -(a * 24 / 2);
+}
+
+func c3(a):{
+    print("we are in c3");
+    return a - 1000;
+}
+
+func selector(arg1, arg2, arg3, arg4):{
+    if ((arg1 > arg2) and arg3 or (~arg4)):{
+        return c1;
+    }
+    else:{
+        if (arg1 + arg2 is arg2 * arg1):{
+            return c2;
+        }
+        else:{
+            return c3;
+        }
+    }
+    return c1;
+}
+
+func x(i, L):{
+    if (i is L.size):{
+        return void;
+    }
+    print(L[i]);
+    x(i+1, L);
+    return void;
+}

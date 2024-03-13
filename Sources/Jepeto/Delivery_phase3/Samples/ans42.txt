@@ -1,0 +1,34 @@
+f1
+[ListType, IntType]
+ListType
+f2
+[ListType]
+ListType
+g
+[]
+ListType
+f3
+[FptrType]
+NoType
+f4
+[]
+NoType
+cmp_fptr
+[FptrType, FptrType]
+FptrType
+program
+[NoType]
+ListType
+lastFunc
+[ListType]
+ListType
+Line 15: Condition must be bool
+Line 2: Unsupported operand type for operator append
+Line 38: Unsupported operand type for operator or
+Line 38: Unsupported operand type for operator not
+Line 38: Unsupported operand type for operator not
+Line 43: Unsupported operand type for operator eq
+Line 44: Access by index on a non-list
+Line 47: Unsupported operand type for operator append
+Line 53: Return value does not match with function return type
+Line 54: Return value does not match with function return type

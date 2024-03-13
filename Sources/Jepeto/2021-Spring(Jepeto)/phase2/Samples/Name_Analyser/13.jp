@@ -1,0 +1,14 @@
+main : print(true);
+
+
+func f(a, b, c, d) : {
+    return 1;
+}
+
+
+func g (): {
+    print((e, x) -> {return a;});
+    print(a);
+    print(e);
+    return true;
+}

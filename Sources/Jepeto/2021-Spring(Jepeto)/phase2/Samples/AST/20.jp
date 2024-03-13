@@ -1,0 +1,40 @@
+func printList(list, i) : {
+    if i not list: {
+        print(list);
+        return void;
+    }
+    else :
+        return void;
+}
+
+func result(i, j, l):
+    if i < l:
+        return result(i, j + 1, l);
+    else:
+        return 0;
+
+func f(a, b) : {
+    if (b) :
+        print(a);
+    return void;
+}
+
+func sum(f1, f2) : {
+    return 20;
+}
+
+func g() :
+    return 8;
+
+func getLastElement(L):
+    return L;
+
+func testMethod(test1, test2, i):
+    if i not 10:
+        return testMethod (test1, i+1);
+    else:
+       return false;
+
+main: print(1);
+
+

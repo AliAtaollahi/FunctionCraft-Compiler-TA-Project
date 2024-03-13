@@ -1,0 +1,5 @@
+f
+[IntType, BoolType]
+BoolType
+Line 3: Unsupported type for print
+Line 4: Unsupported type for print

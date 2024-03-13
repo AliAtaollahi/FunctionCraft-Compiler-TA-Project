@@ -1,0 +1,3 @@
+Line 1: Function k not declared
+Line 5: Function g not declared
+Line 9: Function k not declared

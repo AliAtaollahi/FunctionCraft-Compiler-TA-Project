@@ -1,0 +1,19 @@
+start
+[IntType]
+IntType
+f
+[IntType]
+FptrType
+g
+[IntType, BoolType]
+IntType
+k
+[IntType, IntType, BoolType]
+IntType
+Line 9: Condition must be bool
+Line 12: Unsupported operand type for operator mult
+Line 14: Return value does not match with function return type
+Line 20: Condition must be bool
+Line 22: Get size of a non-list
+Line 27: List index is not an integer
+Line 27: Elements of the list have different types

@@ -1,0 +1,8 @@
+f
+[]
+NoType
+Line 4: Unsupported operand type for operator and
+Line 5: Unsupported operand type for operator and
+Line 5: Unsupported operand type for operator not
+Line 6: Unsupported operand type for operator and
+Line 7: Unsupported operand type for operator or

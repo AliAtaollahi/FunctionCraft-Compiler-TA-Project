@@ -1,0 +1,24 @@
+main : f();
+
+func f() : {
+    if (true) :
+        return [[[1, 2]]];
+    else :
+        return [[1, 2]];
+
+    g();
+}
+
+func g() : {
+   return [[1, 2]];
+   return [[1, 2, 3]];
+   return [];
+   k();
+}
+
+func k() : {
+    return [[2, 3]];
+    return [[2, 3], []];
+    return [[2, 3]] :: [2];
+    return [[[]]];
+}

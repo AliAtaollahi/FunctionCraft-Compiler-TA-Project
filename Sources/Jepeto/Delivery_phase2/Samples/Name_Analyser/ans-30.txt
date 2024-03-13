@@ -1,0 +1,18 @@
+Line 2: Argument c not declared in function f
+Line 6: Variable dd not declared
+Line 10: Variable d not declared
+Line 13: Variable e not declared
+Line 21: Duplicate function f
+Line 26: Function h not declared
+Line 30: Duplicate function f
+Line 36: Duplicate argument a
+Line 36: Duplicate argument b
+Line 37: Duplicate argument b
+Line 39: Argument x not declared in function f
+Line 40: Argument y not declared in function f
+Line 47: Name of argument plc conflicts with a function’s name
+Line 53: Variable a not declared
+Line 62: Function Cn not declared
+Line 69: Name of argument f conflicts with a function’s name
+Line 72: Name of argument PLC conflicts with a function’s name
+Line 75: Function Cn not declared

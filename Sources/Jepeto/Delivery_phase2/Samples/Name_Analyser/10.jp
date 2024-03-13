@@ -1,0 +1,23 @@
+main : print(true);
+
+
+func f(a, b, c, d) : {
+    return 1;
+}
+
+
+func a (): {
+    return true;
+}
+
+func b (): {
+    return true;
+}
+
+func c (): {
+    return true;
+}
+
+func d (): {
+    return true;
+}

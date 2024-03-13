@@ -1,0 +1,13 @@
+Main
+FunctionCall
+FunctionDec : addToList
+ArgumentDec : a
+ArgumentDec : b
+ArgumentDec : c
+Return
+Operator : +
+Operator : ::
+Operator : ::
+Size
+Operator : ::
+Operator : ::

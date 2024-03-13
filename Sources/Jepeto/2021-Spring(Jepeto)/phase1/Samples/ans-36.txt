@@ -1,0 +1,17 @@
+FunctionDec : main_
+ArgumentDec : a1
+ArgumentDec : a2
+Conditional : if
+Operator : +
+Conditional : if
+Operator : -
+Built-in : print
+Operator : -
+Conditional : else
+Return
+Built-in : print
+Conditional : else
+Built-in : print
+Return
+Main
+Built-in : print

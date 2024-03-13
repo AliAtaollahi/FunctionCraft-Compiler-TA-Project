@@ -1,0 +1,8 @@
+main : f(f() + 4);
+
+func f() : {
+    g(() -> {return 3;}() + 10, f(f()));
+    return void;
+}
+
+

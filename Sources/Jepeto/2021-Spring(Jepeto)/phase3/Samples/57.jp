@@ -1,0 +1,9 @@
+main : f();
+
+func f() : {
+    return void;
+    return 2();
+    return "str"();
+    return true();
+    return 2()();
+}

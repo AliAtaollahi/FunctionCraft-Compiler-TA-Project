@@ -1,0 +1,5 @@
+main : f(a = 1, c = 4);
+
+func f(c, b) : {
+   return f(b = c, a = b, t = b + c);
+}

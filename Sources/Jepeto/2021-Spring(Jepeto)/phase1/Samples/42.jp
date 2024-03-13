@@ -1,0 +1,22 @@
+func f__1(a1, a2, a3, a4, a5):{
+    print(1);
+    print(2);
+    return a1::a2::a3;
+    print(a1 is b);
+    if (true):
+        return a.size + 1;
+    if (false):
+        return a.size * b.size + a::b;
+}
+
+func f2():
+    return (arg1, arg2, arg3) -> {if ((a >b) and (c < arg3)):{print("hi");print("bye");return g1();}else:return 10;};
+
+
+
+
+main: print (a > b < c > d not e not f);
+
+func g1g1g(bb):{
+    return a + b + c(1,2) * (a * (a+b));
+}

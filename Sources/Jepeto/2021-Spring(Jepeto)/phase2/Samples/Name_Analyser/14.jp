@@ -1,0 +1,10 @@
+main : print((a, b) -> {return c;}(2, k));
+
+
+func f(a) : {
+    return (b) ->
+            {return a;};
+}
+
+
+

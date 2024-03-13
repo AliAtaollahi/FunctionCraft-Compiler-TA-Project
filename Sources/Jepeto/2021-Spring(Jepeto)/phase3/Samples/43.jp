@@ -1,0 +1,14 @@
+func foo() : {
+    return void;
+    return goo();
+}
+
+main : print(foo());
+
+
+func goo() : {
+    return void;
+    print(foo() + goo());
+    print(foo + goo);
+    print(foo);
+}

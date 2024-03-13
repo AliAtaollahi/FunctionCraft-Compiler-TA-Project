@@ -1,0 +1,11 @@
+f
+[ListType]
+ListType
+g
+[ListType]
+NoType
+k
+[]
+NoType
+Line 6: Access by index on a non-list
+Line 16: Access by index on a non-list

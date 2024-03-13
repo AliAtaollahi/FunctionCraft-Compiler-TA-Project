@@ -1,0 +1,139 @@
+questao:EscolhaMultipla medio pontuacao=20 [ARTES->MUSICA->Q1] "Qual é o nome da seguinte música e o seu cantor: I’m never gonna dance again, Guilty feet have got no rhythm' ?" 
+
+inicio
+
+  "Scorpions - Still Loving You" false pontuacao=-20; 
+
+  "George Michael - Careless Whisper" true pontuacao=100; 
+
+  "The Police - Every Breath You take" false pontuacao=-20; 
+
+  "Whitney Houston - I wanna dance with somebody" false pontuacao=-20; 
+fim
+
+
+
+questao:EscolhaMultipla dificil pontuacao=40 [ARTES->MUSICA->Q2] "Em que ano foram lançados os seguintes hits: Uptown Funk, Problem, Chandelier, Fancy, Rather Be?"
+
+inicio
+
+  "2019" false pontuacao=-10; 
+
+  "2013" false pontuacao=-20; 
+
+  "2014" true pontuacao=100; 
+
+  "2011" false pontuacao=-30; 
+fim
+
+
+questao:EscolhaMultipla facil pontuacao=10 [ARTES->PINTURA->Q1] "Quem pintou a obra intitulada de 'A Última ceia'?" 
+
+inicio
+
+  "‎Edvard Munch" false pontuacao=-10; 
+
+  "Leonardo Da Vinci" true pontuacao=100; 
+
+  "Pablo Picasso" false pontuacao=-10; 
+
+  "Vicente Van Gogh" false pontuacao=-10; 
+  
+  "Salvador Dalí" false pontuacao=-10;
+
+fim
+
+
+
+questao:EscolhaMultipla facil pontuacao=10 [ARTES->LITERATURA->Q2] "Como morreu Julieta na famosa obra de Shakespeare 'Romeu e Julieta'" 
+
+inicio
+
+  "Viu Romeu morto e usou a sua espada para se matar" false pontuacao=-10; 
+
+  "Viu Romeu morto e usou uma corda para se matar" false pontuacao=-10; 
+
+  "Viu Romeu morto e usou a sua faca para se matar" false pontuacao=0;
+
+  "Viu Romeu morto e usou o veneno para se matar" false pontuacao=-20; 
+
+  "Viu Romeu morto e usou o punhal para se matar" true pontuacao=100;
+ 
+fim
+
+
+
+questao:EscolhaMultipla dificil pontuacao=40 [ARTES->CINEMA->Q3] "Que filme venceu o Óscar na categoria de 'Melhor Filme' em 1998?" 
+
+inicio
+
+  "La Vitta è Bella" false pontuacao=-10; 
+
+  "The Pianist" false pontuacao=0; 
+
+  "The Goodfather" false pontuacao=-30; 
+
+  "Moulin Rouge" false pontuacao=-10; 
+
+  "Titanic" true pontuacao=100;
+
+fim
+
+
+
+questao:EscolhaMultipla medio pontuacao=20 [ARTES->DANCA->Q3] " Quais dos seguintes são nomes de passos básicos de Hip Hop?" 
+
+inicio
+
+  "Hip Walk" false pontuacao=-20; 
+
+  "Criss Cross" true pontuacao=30; 
+
+  "Jumping Mouse" false pontuacao=-20; 
+
+  "Running Man" true pontuacao=30; 
+  
+  "Slide Simpson" false pontuacao=-10;
+
+  "Spongebob" true pontuacao=40;
+
+fim
+
+
+
+questao:VerdadeiroFalso medio pontuacao=20 [ARTES->MUSICA->Q3] " Questões de V/F sobre música."
+
+inicio
+
+  "O vocalista e guitarrista dos Marron 5 chama-se Adam Levine" true pontuacao=(20,-10); 
+
+  "Freddie Mercury era conhecido pelos 'solos' que fazia com a sua guitarra nos concertos de Guns And Roses" false pontuacao=(20,-10); 
+
+  "A letra da canção 'Love Yourself' de Justin Bieber foi escrita por Ed Sheeran" true pontuacao=(20,-10); 
+
+  "Cristiano Ronaldo já participou num videoclipe de uma musica da banda 30 Seconds To Mars" false pontuacao=(20,-10); 
+  
+  "AC/DC é uma banda do genero Rock Pesado e Heavy Metal " true pontuacao=(20,-10);
+
+fim
+
+
+questao:CurtaTextual facil pontuacao=10 [ARTES->MUSICA->Q3] "Em que ano foi lançado o single de Selena Gomez 'Good For You' ? "
+
+inicio
+
+  "2015" pontuacao=100;
+
+fim
+
+
+questao:CurtaTextual medio pontuacao=10 [ARTES->PINTURA->Q3] "Em que país nasceu Pablo Picasso? "
+
+inicio
+
+  "Espanha" pontuacao=100;
+
+fim
+
+questao:LongaTextual dificil [ARTES->CINEMA->Q3] "Para que funciona a tela verde presente no background nas gravações de cenas de filmes? "
+

@@ -1,0 +1,6 @@
+Main
+Built-in : print
+FunctionDec : f
+Return
+Anonymous Function
+Return

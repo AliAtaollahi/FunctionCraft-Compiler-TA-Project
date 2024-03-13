@@ -1,0 +1,13 @@
+main : print(true);
+
+
+func f() : {
+    return a;
+}
+
+func g() : {
+    if (a) :
+        return b;
+    return a;
+}
+

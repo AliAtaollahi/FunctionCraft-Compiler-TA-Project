@@ -1,0 +1,18 @@
+Main
+Built-in : print
+FunctionDec : compare
+Conditional : if
+Operator : >
+Conditional : if
+Operator : >
+Built-in : print
+Return
+Conditional : else
+Return
+Conditional : else
+Conditional : if
+Operator : >
+Built-in : print
+Conditional : else
+Built-in : print
+Return

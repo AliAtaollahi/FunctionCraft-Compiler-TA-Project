@@ -1,0 +1,20 @@
+main : f1(a = 2, b = "string");
+
+
+func f1(b, a, c) : {
+    print(a + b);
+    if (c) :
+        return a * b / b;
+    f2(a::b::(c or ~c)::a.size);
+    return a;
+}
+
+func f2() :
+    return (a, b) -> {return a + b / a or b;};
+
+func f3(arg1, arg2) : {
+    print("Hello");
+    return 2 * arg1;
+    print(true);
+    print(arg2[arg1 or arg2]);
+}

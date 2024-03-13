@@ -1,0 +1,8 @@
+func f1(a, b, c) : {
+    return f2(x = 2, y = "string", z = [1, 2]);
+}
+
+main : f1(1, 2, 3);
+
+func f2 (a, b) :
+    return a + b;

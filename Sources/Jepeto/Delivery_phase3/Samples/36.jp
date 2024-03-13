@@ -1,0 +1,35 @@
+func f1(a1, a2) : {
+    a1(a2);
+    return 4;
+    f3();
+
+}
+
+func f2(a) : {
+    return f1(f2, true);
+}
+
+func f3() : {
+    return f2([2, 3].size);
+    print(g([1, true * 1] :: [[1, 2, 3]][0].size));
+}
+
+
+
+main : f1(f2, 2 is ([2, 4, 5].size > [3, 4][3]));
+
+func g(arg1) : {
+    return void;
+    return k([[1, 2, 3]][0][0][0], [[1, 2]]);
+}
+
+func k(arg, li) : {
+    return [[true, false]] :: ([] :: ([2, 3] is [3, 4, 5]));
+    ans([[] :: ["ss"], li], 4 * true, true)(li :: (li[0] :: 4));
+}
+
+func ans(arg1, arg2, arg3) : {
+    return (a) -> {if (a[0][0] + a): return a[0][0]; else: return a[0];};
+    return arg1[(arg2 is arg3)];
+
+}

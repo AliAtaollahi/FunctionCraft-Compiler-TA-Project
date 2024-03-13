@@ -1,0 +1,14 @@
+Compilation successful
+
+-------------------Generating Class Files-------------------
+Generated: Fptr.class
+Generated: List.class
+Generated: Main.class
+
+---------------------------Output---------------------------
+-44
+677
+39
+111
+2
+8

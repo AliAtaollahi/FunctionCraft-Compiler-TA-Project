@@ -1,0 +1,3 @@
+Line 5: Name of argument g conflicts with a function’s name
+Line 11: Name of argument g conflicts with a function’s name
+Line 11: Name of argument f conflicts with a function’s name

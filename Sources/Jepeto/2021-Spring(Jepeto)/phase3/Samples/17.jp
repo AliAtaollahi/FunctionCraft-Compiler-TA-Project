@@ -1,0 +1,7 @@
+main : f();
+
+func f() : {
+   return [].size;
+   return ([1, 2, 3].size).size;
+   return 1.size;
+}

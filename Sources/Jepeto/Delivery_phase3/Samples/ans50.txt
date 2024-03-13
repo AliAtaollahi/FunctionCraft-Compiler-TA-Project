@@ -1,0 +1,16 @@
+g
+[IntType]
+NoType
+create2dList
+[ListType, IntType, IntType]
+VoidType
+printList
+[ListType, IntType]
+VoidType
+Line 4: Unsupported operand type for operator gt
+Line 4: Get size of a non-list
+Line 5: Elements of the list have different types
+Line 7: Unsupported operand type for operator append
+Line 7: Get size of a non-list
+Line 15: Cannot use return value of a function having void return type
+Line 24: Cannot use return value of a function having void return type

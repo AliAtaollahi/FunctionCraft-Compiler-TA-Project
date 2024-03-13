@@ -1,0 +1,7 @@
+main : f();
+
+func f() : {
+    return true and false;
+    return true and 1 or "hh";
+    return ~true and ~1 or ("str" and "str");
+}

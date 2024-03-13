@@ -1,0 +1,10 @@
+main : print(true);
+
+
+func f(c, a, b, c) : {
+    return 1;
+}
+
+func g(a, b) : {
+    return 2;
+}

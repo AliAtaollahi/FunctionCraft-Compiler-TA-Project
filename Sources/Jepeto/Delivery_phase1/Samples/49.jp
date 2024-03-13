@@ -1,0 +1,25 @@
+func P_L_C_1400():{
+    print(a::b.size);
+    print((a::b).size);
+    print(a::(b.size));
+    if a is b :
+        return (a, b)->{return a[b][b];}(1, "string", true, [1,2,3,[1,2,3]], ()->{return 1;});
+    return [1,2,3,4,5]::6;
+
+}
+# hi i"m simple comment
+func f():{
+
+    if a not 10 > 56 / b[a * 2 - 3].size:
+        print(sss(f(), g()(), h()()(), r()[f()]));
+    else:
+        return (f() + 2)[a - b - c * 2][a and b and c];
+    if 2 is 3:
+        print(2::3);
+    return 2.size;
+}
+
+main : print(a.size);
+# this is just a testing comment
+
+

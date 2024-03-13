@@ -1,0 +1,15 @@
+main : st(1, []);
+
+func st(a, b, c) : {
+    return sr;
+    k(c, b :: 2);
+}
+
+func sr(n, m, o) : {
+    return o;
+}
+
+func k(i, j) : {
+    return st(1, j, 1)(m = i, n = j);
+    return st(1, 2, 3)(m = i, n = j);
+}

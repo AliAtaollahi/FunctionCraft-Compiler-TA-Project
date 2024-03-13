@@ -1,0 +1,28 @@
+Main
+[IntType, BoolType, NoType, FptrType]
+NoType
+f
+[IntType]
+FptrType
+r
+[]
+FptrType
+Line 1: Elements of the list have different types
+Line 6: Unsupported operand type for operator minus
+Line 6: Access by index on a non-list
+Line 6: Access by index on a non-list
+Line 6: Access by index on a non-list
+Line 8: Unsupported operand type for operator mult
+Line 8: Unsupported operand type for operator mult
+Line 10: Unsupported operand type for operator mult
+Line 16: Unsupported operand type for operator add
+Line 16: List index is not an integer
+Line 16: List index is not an integer
+Line 18: Access by index on a non-list
+Line 18: Unsupported operand type for operator and
+Line 18: Unsupported operand type for operator append
+Line 18: Unsupported operand type for operator append
+Line 19: Unsupported operand type for operator add
+Line 19: Unsupported operand type for operator append
+Line 19: Access by index on a non-list
+Line 19: Unsupported operand type for operator and

@@ -1,0 +1,7 @@
+main : f();
+
+func f():{
+    return 53;
+    print("UnReachable");
+    return 1;
+}

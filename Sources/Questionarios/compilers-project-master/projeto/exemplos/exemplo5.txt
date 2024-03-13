@@ -1,0 +1,95 @@
+
+em1 as Questao:EscolhaMultipla.
+
+tx1 as Questao:CurtaTextual.
+tx2 as Questao:CurtaTextual.
+tx3 as Questao:LongaTextual.
+tx4 as Questao:CurtaTextual.
+q1 as Questionario.
+vf1 as Questao:VerdadeiroFalso. 
+
+
+#Criacao Pergunta do tipo VerdadeiroFalso. Atribuição tema, pergunta, dificuldade, pontuacao, listarespostas. (alguns são opcionais)
+vf1->pergunta := "Classifique como V/F as seguintes afirmações.".
+vf1->dificuldade := MEDIO.
+vf1->tema := [temaC->abc].
+vf1->pontuacao := 10.
+lr24 as Lista<Resposta:VerdadeiroFalso>.
+#lr24 := { "Não tenho fome.", 60 ; "Estou cansada.", -20}. #deve dar erro!!
+lr24 := { "Não tenho fome.", false, 60, -30 ; "Estou cansada.", true, 40, -20}.
+vf1->respostas := lr24.
+
+#Criacao Pergunta do tipo EscolhaMultipla. Atribuição pergunta, dificuldade, pontuacao, listarespostas, tempo Maximo. (alguns são opcionais)
+em1->pergunta := "Qual é o próximo teste que vamos ter para o qual não estudei nada?".
+em1->dificuldade := DIFICIL.
+em1->pontuacao := 50.
+lr22 as Lista<Resposta:EscolhaMultipla>.
+lr22 := { "Compiladores", -40 ; "Bases de Dados", 100 ; "Computacao Distribuída", -80; "Interação Humano-Computador", -30 ; "Padrões e Desenho de Software", -50 } .
+em1->respostas := lr22.
+em1->tempomaximo := 30.
+
+
+
+#Criacao Pergunta do tipo CurtaTextual. Atribuição tema, pergunta, dificuldade, pontuacao, listarespostas, tempo Maximo. (alguns opcionais)
+tx1->tema := [TEMA_A].
+tx1->pergunta := "O quê que eu queria estar a fazer neste momento?".
+tx1->dificuldade := FACIL.
+tx1->pontuacao := 10.
+lr as Lista<Resposta:CurtaTextual>.
+lr := { "dormir", 100 ; "estudar" , -20} .
+tx1->respostas := lr.
+tx1->tempomaximo := 10.
+
+
+#Criacao Pergunta do tipo CurtaTextual. Atribuição tema, pergunta, pontuacao, listarespostas, tempo maximo. (alguns opcionais)
+tx2->tema := [Tema_b].
+tx2->pergunta := "Em que mês estamos?".
+tx2->pontuacao := 15.
+lr2 as Lista<Resposta:CurtaTextual>.
+lr2 := { "Junho", 100 ; "Agosto", -30 ; "Outubro", -30; "Janeiro", -20 } .
+tx2->respostas := lr2.
+tx2->tempomaximo := 15.
+
+#Criacao Pergunta do tipo LongaTextual. Atribuição pergunta, dificuldade, tema. (alguns opcionais)
+#tx3->pergunta := "O que é uma gramática?".
+#tx3->dificuldade := DIFICIL.
+#tx3->tema := [tema_b].
+
+
+#Criacao Pergunta do tipo CurtaTextual. Atribuição tema, pergunta, dificuldade, pontuacao, listarespostas. (alguns opcionais)
+tx4->pergunta := "De que cor é o céu?".
+tx4->dificuldade := MEDIO.
+tx4->tema := [temaC].
+tx4->pontuacao := 30.
+lr3 as Lista<Resposta:CurtaTextual>.
+lr3 := { "azul", 100 } .
+tx4->respostas := lr3.
+
+
+#Método adicionarquestao, adiciona as questoes ao questionário q1.
+
+q1%adicionarquestao(em1).
+q1%adicionarquestao(tx1).
+q1%adicionarquestao(tx2).
+#q1%adicionarquestao(tx3).
+q1%adicionarquestao(tx4).
+q1%adicionarquestao(vf1).
+#apresentar(q1).
+
+
+#Formação de um grupo de perguntas com número de perguntas igual ao defenido na variavel "g1->nrperguntasaapresentar".
+
+g1 as Grupo.
+g1 -> minperguntasaresponder := 2. # nr mínimo de perguntas que o utilizador terá de responder.
+#g1 -> nrperguntasaapresentar := 3.
+g1 -> tempomaximo := 20 .
+g1 % adicionarquestoes(q1).
+
+
+
+#Apresentação do Menu de Perguntas e Respostas ao utilizador.
+
+apresentarMenu(g1, 15). # 15 segundos de duracao deste grupo
+
+
+apresentar("A sua pontuaçao final foi de: " & str(g1->pontuacao) & "tempo: " & str(g1->duracao)).

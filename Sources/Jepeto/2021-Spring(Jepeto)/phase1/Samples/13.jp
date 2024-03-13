@@ -1,0 +1,6 @@
+main : addToList();
+
+func addToList(a, b, c) : {
+   return a[i + 1] :: b[2] :: c["string"] :: b.size :: 3;
+}
+

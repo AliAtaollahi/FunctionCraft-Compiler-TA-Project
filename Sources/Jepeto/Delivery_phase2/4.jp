@@ -1,0 +1,9 @@
+main : print(f(a = 1));
+
+func f(b, a) : {
+    return g(a * b + a)(a);
+}
+
+func g(a) : {
+    return (c) -> {return c * g;};
+}

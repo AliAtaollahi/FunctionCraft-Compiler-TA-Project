@@ -1,0 +1,25 @@
+main : f(a = f, b = f);
+
+func g() : {
+    return g(g, g, f);
+}
+
+func g(a, b) : {
+    g(a = g, b = b);
+    return a();
+}
+
+func g(a, b, c, c, d, d):{
+    return g(a = 1, b = 2);
+}
+
+func g(x, y, z, g, g, g):{
+    return g(c = 1, d =2);
+}
+
+func h():{
+    return g(x = 1);
+    return plc();
+}
+
+

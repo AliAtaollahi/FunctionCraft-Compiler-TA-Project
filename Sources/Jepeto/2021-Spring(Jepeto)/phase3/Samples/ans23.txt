@@ -1,0 +1,15 @@
+f
+[IntType]
+IntType
+g
+[]
+IntType
+k
+[]
+IntType
+final
+[]
+BoolType
+Line 18: Condition must be bool
+Line 19: Unsupported operand type for operator and
+Line 21: Condition must be bool

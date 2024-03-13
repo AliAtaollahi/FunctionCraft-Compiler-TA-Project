@@ -1,0 +1,11 @@
+main : print(f(1, true, "a", "1", true, false, 10));
+
+func f(a, b, c, d, e, h, g):{
+    print(a);
+    print(b);
+    print(c);
+    print(e);
+    print(h);
+    print(g);
+    return d;
+}

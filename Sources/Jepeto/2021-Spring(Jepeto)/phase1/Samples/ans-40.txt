@@ -1,0 +1,16 @@
+Main
+FunctionCall
+Anonymous Function
+ArgumentDec : a
+ArgumentDec : b
+Return
+Anonymous Function
+Return
+FunctionDec : test
+Return
+Anonymous Function
+Return
+Operator : +
+Built-in : print
+Anonymous Function
+Return

@@ -1,0 +1,10 @@
+main : k();
+
+
+func f() : {
+    return g();
+}
+
+func f1(k) : {
+    return f() + k();
+}

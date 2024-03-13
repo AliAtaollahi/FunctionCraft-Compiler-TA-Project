@@ -1,0 +1,25 @@
+func P(a, b):{
+    if a is b :
+        return (a, b)->{return a[b][b];}([1,2,[1,2]], ()->{return 1;});
+    return [1];
+
+}
+
+func f(a, b, c):{
+
+    if a not 10 / b[a]:
+        print(g()());
+    else:
+        return f[a - b - c * 2][a and b and c];
+    if 2 is 3:
+        print(2);
+    return 2;
+    P(f, g);
+}
+
+func sss():
+    return 1;
+func g():
+    return g;
+
+main : print(f(true, sss(), "s").size);

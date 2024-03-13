@@ -1,0 +1,16 @@
+func f(f, g , a, a, b) : {
+    return f * g * a * f();
+}
+
+main : f(a = f, b = f);
+
+func g() : {
+    return g(g, g, f);
+}
+
+func g(a, b) : {
+    g(a = g, b = b);
+    return a();
+}
+
+

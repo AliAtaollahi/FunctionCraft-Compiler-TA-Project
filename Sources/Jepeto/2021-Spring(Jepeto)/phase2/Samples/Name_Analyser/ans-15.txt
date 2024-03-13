@@ -1,0 +1,4 @@
+Line 3: Name of argument f conflicts with a function’s name
+Line 3: Duplicate argument f
+Line 3: Name of argument f conflicts with a function’s name
+Line 4: Duplicate argument a

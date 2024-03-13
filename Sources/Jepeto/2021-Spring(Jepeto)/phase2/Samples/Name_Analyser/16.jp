@@ -1,0 +1,13 @@
+main : f(g);
+
+func f() : {
+    if (f) :
+        return (f) -> {return g * f;};
+    return g;
+}
+
+
+func g() : {
+    return g;
+}
+

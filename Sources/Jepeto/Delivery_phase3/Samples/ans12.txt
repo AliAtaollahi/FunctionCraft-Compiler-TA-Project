@@ -1,0 +1,14 @@
+g
+[NoType]
+NoType
+f
+[IntType, IntType, BoolType]
+FptrType
+k
+[ListType, BoolType]
+IntType
+Line 6: Unsupported operand type for operator add
+Line 10: Unsupported operand type for operator mult
+Line 16: Unsupported operand type for operator gt
+Line 17: Unsupported operand type for operator div
+Line 17: Unsupported operand type for operator add

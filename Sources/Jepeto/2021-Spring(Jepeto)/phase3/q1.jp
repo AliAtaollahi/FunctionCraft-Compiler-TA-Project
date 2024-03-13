@@ -1,0 +1,6 @@
+func f() : {
+    return [] :: 2 :: "str";
+    return [1, true] :: "str" :: 2;
+}
+
+main : f();

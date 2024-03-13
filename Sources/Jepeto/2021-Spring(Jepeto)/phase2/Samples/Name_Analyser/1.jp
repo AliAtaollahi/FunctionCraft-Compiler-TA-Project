@@ -1,0 +1,10 @@
+main : print(true);
+
+
+func f() : {
+    return true;
+}
+
+func f() : {
+    return true;
+}

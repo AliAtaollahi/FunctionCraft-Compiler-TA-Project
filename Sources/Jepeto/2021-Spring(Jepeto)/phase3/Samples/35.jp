@@ -1,0 +1,19 @@
+main : f([] :: [1, 2, [1]]);
+
+func f(first) : {
+    return g(first :: 1, first :: [1]);
+    return first :: 1;
+}
+
+func g(first, second) : {
+    return k(first :: [[1, 1], [[[1]]]]);
+    d(arg = second);
+}
+
+func k(first) : {
+    return f([]);
+}
+
+func d(arg) : {
+    return g([], []);
+}

@@ -1,0 +1,10 @@
+main : print(f);
+
+
+func f(a, b) : {
+    return g + a + b();
+}
+
+func g() : {
+    return (a) -> {return g + k() + k + a();};
+}

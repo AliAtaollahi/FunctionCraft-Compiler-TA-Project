@@ -1,0 +1,18 @@
+Compilation successful
+
+-------------------Generating Class Files-------------------
+Generated: Fptr.class
+Generated: List.class
+Generated: Main.class
+
+---------------------------Output---------------------------
+11
+13
+17
+19
+[11,13,17,19,3]
+[11,13,17,19,2]
+[11,13,17,19,1]
+[11,13,17,19,0]
+hi
+true

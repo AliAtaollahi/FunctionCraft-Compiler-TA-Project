@@ -1,0 +1,10 @@
+f1
+[FptrType, NoType]
+IntType
+f2
+[NoType]
+IntType
+f3
+[]
+IntType
+Line 18: Unsupported operand type for operator eq

@@ -1,0 +1,4 @@
+Line 5: Variable a not declared
+Line 9: Variable a not declared
+Line 10: Variable b not declared
+Line 11: Variable a not declared

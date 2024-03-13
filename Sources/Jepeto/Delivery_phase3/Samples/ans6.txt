@@ -1,0 +1,11 @@
+f
+[ListType]
+IntType
+g
+[ListType]
+ListType
+k
+[ListType]
+ListType
+Line 17: Unsupported operand type for operator append
+Line 18: Unsupported operand type for operator append

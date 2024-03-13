@@ -1,0 +1,9 @@
+main : print(f(1, true, "a", "1", true, false));
+
+func f(a, b, c, d, e, h):{
+    print(g(1,2,3));
+    return 1;
+}
+
+func g(a, b, c):
+    return 73;

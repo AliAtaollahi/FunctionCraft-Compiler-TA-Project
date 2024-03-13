@@ -1,0 +1,3 @@
+Line 8: Duplicate function f
+Line 12: Duplicate function f
+Line 20: Duplicate function g

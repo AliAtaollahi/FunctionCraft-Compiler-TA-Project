@@ -1,0 +1,32 @@
+func f1 (a1, a2, a3, a4, a5) : {
+    f2(a6 = a5, a7 = 0);
+    print(a1 + a2 * (1 - 2 + 3) or ture );
+    print(a4(5));
+    return f3("PLC") + 1400;
+    f4()();
+    print(f5()[0]);
+
+    return true;
+}
+
+func f2(a6 , a7) : {
+    if a7 > a6.size - 1 :
+        return void;
+    print(a6[a7]);
+    f2 (a6, a7 + 1);
+    return void;
+}
+
+func f3(a9) :
+    if a9 is "PLC":
+        return 1;
+    else :
+        return 2;
+
+func f4() :
+    return ()->{print("I'm reading an example code"); return void;};
+
+func f5():
+    return [1,2,3];
+
+main : print(f1(1, "hi", true, (a8)->{return a8 + 1 * 2 + 3;}, [11 , false, "code"]));

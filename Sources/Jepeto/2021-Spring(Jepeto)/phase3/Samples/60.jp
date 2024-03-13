@@ -1,0 +1,14 @@
+main: g(true);
+
+func h():
+    return 1;
+
+func f():
+    return h;
+
+func g(a, b):{
+    f()()()();
+    return f(1,2,3)()[0][1][a + b];
+    return f()()[0][1][a + b];
+    return (a, b) -> {return f;}()() + 2 * (c) -> {return [1,2,3];}(1)[0].size;
+}

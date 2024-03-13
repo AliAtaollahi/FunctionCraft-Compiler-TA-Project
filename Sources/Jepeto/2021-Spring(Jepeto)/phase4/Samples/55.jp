@@ -1,0 +1,7 @@
+main : f();
+
+func f():{
+    print(()->{print("Anonymous");return 1;}());
+    return void;
+}
+

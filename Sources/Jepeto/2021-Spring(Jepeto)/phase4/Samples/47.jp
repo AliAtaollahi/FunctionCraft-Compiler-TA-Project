@@ -1,0 +1,15 @@
+main : print(factPlus(5));
+
+func factPlus(num) : {
+    if num is 0 : {
+        return 1;
+    }
+    return fact(num)  * factPlus(num - 1);
+}
+
+func fact(num) : {
+    if num is 0 : {
+        return 1;
+    }
+    return num  * fact(num - 1);
+}

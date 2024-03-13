@@ -1,0 +1,19 @@
+main : f([]);
+
+
+
+func f(a) : {
+    g(a :: 1 :: 2);
+    return (a :: 1)[0];
+}
+
+func g(a) : {
+    k([] :: a);
+    return a;
+}
+
+func k(a) : {
+
+    return a :: (g([3, 4]) :: [1]);
+    return a :: a;
+}

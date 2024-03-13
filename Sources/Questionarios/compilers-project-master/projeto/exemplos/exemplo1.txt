@@ -1,0 +1,77 @@
+
+#Declaracao variaveis Questionario, e questoes(tx1,tx2,tx3,tx4).
+q1 as Questionario.
+
+tx1 as Questao:CurtaTextual.
+tx2 as Questao:CurtaTextual.
+tx3 as Questao:LongaTextual.
+tx4 as Questao:CurtaTextual.
+
+
+#Criacao Pergunta do tipo CurtaTextual. Atribuição tema, pergunta, dificuldade, pontuacao, listarespostas, tempo Maximo. (alguns opcionais)
+tx1->tema := [TEMA_A].
+tx1->pergunta := "Questao...?".
+tx1->dificuldade := FACIL.
+tx1->pontuacao := 10.
+lr as Lista<Resposta:CurtaTextual>.
+lr := { "Nee.", 100 } .
+tx1->respostas := lr.
+tx1->tempomaximo := 10.
+
+
+#Criacao Pergunta do tipo CurtaTextual. Atribuição tema, pergunta, pontuacao, listarespostas, tempo maximo. (alguns opcionais)
+tx2->tema := [Tema_b].
+tx2->pergunta := "Questao2...?".
+tx2->pontuacao := 15.
+lr2 as Lista<Resposta:CurtaTextual>.
+lr2 := { "Nee", 20 ; "Ja", 30 ; "Ik", 30; "outra", 20 } .
+tx2->respostas := lr2.
+tx2->tempomaximo := 15.
+
+#Criacao Pergunta do tipo LongaTextual. Atribuição pergunta, dificuldade, tema. (alguns opcionais)
+tx3->pergunta := "Questao3..?".
+tx3->dificuldade := DIFICIL.
+tx3->tema := [tema_b].
+
+
+#Criacao Pergunta do tipo CurtaTextual. Atribuição tema, pergunta, dificuldade, pontuacao, listarespostas. (alguns opcionais)
+tx4->pergunta := "Questao4..?".
+tx4->dificuldade := MEDIO.
+tx4->tema := [temaC].
+tx4->pontuacao := 30.
+lr3 as Lista<Resposta:CurtaTextual>.
+lr3 := { "Unica", 100 } .
+tx4->respostas := lr3.
+
+
+#Método adicionarquestao, adiciona as questoes ao questionário q1.
+q1%adicionarquestao(tx1).
+q1%adicionarquestao(tx2).
+q1%adicionarquestao(tx3).
+q1%adicionarquestao(tx4).
+
+
+#Formação de um grupo de perguntas com número de perguntas igual ao defenido na variavel "g1->nrperguntasaapresentar".
+
+g1 as Grupo.
+g1 -> minperguntasaresponder := 2. # nr mínimo de perguntas que o utilizador terá de responder.
+g1 -> nrperguntasaapresentar := 3.
+g1 % adicionarquestoes(q1).
+
+
+#Apresentação do Menu de Perguntas e Respostas ao utilizador.
+
+apresentarMenu(g1, 60). # 60 minutos de duracao deste grupo
+
+
+#Apresentação da pontuação final.
+					
+					
+g2 as Grupo.
+s1, s2 as String.
+s1 := str(g1->pontuacao).
+s2 := str(g1->duracao).
+apresentar("pontuacao: " & s1 & " ---  duracao: " & s2).
+
+apresentar("A sua pontuaçao final foi de: " & str(g1->pontuacao) & "tempo: " & str(g1->duracao)).
+

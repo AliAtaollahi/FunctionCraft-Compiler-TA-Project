@@ -1,0 +1,15 @@
+Main
+Built-in : print
+Operator : *
+Operator : ~
+Operator : -
+Operator : ~
+Operator : -
+Operator : ~
+Operator : /
+FunctionDec : f
+Return
+Anonymous Function
+Return
+Operator : *
+Operator : not

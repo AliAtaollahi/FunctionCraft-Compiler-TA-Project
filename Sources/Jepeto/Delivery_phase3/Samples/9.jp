@@ -1,0 +1,12 @@
+main : f(b = true, a = 1, c = 3);
+
+func f(a, b, c) : {
+    return b and ~b;
+    g(c = c, a = true, b = "s");
+}
+
+func g(a, b, c) : {
+    return a and c and b or a;
+    return ~c + c;
+    return f(b or a, [] or true, 4);
+}

@@ -1,0 +1,10 @@
+main : print(f());
+
+
+func f() : {
+    return g();
+    return void;
+}
+
+func g() :
+    return void;

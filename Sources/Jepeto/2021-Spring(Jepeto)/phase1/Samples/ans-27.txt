@@ -1,0 +1,11 @@
+FunctionDec : f
+Return
+Operator : -
+Operator : >
+Operator : not
+Return
+Operator : ~
+Operator : *
+Operator : or
+Main
+Built-in : print

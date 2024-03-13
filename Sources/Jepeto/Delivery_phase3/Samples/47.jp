@@ -1,0 +1,19 @@
+main : cond(cond2 = true, cond1 = 1);
+
+
+func cond(cond1, cond2) : {
+    if(cond1) :
+        return cond2;
+    else :
+        return ~cond1;
+    check(d = [], a = true, c = "ss", b = [1]);
+}
+
+func check(a, b, c, d) : {
+    if(cond(cond2 = true, cond1 = 1)) :
+        print(cond(cond2 = true, cond1 = 1));
+    if(cond) :
+        print(cond);
+    return b :: d;
+    return d :: b;
+}

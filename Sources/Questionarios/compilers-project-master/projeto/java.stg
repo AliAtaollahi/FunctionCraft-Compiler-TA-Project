@@ -1,0 +1,127 @@
+
+
+module(name, stat) ::= <<
+import java.util.*;
+public class <name> {
+   public static void main(String[] args) {
+      <stats(stat)>
+   }
+}
+>>
+
+stats(stat) ::= 
+<<
+<if(stat)><stat; separator="\n"><endif>
+>>
+
+decl(type, var) ::= "<type> <var>;"
+
+attr(stat, var, value) ::= <<
+<stats(stat)>
+<var> = <value> ;
+>>
+
+init(var, type, arg) ::= "<var> = new <type>(<argumentos(arg)>);"
+
+declAndAttr(stat, type, var, value) ::= 
+<<
+<stats(stat)>
+<type> <var> = <value; separator="+">;
+>>
+
+metodo(stat, met, arg) ::=  // probs mais correto
+<<
+<stats(stat)>
+Auxiliar.<met>(<argumentos(arg)>);
+>>
+
+metodoComRetorno(type, var, stat, met, arg) ::= 
+<<
+<stats(stat)>
+<type> <var> = Auxiliar.<met>(<argumentos(arg)>);
+>>
+
+
+argumentos(arg) ::=
+<<
+<arg; separator=",">
+>>
+
+
+stringConcat(str) ::= <<
+<if(str)><str; separator="+"><endif>
+>>
+
+defineDificuldade(var, diff) ::=
+<<
+Dificuldade <var> = Dificuldade.<diff> ;
+>>
+
+variavel(var) ::=
+<<
+<if(var)><var; separator="."><endif>
+>>
+
+addToArrayList(var, valor) ::=
+<<
+<var>.add(<valor>);
+>>
+
+se(condicao, stat) ::=
+<<
+if (<condicao>) {
+   <stats(stat)>
+}
+>>
+
+ouse(condicao, stat) ::=
+<<
+else if (<condicao>) {
+   <stats(stat)>
+}
+>>
+
+comparacao(stat1, stat2, op) ::=
+<<
+<stat1> <op> <stat2>
+>>
+
+comparacaoObj(stat1, stat2, not) ::=
+<<
+<not><stat1>.equals(<stat2>)
+>>
+
+senao(stat) ::= <<
+else {
+   <stats(stat)>
+}
+>>
+
+ciclo(cond, stat) ::=
+<<
+for (<cond>) {
+   <stats(stat)>
+}
+>>
+
+cicloCondForEach(declFor, lista) ::= 
+<<
+<declFor> : <lista>
+>>
+
+declForFor(type, var) ::=
+<<
+<type> <var>
+>>
+
+token(t) ::= "<t>"
+
+comando(cmd) ::= "<cmd>;"
+
+operacao(var1, var2, op) ::= "<var1> <op> <var2>"
+
+
+arrDeclAndInit(type, var, arg) ::=
+<<
+<type>[] <var> = new <type>[] { <argumentos(arg)> };
+>>

@@ -1,0 +1,6 @@
+main : print(true);
+
+
+func f(a, f) : {
+    return 1;
+}

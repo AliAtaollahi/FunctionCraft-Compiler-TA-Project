@@ -1,0 +1,8 @@
+main : g();
+
+func f() : {
+    return f()()()[0] + 3 + g();
+}
+
+func g() :
+    return 1;

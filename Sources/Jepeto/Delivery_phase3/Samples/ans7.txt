@@ -1,0 +1,7 @@
+f
+[]
+BoolType
+Line 5: Unsupported operand type for operator or
+Line 5: Unsupported operand type for operator and
+Line 6: Unsupported operand type for operator not
+Line 6: Unsupported operand type for operator and

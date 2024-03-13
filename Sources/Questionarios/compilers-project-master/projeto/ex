@@ -1,0 +1,53 @@
+#!/bin/bash
+On_Purple='\033[45m'  
+
+
+
+tput setaf 10
+echo -e " => rm Out.java" 
+echo -e " => rm Out.class" 
+tput sgr0
+rm Out.java
+rm Out.class
+
+set -e # exit quanddo ha um erro (por alguma razao acho que não funciona muito bem)
+
+
+if [[ "$#" -ne 1 && ${@:${#@}} == "--build" ]]
+then
+    tput setaf 10
+    echo -e " => antlr4 Questionarios.g4 -visitor (às vezes é necessário)"
+    tput sgr0
+    antlr4 Questionarios.g4 -visitor
+
+    tput setaf 10
+    echo -e " => antlr4-build"  
+    tput sgr0
+    antlr4-build
+
+fi
+
+tput setaf 10
+echo -e "\n=> ./run $1 > Out.java"
+
+tput sgr0
+./run $1 > Out.java
+
+tput setaf 10
+echo -e "\n=> cat Out.java\n"
+tput sgr0
+cat Out.java
+
+tput setaf 10
+echo -e "\n=> javac Out.java"
+tput sgr0
+javac Out.java
+
+tput setaf 10
+echo -e "\n=> java Out"
+tput sgr0
+java Out
+
+tput setaf 10
+echo -e "\n.:: done ::."
+tput sgr0

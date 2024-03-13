@@ -1,0 +1,19 @@
+main : print(true);
+
+func f1 (): {
+    return true;
+}
+
+func f2 (): {
+    return true;
+}
+
+func f3(a, b, c, d) : {
+    return g;
+    return g();
+}
+
+func f3(f3, f3, f2, f2, f1, f1, f1, a):{
+    return a + a();
+    return b + b();
+}

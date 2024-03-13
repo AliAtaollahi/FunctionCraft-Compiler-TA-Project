@@ -1,0 +1,18 @@
+func f1(a1, a2) : {
+    a1(a2);
+    return 4;
+    f3();
+
+}
+
+func f2(a) : {
+    return f1(f2, true);
+}
+
+func f3() : {
+    return f2([2, 3].size);
+}
+
+
+
+main : f1(f2, 2 is ([2, 4, 5].size > [3, 4][3]));

@@ -1,0 +1,15 @@
+main : print(f(g, f1)()(b = "Hello", a = "Bye"));
+
+func f(a, b):{
+    return a(b);
+}
+
+func g(a):
+    return a;
+
+func f1():{
+    return f2;
+}
+
+func f2(a, b):
+    return b;

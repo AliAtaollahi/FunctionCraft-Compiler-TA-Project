@@ -1,0 +1,12 @@
+Main
+FunctionCall
+FunctionDec : list_printer
+ArgumentDec : l
+ArgumentDec : i
+Conditional : if
+Size
+Operator : not
+Built-in : print
+FunctionCall
+Operator : +
+Return

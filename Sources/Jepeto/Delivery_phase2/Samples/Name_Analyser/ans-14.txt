@@ -1,0 +1,3 @@
+Line 1: Variable c not declared
+Line 1: Variable k not declared
+Line 6: Variable a not declared

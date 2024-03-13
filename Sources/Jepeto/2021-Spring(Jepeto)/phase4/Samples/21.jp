@@ -1,0 +1,13 @@
+main : print(f1([1,2,3]).size);
+
+func f1(a):{
+    print(a.size);
+    f2(a);
+    return a;
+}
+
+func f2(a):{
+    print((a::4).size);
+    return void;
+}
+

@@ -1,0 +1,145 @@
+questao:EscolhaMultipla medio pontuacao=20 [CIENCIA->PLANTAS->Q1] "A fotossíntese..." 
+
+inicio
+
+  "é composta pela fase fotoquímica onde ocorre o ciclo de calvin " false pontuacao=-20;
+
+  "é composta pela fase química onde ocorre o ciclo de calvin" true pontuacao=70 ; 
+
+  "permite obter Oxigênio e glicose" false pontuacao=-20; 
+
+  "permite obter Dóxido de Carbono e glicose" true pontuacao=30 ;
+
+  "permite obter luz solar" false pontuacao=-40;
+
+fim 
+
+
+questao:EscolhaMultipla dificil pontuacao=40 [CIENCIA->PLANTAS->Q2] "Qual é o nome do grupo de plantas mais primitivo da terra?" 
+
+inicio
+
+  "Briófitas" true pontuacao=100;
+
+  "Pteridófitas" false pontuacao=0; 
+
+  "Gimnospermas" false pontuacao=0; 
+
+  "Angiospermas" false pontuacao=0;
+  
+  "Carnivorospermas" false pontuacao=0;
+fim
+
+
+questao:EscolhaMultipla facil pontuacao=10 [CIENCIA->PLANTAS->Q3] "Como são chamados os dois tipos de vasos vasculares existentes nas plantas?" 
+
+inicio
+
+  "Xilema e atêmia" false pontuacao=-20; 
+
+  "Xilema e veia" false pontuacao=-20; 
+
+  "Cloroplasto e leucoplasto" false pontuacao=-20; 
+
+  "leucoplasto e veia" false pontuacao=-20;
+  
+  "xilema e floema" true  pontuacao=100;
+fim
+
+
+
+questao:EscolhaMultipla medio pontuacao=20 [CIENCIA->ANIMAIS->Q1] "Qual é o animal terrestre mais rápido do mundo?" 
+
+inicio
+
+  "Coiote" false pontuacao=-20; 
+
+  "Avestruz" false pontuacao=0;
+
+  "Leão" false pontuacao=0; 
+
+  "Elefante" false pontuacao=-20; 
+  
+  "Chita" true pontuacao=100 ;
+fim
+
+
+
+questao:EscolhaMultipla dificil pontuacao=40 [CIENCIA->ANIMAIS->Q2] "Qual é a gestação mais longa do mundo?" 
+
+inicio
+
+  "Burro" false pontuacao=-10; 
+
+  "Humano" false pontuacao=-10; 
+
+  "Rato" false pontuacao=-20;  
+
+  "Tartaruga" false pontuacao=-20; 
+  
+  "Salamandra-negra-dos-alpes" true pontuacao=100; 
+
+fim
+
+
+
+questao:EscolhaMultipla facil pontuacao=10 [CIENCIA->HOMEM->Q1] "Qual é o nome da camada mais superficial da pele?" 
+
+inicio
+
+  "Derme" false pontuacao=-50;
+
+  "Hipoderme" false pontuacao=-50; 
+
+  "Epiderme" true pontuacao=100;
+
+  "Xilema" pontuacao=-50; 
+
+fim
+
+
+questao:EscolhaMultipla medio pontuacao=20 [CIENCIA->HOMEM->Q2] "Qual(is) dos seguintes orgãos pertence(m) ao sistema nervoso humano?" 
+
+inicio
+
+  "Coração" false pontuacao=-40;
+
+  "Pulmão" false pontuacao=-40; 
+
+  "Encéfalo" true pontuacao=80;
+
+  "Medula Espinhal" true pontuacao=100;
+
+  "Rim" pontuacao=-20;
+
+fim
+
+
+questao:VerdadeiroFalso medio pontuacao=20 [CIENCIA->PLANETA->Q2] "Qual(is) dos seguintes orgãos pertence(m) ao sistema nervoso humano?" 
+
+inicio
+
+  "O Planeta do Sistema Solar mais próximo do Sol é o Mercúrio" true pontuacao=(20,-10);
+
+  "A África é o maior continente do mundo" false pontuacao=(20,-10); 
+
+  "Saturno é o planeta maior em termos de massa do Sistema Solar" false pontuacao=(20,-10);
+
+  "A superfície mais externa da Terra é a crosta" true pontuacao=(20,-10);
+
+  "A maior parte da superfície da terra é coberta por areia" false pontuacao=(20,-10);
+
+fim
+
+questao:CurtaTextual medio pontuacao=10 [CIENCIA->HOMEM->Q2] "Quantos dentes um adulto humano tem?" 
+
+inicio
+
+  "32" pontuacao=100;
+
+fim
+
+questao:LongaTextual dificil [CIENCIA->PLANETA->Q2] "Explique como se formam os terramotos?" 
+
+questao:LongaTextual dificil [CIENCIA->HOMEM->Q2] "Quais são as principais funções do pancrêas?" 
+

@@ -1,0 +1,15 @@
+main : k();
+
+func f(a, b) : {
+   return "ss";
+}
+
+func k() : {
+    f(1, 2);
+    g(1, 2);
+    return f is g not f;
+}
+
+func g(a, b) : {
+    return 1;
+}

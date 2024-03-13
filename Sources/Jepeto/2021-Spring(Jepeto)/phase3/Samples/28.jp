@@ -1,0 +1,11 @@
+main : f((a, b) -> {if (a) : return void; else : return b;});
+
+func f(arg1) : {
+    return arg1(true, arg1(true, true * true));
+    g(arg1(true, true * true));
+}
+
+func g(a) : {
+    return a * a;
+}
+

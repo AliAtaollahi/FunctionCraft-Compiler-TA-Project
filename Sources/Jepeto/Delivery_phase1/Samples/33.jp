@@ -1,0 +1,12 @@
+func f():
+{
+    if (a):{
+
+    }
+    else :{
+    
+    }
+    return void;
+}
+
+main : f();

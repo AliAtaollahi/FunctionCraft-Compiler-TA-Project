@@ -1,0 +1,5 @@
+main : f();
+
+func f():{
+    return void;
+}

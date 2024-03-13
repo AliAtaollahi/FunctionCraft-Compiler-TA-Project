@@ -1,0 +1,12 @@
+f
+[]
+ListType
+g
+[]
+VoidType
+k
+[]
+IntType
+Line 2: Unsupported operand type for operator or
+Line 5: Unsupported operand type for operator eq
+Line 6: Unsupported operand type for operator eq

@@ -1,0 +1,21 @@
+Main
+Built-in : print
+FunctionDec : h
+Return
+FunctionDec : f
+Return
+FunctionDec : g
+FunctionCall
+Return
+Operator : +
+Return
+Anonymous Function
+ArgumentDec : a
+ArgumentDec : b
+Return
+Anonymous Function
+ArgumentDec : c
+Return
+Size
+Operator : *
+Operator : +

@@ -1,0 +1,12 @@
+Main
+FunctionCall
+FunctionDec : g
+Conditional : if
+Size
+Operator : ::
+Operator : >
+Return
+Conditional : else
+Return
+Size
+Operator : ::

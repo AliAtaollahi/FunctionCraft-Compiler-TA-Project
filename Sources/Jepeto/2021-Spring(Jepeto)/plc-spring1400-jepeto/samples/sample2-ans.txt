@@ -1,0 +1,28 @@
+Compilation successful
+
+-------------------Generating Class Files-------------------
+Generated: Fptr.class
+Generated: List.class
+Generated: Main.class
+
+---------------------------Output---------------------------
+12
+60
+20
+we are in c1
+we are in c2
+we are in c3
+we are in c1
+20
+we are in c3
+-990
+we are in c2
+-120
+1
+2
+3
+4
+5
+6
+7
+true

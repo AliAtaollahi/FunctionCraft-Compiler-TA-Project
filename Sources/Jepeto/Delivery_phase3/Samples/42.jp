@@ -1,0 +1,61 @@
+func f1(anonymous, arr) : {
+    if(arr is arr :: 3) :
+        return anonymous;
+    else :
+        return anonymous :: arr;
+
+    f2(anonymous);
+    cmp_fptr(f4, g);
+}
+
+
+
+
+
+main : print(f1(arr = ([] :: 2) [3], anonymous = (b, c) -> {if(b): return []; else: return [][0];}(2, 3)));
+
+
+func f2(a) : {
+    return g();
+    return a;
+    f3(g);
+}
+
+func g() : {
+    return f2([]);
+}
+
+func f3(arg) : {
+    arg();
+    return f4();
+}
+
+func f4() :
+    return f3(g);
+
+func cmp_fptr(aa, bb) : {
+    return aa;
+    program(true and (1 or ~[] + ~[] * [][0]));
+}
+
+func program(arg) : {
+    return [];
+    return program is g;
+    return [] :: 2 [3];
+    return [] :: 2;
+    return [] :: "str";
+    return [] :: 2 :: "str";
+    lastFunc(program(3));
+}
+
+func lastFunc(i) : {
+    return i :: 2;
+    return i :: "str";
+    return i :: i;
+}
+
+
+
+
+
+

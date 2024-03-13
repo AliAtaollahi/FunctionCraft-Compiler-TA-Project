@@ -1,0 +1,10 @@
+func f():
+{
+    return a not b > c < d + e + f;
+    return a < b and c < d > ~e > f;
+    return a or (b not c * d and e) + f;
+    return a and b / c + d / e + ~f;
+    return a * (b + c / d) - -e * f;
+}
+
+main : print(1);

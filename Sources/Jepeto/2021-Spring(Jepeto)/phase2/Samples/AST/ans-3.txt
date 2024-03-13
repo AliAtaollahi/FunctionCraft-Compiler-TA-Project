@@ -1,0 +1,15 @@
+Line 1: Program
+Line 8: MainDeclaration
+Line 8: PrintStmt
+Line 8: IntValue_1
+Line 1: FunctionDeclaration_f
+Line 1: Identifier_f
+Line 1: BlockStmt
+Line 2: PrintStmt
+Line 2: StringValue_hello
+Line 3: PrintStmt
+Line 3: BoolValue_true
+Line 4: PrintStmt
+Line 4: StringValue_true
+Line 5: ReturnStmt
+Line 5: VoidValue

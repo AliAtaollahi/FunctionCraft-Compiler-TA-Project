@@ -1,0 +1,22 @@
+main : print(true);
+
+
+func f() : {
+    return true;
+}
+
+func f() : {
+    return true;
+}
+
+func f() : {
+    return true;
+}
+
+func g() : {
+    return 1;
+}
+
+func g() : {
+    return 1;
+}

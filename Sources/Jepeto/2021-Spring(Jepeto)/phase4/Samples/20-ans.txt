@@ -1,0 +1,13 @@
+Compilation successful
+
+-------------------Generating Class Files-------------------
+Generated: Fptr.class
+Generated: List.class
+Generated: Main.class
+
+---------------------------Output---------------------------
+IN F1
+IN F2
+IN F3
+IN F4
+hello

@@ -1,0 +1,2 @@
+Line 1: Argument a not declared in function f
+Line 4: Function g not declared

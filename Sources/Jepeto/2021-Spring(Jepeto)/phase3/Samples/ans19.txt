@@ -1,0 +1,6 @@
+f
+[]
+ListType
+Line 2: Unsupported operand type for operator eq
+Line 3: Unsupported operand type for operator eq
+Line 4: Unsupported operand type for operator mult

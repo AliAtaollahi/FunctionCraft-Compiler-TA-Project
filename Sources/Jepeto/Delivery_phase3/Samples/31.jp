@@ -1,0 +1,14 @@
+main : f(1, 1);
+
+func f(a, b): {
+    g(b = "str", a = a);
+    k(a = "str", b = b);
+    return g;
+    return k;
+}
+
+func g(a, b) :
+    return void;
+
+func k(a, b) :
+    return void;

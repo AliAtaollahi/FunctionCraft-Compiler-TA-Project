@@ -1,0 +1,5 @@
+main : f([[1, 2]], true);
+
+func f(arg, b) : {
+    return arg[0][0][b];
+}

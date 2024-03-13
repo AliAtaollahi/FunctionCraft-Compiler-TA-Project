@@ -1,0 +1,6 @@
+main : print(f());
+
+func f():{
+    return 53;
+    return 1;
+}

@@ -1,0 +1,16 @@
+str
+[IntType, IntType]
+IntType
+en
+[NoType, NoType]
+NoType
+ant
+[NoType]
+NoType
+oo
+[NoType, NoType]
+BoolType
+Line 3: Unsupported operand type for operator mult
+Line 3: Unsupported operand type for operator div
+Line 4: Return value does not match with function return type
+Line 23: Unsupported operand type for operator eq

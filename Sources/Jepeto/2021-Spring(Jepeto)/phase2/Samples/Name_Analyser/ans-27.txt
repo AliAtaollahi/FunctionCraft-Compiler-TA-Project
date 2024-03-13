@@ -1,0 +1,16 @@
+Line 12: Variable g not declared
+Line 13: Function g not declared
+Line 16: Duplicate function f3
+Line 16: Name of argument f3 conflicts with a function’s name
+Line 16: Duplicate argument f3
+Line 16: Name of argument f3 conflicts with a function’s name
+Line 16: Name of argument f2 conflicts with a function’s name
+Line 16: Duplicate argument f2
+Line 16: Name of argument f2 conflicts with a function’s name
+Line 16: Name of argument f1 conflicts with a function’s name
+Line 16: Duplicate argument f1
+Line 16: Name of argument f1 conflicts with a function’s name
+Line 16: Duplicate argument f1
+Line 16: Name of argument f1 conflicts with a function’s name
+Line 18: Variable b not declared
+Line 18: Function b not declared

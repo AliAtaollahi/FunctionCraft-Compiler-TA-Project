@@ -1,0 +1,10 @@
+f
+[IntType, IntType]
+FptrType
+g
+[IntType, StringType]
+VoidType
+k
+[StringType, IntType]
+VoidType
+Line 7: Return value does not match with function return type

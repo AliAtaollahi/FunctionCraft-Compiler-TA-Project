@@ -1,0 +1,17 @@
+main : print(f([]) + 4);
+
+func f(a) : {
+    return void;
+    if (g(a :: "s")) :
+        print(a);
+}
+
+func g(arg1) : {
+    print(arg1);
+    return void;
+    k();
+}
+
+func k() : {
+    return f([2 + true]) + g([]);
+}

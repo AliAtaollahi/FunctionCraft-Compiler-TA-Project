@@ -1,0 +1,11 @@
+f1
+[ListType, IntType, BoolType, StringType]
+FptrType
+Line 3: Unsupported operand type for operator gt
+Line 3: Unsupported operand type for operator add
+Line 3: Unsupported operand type for operator minus
+Line 4: Unsupported operand type for operator append
+Line 4: Get size of a non-list
+Line 18: Return value does not match with function return type
+Line 20: Return value does not match with function return type
+Line 21: Access by index on a non-list

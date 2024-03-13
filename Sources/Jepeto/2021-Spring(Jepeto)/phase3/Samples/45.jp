@@ -1,0 +1,20 @@
+func lf() : {
+    return [[1, 2]];
+    rf();
+}
+
+
+
+main: print(lf()[~3]);
+
+func rf() : {
+    return lf()[0];
+    lst();
+}
+
+func lst() : {
+    return lf()[0][0];
+    return rf[0][0];
+    return rf()[0][0];
+    return rf();
+}

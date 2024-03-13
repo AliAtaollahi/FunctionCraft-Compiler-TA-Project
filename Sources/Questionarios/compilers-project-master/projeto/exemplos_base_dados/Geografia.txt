@@ -1,0 +1,154 @@
+questao:EscolhaMultipla facil pontuacao=10 [GEOGRAFIA->PORTUGAL->Q1] "Onde se localiza o aeroporto Francisco Sá Carneiro?"
+
+inicio
+
+  "Faro" false pontuacao=-20 ; 
+
+  "Porto" true pontuacao=100 ; 
+
+  "Lisboa" false pontuacao=0; 
+
+  "Montijo" false pontuacao=-20; 
+
+fim
+
+
+questao:VerdadeiroFalso medio pontuacao=40 [GEOGRAFIA->PORTUGAL->Q2] "Questões de Verdadeiro ou Falso..."
+
+inicio
+
+  "O rio Douro situa-se na Região Norte de Portugal" true pontuacao=(10,-5); 
+
+  "A Serra da Estrela é a montanha mais alta de Portugal" false pontuacao=(20,-20); 
+
+  "Sertã é uma localidade situada no conselho de Santarém" false pontuacao=(40,-10); 
+
+  "Sesimbra é uma vila Portuguesa do Distrito de Setúbal" true pontuacao=(20,-20); 
+
+  "O rio Sado situa-se no sul de Portugal e faz fronteira com a Espanha" false pontuacao=(10,-5); 
+
+fim
+
+
+questao:EscolhaMultipla medio pontuacao=20 [GEOGRAFIA->PORTUGAL->Q3] "Em que ilha dos açores podemos ver o vulcão Pico Alto?" 
+
+inicio
+
+  "São Miguel" false pontuacao=-20; 
+
+  "Corvo" false pontuacao=-20; 
+
+  "Santa Maria" false pontuacao=-30; 
+
+  "Terceira" true pontuacao=100; 
+
+fim
+
+
+questao:EscolhaMultipla medio pontuacao=20 [GEOGRAFIA->PORTUGAL->Q4] "Em quantos países a lingua portuguesa é a oficial?" 
+
+inicio
+
+  "8" false pontuacao=-20; 
+
+  "11" false pontuacao=-20; 
+
+  "7" false pontuacao=-20; 
+
+  "10" true pontuacao=100; 
+  
+  "9" false pontuacao=-20;
+
+fim
+
+
+questao:CurtaTextual facil pontuacao=10 [GEOGRAFIA->PORTUGAL->Q5]  "Por quantas ilhas é formado o arquipélago dos Açores"
+
+inicio
+
+  "9" pontuacao=100;
+
+fim
+
+
+questao:CurtaTextual medio pontuacao=20 [GEOGRAFIA->PORTUGAL->Q5]  "Quais são os 3 concelhos de maior população em Portugal?"
+
+inicio
+
+  "Lisboa" pontuacao=20;
+
+  "Sintra" pontuacao=30;
+
+  "Vila Nova de Gaia" pontuacao=50;
+
+fim
+
+questao:EscolhaMultipla facil pontuacao=10 [GEOGRAFIA->INTERNACIONAL->Q1] "Qual(is) dos seguintes países faz(em) fronteira com a França?" 
+
+inicio
+
+  "Holanda" false pontuacao=-20; 
+
+  "Espanha" true pontuacao=40 ; 
+
+  "Suiça" true pontuacao=30; 
+
+  "Austria" false pontuacao=-20; 
+  
+  "Luxemburgo" true pontuacao=30;
+
+fim
+
+
+questao:EscolhaMultipla medio pontuacao=20 [GEOGRAFIA->INTERNACIONAL->Q2] "Qual(is) dos seguintes países pertence(m) à Ásia ?" 
+
+inicio
+
+  "Guatemala" false pontuacao=0; 
+
+  "Iémen" true pontuacao=30 ; 
+
+  "Kosovo" false pontuacao=-20 ; 
+
+  "Butão" true pontuacao=70; 
+  
+  "Eritreia" false pontuacao=-20;
+
+fim
+
+
+questao:CurtaTextual medio pontuacao=20 [GEOGRAFIA->INTERNACIONAL->Q3]  "Quais os 5 países com maior território terrestre? "
+
+inicio
+
+  "Russia" pontuacao=10;
+
+  "Canadá" pontuacao=15;
+
+  "China" pontuacao=15;
+
+  "Estados Unidos" pontuacao = 30;
+
+  "Brasil" pontuacao=30;
+
+fim
+
+
+questao:EscolhaMultipla dificil pontuacao=40 [GEOGRAFIA->INTERNACIONAL->Q4] "Qual(is) dos seguintes é(são) nome(s) galáxia(s)?" 
+
+inicio
+
+  "Galáxia Olho Claro" false pontuacao=-20; 
+
+  "Pequena Nuvem de Magalhães" false pontuacao=-20; 
+
+  "Andrômeda" true pontuacao=40; 
+
+  "Galáxia do moinho" false pontuacao=-20; 
+  
+  "Grande Nuvem de Magalhães" true pontuacao=60;
+
+fim
+
+
+questao:LongaTextual dificil [GEOGRAFIA->INTERNACIONAL->Q5]  "Qual é o processo que origina a formação de uma cadeia montanhosa?"

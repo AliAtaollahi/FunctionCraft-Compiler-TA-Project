@@ -1,0 +1,4 @@
+f
+[IntType, IntType, BoolType]
+FptrType
+Line 6: Unsupported operand type for operator mult

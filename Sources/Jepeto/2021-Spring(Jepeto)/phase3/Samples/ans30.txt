@@ -1,0 +1,11 @@
+f
+[]
+ListType
+g
+[]
+ListType
+k
+[]
+ListType
+Line 7: Return value does not match with function return type
+Line 23: Return value does not match with function return type

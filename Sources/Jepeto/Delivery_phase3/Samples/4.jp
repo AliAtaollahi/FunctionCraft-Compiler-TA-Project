@@ -1,0 +1,10 @@
+main : f();
+
+func f() : {
+   return 1 :: ([2, 3] :: 4);
+   return 1 :: ([2, 3] :: true);
+   return 1 :: [2, 3] :: 4;
+   return f :: 2 :: 3;
+   return 1 :: ([2, 3] :: "st");
+   return (1 :: 2) :: 3;
+}
