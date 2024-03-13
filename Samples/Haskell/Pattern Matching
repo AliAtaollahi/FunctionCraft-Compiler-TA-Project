@@ -1,0 +1,20 @@
+-- Pattern Matching:
+-- Define a function to check if a number is even or odd :
+
+isEven :: Int -> String
+isEven n
+  | n `mod` 2 == 0 = "Even"  -- Pattern match when n is even
+  | otherwise      = "Odd"   -- Default case for odd numbers
+
+-- You can also pattern match on data constructors
+data Shape = Circle Float | Rectangle Float Float
+
+area :: Shape -> Float
+area (Circle r) = pi * r ^ 2                 -- Pattern matches Circle
+area (Rectangle w h) = w * h                 -- Pattern matches Rectangle
+
+-- Pattern matching can also be used with lists
+head' :: [a] -> a
+head' [] = error "Empty list!"               -- Pattern matches empty list
+head' (x:_) = x                              -- Pattern matches non-empty list
+
