@@ -1,0 +1,18 @@
+-- Anonymous function:
+-- Anonymous function to double a number
+
+doubleIt = (\x -> x * 2)
+
+-- Using the anonymous function
+
+doubledValue = doubleIt 5  
+-- doubledValue is now 10
+
+-- Anonymous function to add two numbers
+
+add = \x y -> x + y
+
+-- Using the anonymous function
+
+sum2and3 = add 2 3  
+-- sum2and3 is now 5
