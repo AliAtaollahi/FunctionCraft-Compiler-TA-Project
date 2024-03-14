@@ -1,0 +1,18 @@
+# Higher Order Functions :
+
+numbers = [1, 2, 3, 4, 5]
+
+# Using each with a block
+numbers.each { |num| puts "The number is #{num}" }
+# Output :
+The number is 1
+The number is 2
+The number is 3
+The number is 4
+The number is 5
+
+# Using map with a block
+doubled_numbers = numbers.map { |num| num * 2 }
+puts doubled_numbers
+# Output :
+[2, 4, 6, 8, 10]
