@@ -1,0 +1,25 @@
+Main
+FunctionCall
+FunctionDec : create2dList
+ArgumentDec : l
+ArgumentDec : i
+ArgumentDec : j
+Conditional : if
+Operator : not
+FunctionCall
+Operator : ::
+Operator : ::
+Operator : *
+Operator : +
+Operator : +
+Conditional : else
+FunctionCall
+Return
+FunctionDec : printList
+ArgumentDec : l
+ArgumentDec : i
+Built-in : print
+Built-in : print
+FunctionCall
+Operator : -
+Return

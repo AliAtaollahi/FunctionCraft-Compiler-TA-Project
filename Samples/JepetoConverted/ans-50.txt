@@ -1,0 +1,140 @@
+FunctionDec : fff
+Built-in : print
+FunctionCall
+Anonymous Function
+ArgumentDec : a
+ArgumentDec : b
+Conditional : if
+Operator : >
+Return
+Conditional : else
+Return
+Operator : -
+Built-in : print
+Anonymous Function
+ArgumentDec : a
+Return
+Operator : *
+FunctionCall
+FunctionCall
+Conditional : if
+Operator : is
+Return
+Conditional : else
+Return
+Return
+Built-in : print
+Built-in : print
+Built-in : print
+FunctionDec : getOdds
+ArgumentDec : list
+ArgumentDec : i
+ArgumentDec : end
+Conditional : if
+Operator : is
+FunctionCall
+Return
+FunctionCall
+Operator : ::
+Operator : +
+Return
+FunctionDec : printList
+ArgumentDec : list
+ArgumentDec : i
+Conditional : if
+Size
+Operator : not
+Built-in : print
+FunctionCall
+Operator : +
+Return
+Conditional : else
+Return
+FunctionDec : result
+ArgumentDec : i
+ArgumentDec : j
+ArgumentDec : l
+ArgumentDec : l_size
+Conditional : if
+Operator : <
+Conditional : if
+Operator : <
+Conditional : if
+Operator : <
+Return
+Operator : +
+Size
+Operator : +
+Conditional : else
+Return
+Operator : +
+Size
+Conditional : else
+Return
+Operator : +
+Operator : +
+Size
+Conditional : else
+Return
+FunctionDec : Multiply
+ArgumentDec : a
+ArgumentDec : b
+Conditional : if
+Operator : is
+Return
+Return
+Operator : -
+Operator : +
+FunctionDec : f
+ArgumentDec : a
+ArgumentDec : b
+Conditional : if
+Built-in : print
+Return
+FunctionDec : sum
+ArgumentDec : f1
+ArgumentDec : f2
+Return
+Operator : +
+Anonymous Function
+ArgumentDec : num
+Return
+Operator : /
+Operator : +
+FunctionDec : g
+Return
+FunctionDec : maxfinder
+ArgumentDec : arr
+ArgumentDec : i
+ArgumentDec : equal
+ArgumentDec : max
+Conditional : if
+Size
+Operator : <
+Return
+Conditional : else
+Return
+Operator : +
+Operator : +
+FunctionDec : getLastElement
+ArgumentDec : L
+Return
+Size
+Operator : -
+FunctionDec : testMethod
+ArgumentDec : test1
+ArgumentDec : test2
+ArgumentDec : i
+Conditional : if
+Operator : not
+Return
+Operator : ::
+Operator : +
+Conditional : else
+Conditional : if
+Operator : is
+Return
+Conditional : else
+Return
+Main
+Built-in : print

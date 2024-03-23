@@ -1,0 +1,8 @@
+func f():
+{
+    return a is ~b or c / d;
+    return a not b or c not d;
+    return a < -b or c + d;
+}
+
+main : print(1);

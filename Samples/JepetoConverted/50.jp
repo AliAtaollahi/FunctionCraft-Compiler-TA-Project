@@ -1,0 +1,91 @@
+func fff():{
+    print ( getLastElement(["A","B","C"]) );
+    maxfinder([1,2,3,4,5], 0, (a,b)->{if a>b: return a; else: return b;}, -1);
+    print(sum(g, (a) -> {return a*2;}));
+    f(10, true);
+    f(b=true, a=10);
+    # This is a comment!
+    if a is 2:
+        return true;
+    else:
+        return false;
+    return 1;
+    print(Multiply(4,5));
+    print(result(0, 1, [11, 19, 16, 14, 15], 5));
+    print(getOdds([], 1, 100));
+}
+
+
+func getOdds(list, i, end) : {
+    if i is end : {
+        printList(list);
+        return void;
+    }
+    getOdds(list::i, i+2, end);
+    return void;
+}
+
+func printList(list, i) : {
+    if size_ not list.size : {
+        print(list[i]);
+        printList(list, i+1);
+        return void;
+    }
+    else :
+        return void;
+}
+
+func result(i, j, l, l_size):
+    if i < l_size:
+        if j < l_size:
+            if l[j] < l[i]:
+                return 1 + result(i, j + 1, l, l.size);
+            else:
+                return result(i, j + 1, l, l.size);
+        else:
+            return result(i + 1, i + 2, l, l.size);
+    else:
+        return 0;
+
+func Multiply (a,b): {
+    if a is 0:
+        return 0;
+    return a + Multiply(a-1,b);
+}
+
+func f(a, b) : {
+    if (b) :
+        print(a);
+    return void;
+}
+
+func sum(f1, f2) : {
+    return f1() + f2(2) + (num) -> {return num / 5;}(20);
+}
+
+func g() :
+    return 8;
+
+func maxfinder(arr,i,equal,max):
+    if arr.size < i:
+        return max;
+    else :
+        return maxfinder(arr,i+1,equal,equal(arr[i],arr[i+1]));
+
+# It means that : equal = (a,b)->{if a>b: return a; else: return b;}
+
+func getLastElement(L):
+    return L[L.size-1];
+
+func testMethod(test1, test2, i):
+    if i not 10:
+        return testMethod (test1, test2::i, i+1);
+    else:
+        if test1 is test2[i]:
+            return true;
+        else:
+            return false;
+
+main: print(testMethod(10,[],0));
+
+

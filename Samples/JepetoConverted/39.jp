@@ -1,0 +1,9 @@
+main : print(2);
+
+func f() : {
+    return () -> {return 2;}(4, 5);
+}
+
+func f2() : {
+    return () -> {return 2; return (a, b) -> {return a;};};
+}

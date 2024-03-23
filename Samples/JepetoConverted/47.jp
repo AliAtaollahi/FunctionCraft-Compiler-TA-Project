@@ -1,0 +1,23 @@
+main : Main();
+
+
+func  Main() :{
+    f (c = ---a);
+    if (a - --b / --c * (a[b[a[--a]]])) : {
+
+      return ((a * b ):: a * b /c).size;
+
+      print(a * b / (c - 2));
+
+
+    }
+    else :
+        if (3 - 7 is -4) :
+            return "A" + [33, 53, A(), [false][true]["b"]].size;
+
+  return b[c and d or 1::c / -(-1::c())];
+  return 2 - "b"::d[a and 3] + r()();
+
+}
+
+#just a comment

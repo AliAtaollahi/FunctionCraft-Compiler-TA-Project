@@ -1,0 +1,12 @@
+FunctionDec : f
+ArgumentDec : a
+ArgumentDec : b
+ArgumentDec : c
+Return
+FunctionDec : g
+ArgumentDec : a
+Return
+Main
+Built-in : print
+FunctionDec : f1
+Return

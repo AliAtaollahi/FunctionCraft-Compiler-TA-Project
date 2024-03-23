@@ -1,0 +1,10 @@
+FunctionDec : f
+Conditional : if
+Conditional : if
+Operator : >
+Return
+Conditional : else
+Return
+Return
+Main
+FunctionCall

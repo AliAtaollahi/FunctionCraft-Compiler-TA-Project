@@ -1,0 +1,10 @@
+func f(a, b, c):
+    return 1;
+
+func g(a):
+    return 1;
+
+main: print(1);
+
+func f1():
+    return 1;

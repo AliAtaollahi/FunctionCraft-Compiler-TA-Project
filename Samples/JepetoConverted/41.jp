@@ -1,0 +1,15 @@
+func f(a, b, c):
+{
+    if (g().size > f()):
+        print(a1);
+    else:
+        if (a and b or c):{
+            return 780;
+        }
+        print("PLC");
+        return f() + g(true) / h(1,2, "pLc");
+    return void;
+}
+
+
+main: f(a = 1, b = 2, c = 3);

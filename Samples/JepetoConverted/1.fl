@@ -1,0 +1,7 @@
+def main()
+    a << b;
+    push(a, c)
+    puts(a);
+end
+
+

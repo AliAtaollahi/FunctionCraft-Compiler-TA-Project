@@ -1,0 +1,15 @@
+FunctionDec : f
+ArgumentDec : a
+ArgumentDec : b
+ArgumentDec : c
+Built-in : print
+Return
+Conditional : if
+Built-in : print
+Conditional : else
+Built-in : print
+FunctionCall
+Main
+Built-in : print
+FunctionDec : g
+Return

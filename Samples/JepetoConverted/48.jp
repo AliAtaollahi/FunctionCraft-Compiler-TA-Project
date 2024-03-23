@@ -1,0 +1,24 @@
+func f1(a, b, c) :
+    if (a > b < c > 10 * 4 and true + --d) :
+        if ((l[t]::(r + 3).size)).size :
+            return () -> { return ()-> {if (true and false or "string") : return true;
+                                        else : {return f()()(a=4, b=10)[(a)->{return a;}(3)];}
+
+                                        if (() -> {return false;} ()) : {
+                                                   print(true);
+                                                   return [];
+                                        }
+                                        else:
+                                           return void;
+
+                                        };
+                         } ;
+        else :
+            return void;
+    else:
+        return void;
+
+
+
+
+main : print(a[0][1]::a[2].size);

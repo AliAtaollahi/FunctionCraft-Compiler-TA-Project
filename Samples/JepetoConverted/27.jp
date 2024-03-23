@@ -1,0 +1,7 @@
+func f():
+{
+    return a not b > -c;
+    return a * ~b or c;
+}
+
+main : print(1);

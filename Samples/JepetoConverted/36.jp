@@ -1,0 +1,16 @@
+func main_ (a1, a2) : {
+    if (a1 + a2) :
+        if (a1 - a2) :
+            print(a1 - a2);
+        else : {
+            return void;
+            print(a2);
+        }
+    else : {
+        print(a1);
+    }
+
+   return void;
+}
+
+main : print(main_());

@@ -1,0 +1,9 @@
+func f():
+{
+    return a + (b > c > d) or e;
+    return a and b + c and d - e;
+    return -(a / b) not c or d - ~e;
+    return a is ~b + c not d and e;
+}
+
+main : print(1);
