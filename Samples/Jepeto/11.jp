@@ -1,0 +1,9 @@
+main : list_printer([[1, 2, 3], "string", true], 0);
+
+func list_printer(l, i) : {
+    if i not l.size : {
+        print(l[i]);
+        list_printer(l, i + 1);
+    }
+    return void;
+}

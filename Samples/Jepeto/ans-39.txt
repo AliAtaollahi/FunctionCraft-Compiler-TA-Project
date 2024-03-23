@@ -1,0 +1,15 @@
+Main
+Built-in : print
+FunctionDec : f
+Return
+Anonymous Function
+Return
+FunctionDec : f2
+Return
+Anonymous Function
+Return
+Return
+Anonymous Function
+ArgumentDec : a
+ArgumentDec : b
+Return

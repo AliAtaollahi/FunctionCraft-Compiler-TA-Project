@@ -1,0 +1,47 @@
+FunctionDec : P_L_C_1400
+Built-in : print
+Size
+Operator : ::
+Built-in : print
+Operator : ::
+Size
+Built-in : print
+Size
+Operator : ::
+Conditional : if
+Operator : is
+Return
+Anonymous Function
+ArgumentDec : a
+ArgumentDec : b
+Return
+Anonymous Function
+Return
+Return
+Operator : ::
+FunctionDec : f
+Conditional : if
+Operator : *
+Operator : -
+Size
+Operator : /
+Operator : >
+Operator : not
+Built-in : print
+Conditional : else
+Return
+Operator : +
+Operator : -
+Operator : *
+Operator : -
+Operator : and
+Operator : and
+Conditional : if
+Operator : is
+Built-in : print
+Operator : ::
+Return
+Size
+Main
+Built-in : print
+Size

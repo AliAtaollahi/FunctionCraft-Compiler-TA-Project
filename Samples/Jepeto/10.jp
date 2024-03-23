@@ -1,0 +1,8 @@
+func f():{
+    print(a.size);
+    print(f());
+    print([1,2,3,4]);
+    return void;
+}
+
+main : print(a);

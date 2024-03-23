@@ -1,0 +1,7 @@
+main : f((a, b) -> {return a;}, ()->{return 3;}, d);
+
+
+func test() : {
+    return () -> {return 3;}() + 2;
+    print(() -> {return 3;}());
+}

@@ -1,0 +1,9 @@
+func f():
+{
+    return a and b - c + d - e;
+    return a - b > c - d * ~e;
+    return a - b * c / d / e;
+    return a > b * c < d > e;
+}
+
+main : print(1);

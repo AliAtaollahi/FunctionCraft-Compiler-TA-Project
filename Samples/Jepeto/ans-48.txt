@@ -1,0 +1,46 @@
+FunctionDec : f1
+ArgumentDec : a
+ArgumentDec : b
+ArgumentDec : c
+Conditional : if
+Operator : >
+Operator : <
+Operator : *
+Operator : >
+Operator : -
+Operator : -
+Operator : +
+Operator : and
+Conditional : if
+Operator : +
+Size
+Operator : ::
+Size
+Return
+Anonymous Function
+Return
+Anonymous Function
+Conditional : if
+Operator : and
+Operator : or
+Return
+Conditional : else
+Return
+Anonymous Function
+ArgumentDec : a
+Return
+Conditional : if
+Anonymous Function
+Return
+Built-in : print
+Return
+Conditional : else
+Return
+Conditional : else
+Return
+Conditional : else
+Return
+Main
+Built-in : print
+Size
+Operator : ::

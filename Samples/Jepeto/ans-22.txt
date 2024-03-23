@@ -1,0 +1,18 @@
+FunctionDec : f1
+ArgumentDec : a
+ArgumentDec : b
+ArgumentDec : c
+Return
+Main
+FunctionCall
+FunctionDec : f2
+ArgumentDec : a
+ArgumentDec : b
+Return
+FunctionDec : g
+ArgumentDec : arg1
+ArgumentDec : arg2
+ArgumentDec : arg3
+Return
+Operator : *
+Operator : +

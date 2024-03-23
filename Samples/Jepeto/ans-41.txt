@@ -1,0 +1,20 @@
+FunctionDec : f
+ArgumentDec : a
+ArgumentDec : b
+ArgumentDec : c
+Conditional : if
+Size
+Operator : >
+Built-in : print
+Conditional : else
+Conditional : if
+Operator : and
+Operator : or
+Return
+Built-in : print
+Return
+Operator : /
+Operator : +
+Return
+Main
+FunctionCall

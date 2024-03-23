@@ -1,0 +1,8 @@
+Main
+FunctionCall
+FunctionDec : f
+Return
+Anonymous Function
+Return
+Anonymous Function
+Return

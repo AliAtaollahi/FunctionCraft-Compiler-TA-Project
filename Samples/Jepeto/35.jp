@@ -1,0 +1,31 @@
+func f():
+{
+    if (a):{
+        if (a):{
+            if(b > a):{
+                return 1;
+            }
+            else :
+                return 1;
+        }
+    }
+    else :
+    {
+        if (a):{
+            if (a):{
+                if(b > a):{
+                    return 1;
+                }
+                else :
+                    return 1;
+            }
+            else :
+            {
+                return 1;
+            }
+        }
+    }
+    return void;
+}
+
+main : f();

@@ -1,0 +1,21 @@
+FunctionDec : f
+Conditional : if
+Conditional : if
+Conditional : if
+Operator : >
+Return
+Conditional : else
+Return
+Conditional : else
+Conditional : if
+Conditional : if
+Conditional : if
+Operator : >
+Return
+Conditional : else
+Return
+Conditional : else
+Return
+Return
+Main
+FunctionCall

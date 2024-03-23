@@ -1,0 +1,7 @@
+FunctionDec : f
+Built-in : print
+Built-in : print
+Built-in : print
+Return
+Main
+Built-in : print

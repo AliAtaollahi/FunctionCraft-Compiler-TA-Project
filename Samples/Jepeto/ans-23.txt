@@ -1,0 +1,5 @@
+Main
+FunctionCall
+FunctionDec : f
+FunctionCall
+Return

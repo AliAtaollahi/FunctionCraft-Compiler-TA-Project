@@ -1,0 +1,24 @@
+FunctionDec : f9
+ArgumentDec : a
+ArgumentDec : aa
+ArgumentDec : aaa
+Conditional : if
+Operator : >
+Return
+Size
+Operator : ::
+Conditional : else
+Built-in : print
+Operator : ::
+Operator : ::
+Size
+Return
+Operator : *
+Operator : /
+Operator : +
+Operator : ~
+Operator : -
+Operator : not
+Operator : and
+Main
+Built-in : print

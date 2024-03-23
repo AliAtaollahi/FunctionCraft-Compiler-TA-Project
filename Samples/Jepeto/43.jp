@@ -1,0 +1,7 @@
+main: f();
+
+func g():
+    if ([1,2,3]::2.size > 5):
+        return [1, ["hi", "bye"], [[1,2], [true, false], ["PlC"]]];
+    else :
+        return a::2.size;

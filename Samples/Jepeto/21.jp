@@ -1,0 +1,13 @@
+func f1(a, b, c) : {
+    return f2(x = 2, y = "string")(1, 2, 3);
+}
+
+main : f1(1, 2, 3);
+
+func f2 (a, b) :
+    return g;
+
+func g (arg1, arg2, arg3) :
+    return arg1 * arg2 * arg3;
+
+

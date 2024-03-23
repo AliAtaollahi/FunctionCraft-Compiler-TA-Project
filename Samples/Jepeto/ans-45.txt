@@ -1,0 +1,53 @@
+FunctionDec : f1
+ArgumentDec : a1
+ArgumentDec : a2
+ArgumentDec : a3
+ArgumentDec : a4
+ArgumentDec : a5
+FunctionCall
+Built-in : print
+Operator : -
+Operator : +
+Operator : *
+Operator : +
+Operator : or
+Built-in : print
+Return
+Operator : +
+FunctionCall
+Built-in : print
+Return
+FunctionDec : f2
+ArgumentDec : a6
+ArgumentDec : a7
+Conditional : if
+Size
+Operator : -
+Operator : >
+Return
+Built-in : print
+FunctionCall
+Operator : +
+Return
+FunctionDec : f3
+ArgumentDec : a9
+Conditional : if
+Operator : is
+Return
+Conditional : else
+Return
+FunctionDec : f4
+Return
+Anonymous Function
+Built-in : print
+Return
+FunctionDec : f5
+Return
+Main
+Built-in : print
+Anonymous Function
+ArgumentDec : a8
+Return
+Operator : *
+Operator : +
+Operator : +
