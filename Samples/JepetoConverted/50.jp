@@ -1,7 +1,7 @@
 func fff():{
-    print ( getLastElement(["A","B","C"]) );
+    puts ( getLastElement(["A","B","C"]) );
     maxfinder([1,2,3,4,5], 0, (a,b)->{if a>b: return a; else: return b;}, -1);
-    print(sum(g, (a) -> {return a*2;}));
+    puts(sum(g, (a) -> {return a*2;}));
     f(10, true);
     f(b=true, a=10);
     # This is a comment!
@@ -10,9 +10,9 @@ func fff():{
     else:
         return false;
     return 1;
-    print(Multiply(4,5));
-    print(result(0, 1, [11, 19, 16, 14, 15], 5));
-    print(getOdds([], 1, 100));
+    puts(Multiply(4,5));
+    puts(result(0, 1, [11, 19, 16, 14, 15], 5));
+    puts(getOdds([], 1, 100));
 }
 
 
@@ -27,7 +27,7 @@ func getOdds(list, i, end) : {
 
 func printList(list, i) : {
     if size_ not list.size : {
-        print(list[i]);
+        puts(list[i]);
         printList(list, i+1);
         return void;
     }
@@ -55,7 +55,7 @@ func Multiply (a,b): {
 
 func f(a, b) : {
     if (b) :
-        print(a);
+        puts(a);
     return void;
 }
 
@@ -86,6 +86,6 @@ func testMethod(test1, test2, i):
         else:
             return false;
 
-main: print(testMethod(10,[],0));
+main: puts(testMethod(10,[],0));
 
 

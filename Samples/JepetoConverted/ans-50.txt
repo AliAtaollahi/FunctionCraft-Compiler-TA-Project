@@ -1,5 +1,5 @@
 FunctionDec : fff
-Built-in : print
+Built-in : puts
 FunctionCall
 Anonymous Function
 ArgumentDec : a
@@ -10,7 +10,7 @@ Return
 Conditional : else
 Return
 Operator : -
-Built-in : print
+Built-in : puts
 Anonymous Function
 ArgumentDec : a
 Return
@@ -23,9 +23,9 @@ Return
 Conditional : else
 Return
 Return
-Built-in : print
-Built-in : print
-Built-in : print
+Built-in : puts
+Built-in : puts
+Built-in : puts
 FunctionDec : getOdds
 ArgumentDec : list
 ArgumentDec : i
@@ -44,7 +44,7 @@ ArgumentDec : i
 Conditional : if
 Size
 Operator : not
-Built-in : print
+Built-in : puts
 FunctionCall
 Operator : +
 Return
@@ -89,7 +89,7 @@ FunctionDec : f
 ArgumentDec : a
 ArgumentDec : b
 Conditional : if
-Built-in : print
+Built-in : puts
 Return
 FunctionDec : sum
 ArgumentDec : f1
@@ -137,4 +137,4 @@ Return
 Conditional : else
 Return
 Main
-Built-in : print
+Built-in : puts

@@ -1,12 +1,12 @@
 Main
-Built-in : print
+Built-in : puts
 FunctionDec : compare
 Conditional : if
-Built-in : print
+Built-in : puts
 Conditional : else
-Built-in : print
+Built-in : puts
 Return
-Built-in : print
+Built-in : puts
 Return
 Conditional : if
-Built-in : print
+Built-in : puts

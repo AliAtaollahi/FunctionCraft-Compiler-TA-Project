@@ -3,7 +3,7 @@ Conditional : if
 Operator : >
 Conditional : if
 Operator : >
-Built-in : print
+Built-in : puts
 Return
 Conditional : else
 Return
@@ -14,4 +14,4 @@ Return
 Conditional : else
 Return
 Main
-Built-in : print
+Built-in : puts

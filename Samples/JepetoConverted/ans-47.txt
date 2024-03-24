@@ -21,7 +21,7 @@ Operator : ::
 Operator : *
 Operator : /
 Size
-Built-in : print
+Built-in : puts
 Operator : *
 Operator : -
 Operator : /

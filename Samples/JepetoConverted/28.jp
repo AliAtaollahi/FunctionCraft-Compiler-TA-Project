@@ -5,4 +5,4 @@ func f():
     return a < -b or c + d;
 }
 
-main : print(1);
+main : puts(1);

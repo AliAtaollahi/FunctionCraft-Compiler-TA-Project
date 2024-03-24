@@ -5,13 +5,13 @@ ArgumentDec : c
 Conditional : if
 Size
 Operator : >
-Built-in : print
+Built-in : puts
 Conditional : else
 Conditional : if
 Operator : and
 Operator : or
 Return
-Built-in : print
+Built-in : puts
 Return
 Operator : /
 Operator : +

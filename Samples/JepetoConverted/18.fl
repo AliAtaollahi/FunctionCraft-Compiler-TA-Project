@@ -1,0 +1,18 @@
+def f(a, b, c)
+    puts(1);
+    if (1)
+        puts(1);
+        return;
+    else
+        puts(2);
+    end
+    h();
+end
+
+def g()
+    return 1;
+end
+
+def main()
+    puts(1);
+end

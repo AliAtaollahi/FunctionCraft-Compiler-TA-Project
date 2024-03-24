@@ -1,5 +1,5 @@
 Main
-Built-in : print
+Built-in : puts
 FunctionDec : h
 Return
 FunctionDec : f

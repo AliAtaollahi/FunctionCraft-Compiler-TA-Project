@@ -4,4 +4,4 @@ func f():
     return a * ~b or c;
 }
 
-main : print(1);
+main : puts(1);

@@ -1,11 +1,11 @@
 FunctionDec : P_L_C_1400
-Built-in : print
+Built-in : puts
 Size
 Operator : ::
-Built-in : print
+Built-in : puts
 Operator : ::
 Size
-Built-in : print
+Built-in : puts
 Size
 Operator : ::
 Conditional : if
@@ -27,7 +27,7 @@ Size
 Operator : /
 Operator : >
 Operator : not
-Built-in : print
+Built-in : puts
 Conditional : else
 Return
 Operator : +
@@ -38,10 +38,10 @@ Operator : and
 Operator : and
 Conditional : if
 Operator : is
-Built-in : print
+Built-in : puts
 Operator : ::
 Return
 Size
 Main
-Built-in : print
+Built-in : puts
 Size

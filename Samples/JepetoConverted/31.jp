@@ -7,4 +7,4 @@ func f():
     return a * (b + c / d) - -e * f;
 }
 
-main : print(1);
+main : puts(1);

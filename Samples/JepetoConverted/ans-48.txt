@@ -32,7 +32,7 @@ Return
 Conditional : if
 Anonymous Function
 Return
-Built-in : print
+Built-in : puts
 Return
 Conditional : else
 Return
@@ -41,6 +41,6 @@ Return
 Conditional : else
 Return
 Main
-Built-in : print
+Built-in : puts
 Size
 Operator : ::

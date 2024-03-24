@@ -1,4 +1,4 @@
-main: print(123);
+main: puts(123);
 
 func h():
     return 1;

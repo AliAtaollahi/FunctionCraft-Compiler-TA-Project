@@ -1,8 +1,8 @@
 FunctionDec : f
-Built-in : print
+Built-in : puts
 Size
-Built-in : print
-Built-in : print
+Built-in : puts
+Built-in : puts
 Return
 Main
-Built-in : print
+Built-in : puts

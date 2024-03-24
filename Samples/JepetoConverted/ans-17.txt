@@ -7,6 +7,6 @@ FunctionDec : g
 ArgumentDec : a
 Return
 Main
-Built-in : print
+Built-in : puts
 FunctionDec : f1
 Return

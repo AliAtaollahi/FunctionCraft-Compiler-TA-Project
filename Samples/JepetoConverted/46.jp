@@ -3,10 +3,10 @@ func f9(a, aa, aaa):{
         return a::aa[1].size;
     }
     else:{
-        print(((a::b::c)[0]).size);
+        puts(((a::b::c)[0]).size);
     }
 
     return f([], [1], [1, []], [1, "hi"], (a + b * c / a)[a and b not c - ~d]);
 }
 
-main: print([]);
+main: puts([]);

@@ -5,17 +5,17 @@ ArgumentDec : a3
 ArgumentDec : a4
 ArgumentDec : a5
 FunctionCall
-Built-in : print
+Built-in : puts
 Operator : -
 Operator : +
 Operator : *
 Operator : +
 Operator : or
-Built-in : print
+Built-in : puts
 Return
 Operator : +
 FunctionCall
-Built-in : print
+Built-in : puts
 Return
 FunctionDec : f2
 ArgumentDec : a6
@@ -25,7 +25,7 @@ Size
 Operator : -
 Operator : >
 Return
-Built-in : print
+Built-in : puts
 FunctionCall
 Operator : +
 Return
@@ -39,12 +39,12 @@ Return
 FunctionDec : f4
 Return
 Anonymous Function
-Built-in : print
+Built-in : puts
 Return
 FunctionDec : f5
 Return
 Main
-Built-in : print
+Built-in : puts
 Anonymous Function
 ArgumentDec : a8
 Return

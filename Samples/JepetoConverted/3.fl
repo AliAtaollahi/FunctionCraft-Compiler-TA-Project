@@ -16,5 +16,5 @@ def compare()
 end
 
 def main()
-    puts("salam")
+    puts("salam");
 end

@@ -4,12 +4,12 @@ ArgumentDec : a2
 ArgumentDec : a3
 ArgumentDec : a4
 ArgumentDec : a5
-Built-in : print
-Built-in : print
+Built-in : puts
+Built-in : puts
 Return
 Operator : ::
 Operator : ::
-Built-in : print
+Built-in : puts
 Operator : is
 Conditional : if
 Return
@@ -32,13 +32,13 @@ Conditional : if
 Operator : >
 Operator : <
 Operator : and
-Built-in : print
-Built-in : print
+Built-in : puts
+Built-in : puts
 Return
 Conditional : else
 Return
 Main
-Built-in : print
+Built-in : puts
 Operator : >
 Operator : <
 Operator : >

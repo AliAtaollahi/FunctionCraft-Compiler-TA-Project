@@ -21,4 +21,4 @@ Operator : >
 Operator : <
 Operator : >
 Main
-Built-in : print
+Built-in : puts

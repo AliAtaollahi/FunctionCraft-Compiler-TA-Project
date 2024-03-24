@@ -23,4 +23,4 @@ Operator : is
 Operator : not
 Operator : and
 Main
-Built-in : print
+Built-in : puts

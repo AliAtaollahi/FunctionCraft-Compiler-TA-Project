@@ -8,4 +8,4 @@ Return
 Return
 Return
 Main
-Built-in : print
+Built-in : puts

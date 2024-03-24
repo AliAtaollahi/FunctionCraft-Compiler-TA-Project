@@ -6,4 +6,4 @@ func f():
     return a is ~b + c not d and e;
 }
 
-main : print(1);
+main : puts(1);

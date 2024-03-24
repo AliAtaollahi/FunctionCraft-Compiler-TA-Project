@@ -1,5 +1,5 @@
 Main
-Built-in : print
+Built-in : puts
 FunctionDec : f
 Return
 Anonymous Function

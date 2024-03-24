@@ -7,7 +7,7 @@ func  Main() :{
 
       return ((a * b ):: a * b /c).size;
 
-      print(a * b / (c - 2));
+      puts(a * b / (c - 2));
 
 
     }

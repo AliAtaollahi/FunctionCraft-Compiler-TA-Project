@@ -1,12 +1,12 @@
 func f(a, b, c):
 {
     if (g().size > f()):
-        print(a1);
+        puts(a1);
     else:
         if (a and b or c):{
             return 780;
         }
-        print("PLC");
+        puts("PLC");
         return f() + g(true) / h(1,2, "pLc");
     return void;
 }

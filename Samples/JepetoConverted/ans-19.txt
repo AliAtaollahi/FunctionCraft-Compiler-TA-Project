@@ -1,2 +1,2 @@
 Main
-Built-in : print
+Built-in : puts

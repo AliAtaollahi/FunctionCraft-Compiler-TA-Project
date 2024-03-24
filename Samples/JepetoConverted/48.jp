@@ -5,7 +5,7 @@ func f1(a, b, c) :
                                         else : {return f()()(a=4, b=10)[(a)->{return a;}(3)];}
 
                                         if (() -> {return false;} ()) : {
-                                                   print(true);
+                                                   puts(true);
                                                    return [];
                                         }
                                         else:
@@ -21,4 +21,4 @@ func f1(a, b, c) :
 
 
 
-main : print(a[0][1]::a[2].size);
+main : puts(a[0][1]::a[2].size);

@@ -3,10 +3,10 @@ ArgumentDec : a1
 ArgumentDec : a2
 Conditional : if
 Operator : +
-Built-in : print
+Built-in : puts
 Operator : +
 Conditional : else
-Built-in : print
+Built-in : puts
 Return
 Main
-Built-in : print
+Built-in : puts

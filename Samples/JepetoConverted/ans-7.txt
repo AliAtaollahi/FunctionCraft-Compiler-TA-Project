@@ -5,4 +5,4 @@ Return
 Conditional : else
 Return
 Main
-Built-in : print
+Built-in : puts

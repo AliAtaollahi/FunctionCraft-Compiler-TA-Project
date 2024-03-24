@@ -8,7 +8,7 @@ Return
 Size
 Operator : ::
 Conditional : else
-Built-in : print
+Built-in : puts
 Operator : ::
 Operator : ::
 Size
@@ -21,4 +21,4 @@ Operator : -
 Operator : not
 Operator : and
 Main
-Built-in : print
+Built-in : puts

@@ -11,6 +11,6 @@ Return
 Anonymous Function
 Return
 Operator : +
-Built-in : print
+Built-in : puts
 Anonymous Function
 Return

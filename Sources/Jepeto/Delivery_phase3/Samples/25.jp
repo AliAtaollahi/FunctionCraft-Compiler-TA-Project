@@ -1,8 +1,7 @@
 func f(a, b) : {
     return b;
     print(test);
-    return (a, b) -> {print(a);
-                       return false;} (f, a);
+    return (a, b) -> {print(a); return false;} (f, a);
 }
 
 

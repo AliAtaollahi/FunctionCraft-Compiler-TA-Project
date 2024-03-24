@@ -18,8 +18,8 @@ Return
 FunctionDec : printList
 ArgumentDec : l
 ArgumentDec : i
-Built-in : print
-Built-in : print
+Built-in : puts
+Built-in : puts
 FunctionCall
 Operator : -
 Return

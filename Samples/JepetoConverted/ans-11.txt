@@ -6,7 +6,7 @@ ArgumentDec : i
 Conditional : if
 Size
 Operator : not
-Built-in : print
+Built-in : puts
 FunctionCall
 Operator : +
 Return

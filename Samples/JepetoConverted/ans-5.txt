@@ -1,18 +1,18 @@
 Main
-Built-in : print
+Built-in : puts
 FunctionDec : compare
 Conditional : if
 Operator : >
 Conditional : if
 Operator : >
-Built-in : print
+Built-in : puts
 Return
 Conditional : else
 Return
 Conditional : else
 Conditional : if
 Operator : >
-Built-in : print
+Built-in : puts
 Conditional : else
-Built-in : print
+Built-in : puts
 Return
