@@ -1,0 +1,8 @@
+def main()
+    loop do
+        puts("start");
+        break if (a);
+        next if (b);
+        puts("end");
+    end
+end

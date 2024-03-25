@@ -1,8 +1,0 @@
-main : puts(a * b / (~-~-~b));
-
-func f() : {
-    return ()->{return 3;}()()[3] * true not "string";
-
-}
-
-

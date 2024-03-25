@@ -1,5 +1,0 @@
-main : puts(2);
-
-func f() : {
-    return () -> {return 2;};
-}

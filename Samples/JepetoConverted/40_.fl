@@ -1,0 +1,9 @@
+def doFunc(arg1, arg2, fptr)
+    return fptr(arg1, arg2);
+end
+
+def main()
+    f("Mammad", 
+      "Nemati", 
+      -> (firstName, lastName) {return "Hi I'm " << firstName << lastName << ".";})
+end

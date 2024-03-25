@@ -1,0 +1,9 @@
+
+def f()
+    return -> () {return [[1,2,3]];}() [0][1] * true is not false;
+    return -> () { return -> () { return 1;} }()();
+end
+
+def main()
+    puts(a * b / (~-~-~b))
+end
