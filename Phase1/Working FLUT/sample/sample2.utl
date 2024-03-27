@@ -1,0 +1,17 @@
+void OnInit(Trade t1) {
+    Order o3 = Order(SELL, 100, 100, 10);
+}
+
+void OnStart(Trade t1) throw Exception {
+    float x = 4.0;
+    if (x + 2 * 3 > Exception(4, "ss").Type) {
+        Exception a = Exception(2, "ee");
+        throw Exception(1, "ss");
+        throw a;
+    }
+}
+
+void Main() {
+    Connect("username", "password");
+    Trade t1 = Observe("");
+}

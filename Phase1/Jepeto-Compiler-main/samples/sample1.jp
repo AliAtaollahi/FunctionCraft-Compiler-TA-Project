@@ -1,0 +1,17 @@
+main : f1(a = 2, b = "stign");
+
+
+func f1(b, a, c) : {
+    print(a + b);
+    if (c) :
+    {
+    }
+    f2(a::b::(c or ~c)::a.size);
+
+    return
+    void;
+}
+
+func f2() :
+    return (a, b) -> {return a + f4();};
+

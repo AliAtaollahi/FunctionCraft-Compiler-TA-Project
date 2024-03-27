@@ -1,0 +1,16 @@
+VarDec:o3
+Operator:=
+VarDec:x
+Operator:=
+Conditional:if
+Operator:*
+Operator:+
+ErrorControl:4
+Operator:>
+VarDec:a
+ErrorControl:2
+Operator:=
+ErrorControl:1
+FunctionCall
+VarDec:t1
+Operator:=

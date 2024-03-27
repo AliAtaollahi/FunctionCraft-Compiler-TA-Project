@@ -1,0 +1,9 @@
+MethodDec:isOdd
+Operator:%
+Operator:==
+MethodDec:boolToString
+Conditional:if
+Operator:==
+Conditional:else
+FunctionCall
+Built-in:print
