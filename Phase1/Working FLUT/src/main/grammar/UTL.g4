@@ -98,8 +98,8 @@ filterStatement:
 matchPatternStatement:
     IDENTIFIER DOT MATCH LPAR expression RPAR;
 
-chopStatement:
-    CHOP LPAR expression RPAR;
+chopAndChompStatement:
+    (CHOP | CHOMP) LPAR expression RPAR;
 
 assignment:
     IDENTIFIER ASSIGN expression SEMICOLLON;
@@ -183,7 +183,7 @@ otherExpression:
     values
     | identifier
     | lambdaFunction
-    | chopStatement
+    | chopAndChompStatement
     | matchPatternStatement
     | filterStatement
     | LPAR (expression) RPAR
@@ -200,7 +200,8 @@ values:
     | STRING_VALUE
     | INT_VALUE
     | FLOAT_VALUE
-    | listValue;
+    | listValue
+    | functionPointer;
 
 listValue:
     LBRACK functionArguments
@@ -212,6 +213,8 @@ boolValue:
     | FALSE
     ;
 
+functionPointer:
+    METHOD LPAR COLON IDENTIFIER RPAR;
 
 identifier:
     IDENTIFIER
