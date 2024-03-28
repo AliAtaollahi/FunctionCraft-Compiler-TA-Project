@@ -1,109 +1,130 @@
 grammar UTL;
 
-program:
+program: //Pattren Matching
     (
         functionDeclaration
+        | patternMatching
     )*
-        main
-    (
-        functionDeclaration
-    )*;
+    main;
 
-functionDeclaration:
-    FUNC IDENTIFIER
+functionDeclaration: //OK
+    DEF IDENTIFIER
     functionArgumentsDeclaration
-    COLON body
+    body
+    END
     ;
 
-functionArgumentsDeclaration:
+functionArgumentsDeclaration: //OK
     LPAR
     (IDENTIFIER
     (COMMA IDENTIFIER)*
+    (
+    COMMA LBRACK IDENTIFIER ASSIGN expression (COMMA IDENTIFIER ASSIGN expression)* RBRACK
+    )?
     )? RPAR;
 
-body:
-    singleStatement
-    | block;
+patternMatching:
+    PATTERN IDENTIFIER LPAR IDENTIFIER RPAR
+    (SEPARATOR condition ASSIGN expression)*
+    SEMICOLLON;
 
-main:
-    MAIN
-    COLON (functionCallStatement | printStatement);
+main: //OK
+    DEF MAIN
+    LPAR RPAR
+    body
+    END;
 
-functionCall:
+functionCall: //OK
     identifier
-    (LPAR functionArguments RPAR)*
-    (LPAR functionArguments RPAR);
+    LPAR functionArguments RPAR;
 
-functionArguments:
-    splitedExpressionsWithComma
-    | splitedExpressionsWithCommaAndKey;
-
-splitedExpressionsWithComma:
+functionArguments: //OK
     (expression (COMMA expression)* )?;
 
-splitedExpressionsWithCommaAndKey:
-    (identifier ASSIGN expression (COMMA identifier ASSIGN expression )*)?;
 
-functionCallStatement:
+functionCallStatement: //OK
     functionCall SEMICOLLON;
 
-returnStatement:
-    RETURN (expression | voidValue) SEMICOLLON;
+returnStatement: //OK
+    RETURN (expression)? SEMICOLLON;
 
-ifStatement:
-    IF expression COLON conditionBody
-    (ELSE COLON conditionBody)?;
+ifStatement: //OK
+    IF condition
+    body
+    (ELSEIF body)*
+    (ELSE body)? END;
 
-ifStatementWithReturn:
-    IF expression COLON body
-    ELSE COLON body;
+condition: //CLEAN
+    (LPAR expression RPAR ((AND | OR) (LPAR)? condition (RPAR)?)*)*;
 
-printStatement:
-    PRINT LPAR expression
+putsStatement: //OK
+    PUTS LPAR expression
     RPAR SEMICOLLON;
 
-statement :
+lenStatement: //OK
+    LEN LPAR expression
+    RPAR SEMICOLLON;
+
+pushStatement: //OK
+    PUSH LPAR expression COMMA expression RPAR SEMICOLLON;
+
+loopDoStatement:
+    LOOP DO
+    loopBody
+    END;
+
+loopBody:
+    (statement
+    | BREAK (IF condition)? SEMICOLLON
+    | NEXT (IF condition)? SEMICOLLON
+    )*
+    (
+    returnStatement
+    )?;
+
+forStatement:
+    FOR IDENTIFIER IN range
+    loopBody
+    END;
+
+range: //CLEAN
+    (LPAR expression DOUBLEDOT expression RPAR)
+    | (LBRACK (expression (COMMA expression)*) RBRACK)
+    | IDENTIFIER;
+
+filterStatement:
+    LBRACK expression SEPARATOR IDENTIFIER ARROW range COMMA expression (COMMA expression)* RBRACK;
+
+matchPatternStatement:
+    IDENTIFIER DOT MATCH LPAR expression RPAR;
+
+chopStatement:
+    CHOP LPAR expression RPAR;
+
+assignment:
+    IDENTIFIER ASSIGN expression SEMICOLLON;
+
+statement: //OK
     ifStatement
-    | printStatement
+    | loopDoStatement
+    | forStatement
+    | putsStatement
+    | lenStatement
+    | pushStatement
     | functionCallStatement
     | returnStatement
+    | expression
+    | assignment
     ;
 
-singleStatement:
+
+body: //OK
+    (statement)*
+    (
     returnStatement
-    | ifStatementWithReturn
-    ;
-
-block:
-    LBRACE
-    ((statement)*
-    (returnStatement
-    | ifStatementWithReturn
-    )
-    (statement
-    )*
-    ) RBRACE;
-
-conditionBody:
-    LBRACE
-    (statement
-    )* RBRACE
-    | statement
-    ;
+    )?;
 
 expression:
-    andExpression
-    (OR andExpression
-    )*
-    ;
-
-andExpression:
-    equalityExpression
-    (AND equalityExpression
-    )*
-    ;
-
-equalityExpression:
     relationalExpression
     ((EQUAL
     | NOT_EQUAL
@@ -137,52 +158,52 @@ multiplicativeExpression:
 preUnaryExpression:
     ((NOT
     | MINUS
+    | INCREMENT
+    | DECREMENT
     ) preUnaryExpression
     )
     | appendExpression
     ;
 
-appendExpression:
+appendExpression: //???
     accessExpression
     (APPEND accessExpression
     )*
     ;
 
-accessExpression:
+accessExpression: //???
     otherExpression
     (LPAR functionArguments
     RPAR)*
     (LBRACK expression
     RBRACK)*
-    (sizeExpression
-    )*
     ;
 
 otherExpression:
     values
     | identifier
-    | anonymousFunction
+    | lambdaFunction
+    | chopStatement
+    | matchPatternStatement
+    | filterStatement
     | LPAR (expression) RPAR
     ;
 
-anonymousFunction:
+lambdaFunction: //OK
     functionArgumentsDeclaration
-
-    ARROW block
+    ARROW LBRACE body RBRACE functionArguments SEMICOLLON
     ;
 
-sizeExpression:
-    DOT SIZE
-;
 
 values:
     boolValue
     | STRING_VALUE
     | INT_VALUE
+    | FLOAT_VALUE
     | listValue;
 
 listValue:
-    LBRACK splitedExpressionsWithComma
+    LBRACK functionArguments
     RBRACK
     ;
 
@@ -191,44 +212,61 @@ boolValue:
     | FALSE
     ;
 
-voidValue:
-    VOID
-    ;
 
 identifier:
     IDENTIFIER
     ;
 
 
-FUNC: 'func';
+DEF: 'def';
+END: 'end';
 MAIN: 'main';
-SIZE: 'size';
 
-PRINT: 'print';
+PUTS: 'puts';
+PUSH: 'push';
+LEN: 'len';
 RETURN: 'return';
-VOID: 'void';
 
 IF: 'if';
 ELSE: 'else';
+ELSEIF: 'elseif';
+
+METHOD: 'method';
+
+PATTERN: 'pattern';
+MATCH: 'match';
+LOOP: 'loop';
+FOR: 'for';
+IN: 'in';
+DO: 'do';
+
+CHOP: 'chop';
+CHOMP: 'chomp';
 
 PLUS: '+';
 MINUS: '-';
 MULT: '*';
 DIVIDE: '/';
 
-EQUAL: 'is';
-NOT_EQUAL: 'not';
+EQUAL: '==';
+NOT_EQUAL: '!=';
 GREATER_THAN: '>';
 LESS_THAN: '<';
 
-AND: 'and';
-OR: 'or';
-NOT: '~';
+AND: '&&';
+OR: '||';
+NOT: '!';
+INCREMENT: '++';
+DECREMENT: '--';
 
-APPEND: '::';
+SEPARATOR: '|';
+APPEND: '<<';
 
 TRUE: 'true';
 FALSE: 'false';
+
+BREAK: 'break';
+NEXT: 'next';
 
 ARROW: '->';
 
@@ -243,11 +281,13 @@ RBRACE: '}';
 
 COMMA: ',';
 DOT: '.';
+DOUBLEDOT: '..';
 COLON: ':';
 SEMICOLLON: ';';
 
 INT_VALUE: '0' | [1-9][0-9]*;
+FLOAT_VALUE: [0-9]* '.' [0-9]+;
 IDENTIFIER: [a-zA-Z_][A-Za-z0-9_]*;
 STRING_VALUE: '"'~["]*'"';
-COMMENT: ('#' ~( '\r' | '\n')*) -> skip;
+COMMENT: ('#' ~( '\r' | '\n')* | ('=begin' .*? '=end')) -> skip;
 WS: ([ \t\n\r]) -> skip;
