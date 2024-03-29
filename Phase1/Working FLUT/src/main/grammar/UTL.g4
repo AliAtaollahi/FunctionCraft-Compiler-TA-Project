@@ -62,8 +62,7 @@ putsStatement: //OK
     RPAR SEMICOLLON;
 
 lenStatement: //OK
-    LEN LPAR expression
-    RPAR;
+    LEN LPAR expression RPAR;
 
 pushStatement: //OK
     PUSH LPAR expression COMMA expression RPAR SEMICOLLON;
@@ -111,8 +110,7 @@ statement: //OK
     | putsStatement
     | pushStatement
     | functionCallStatement
-    | returnStatement
-    | expression
+    | expression SEMICOLLON
     | assignment
     ;
 
@@ -127,6 +125,8 @@ expression:
     relationalExpression
     ((EQUAL
     | NOT_EQUAL
+    | IS_NOT
+    | IS
     ) relationalExpression
     )*
     ;
@@ -184,14 +184,14 @@ otherExpression:
     | lambdaFunction
     | chopAndChompStatement
     | matchPatternStatement
-    | lenStatement
     | filterStatement
+    | lenStatement
     | LPAR (expression) RPAR
     ;
 
 lambdaFunction: //OK
-    functionArgumentsDeclaration
-    ARROW LBRACE body RBRACE functionArguments SEMICOLLON
+    ARROW functionArgumentsDeclaration
+     LBRACE body RBRACE functionArguments
     ;
 
 
@@ -253,6 +253,8 @@ DIVIDE: '/';
 
 EQUAL: '==';
 NOT_EQUAL: '!=';
+IS_NOT: 'is not';
+IS: 'is';
 GREATER_THAN: '>';
 LESS_THAN: '<';
 
