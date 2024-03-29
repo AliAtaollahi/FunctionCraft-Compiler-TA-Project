@@ -1,5 +1,5 @@
 def get_size(i)
-    len(return g()[i]);
+    return len(g()[i]);
 end
 
 def g()
