@@ -1,5 +1,6 @@
 def g()
     return -> (arg1, arg2, arg3) {return arg1 << arg2 << arg3;};
+end
 
 def f()
     return method(:g);
