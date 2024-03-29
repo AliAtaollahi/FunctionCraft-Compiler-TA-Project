@@ -3,7 +3,7 @@ def f()
         if(b > a)
             return 1;
         end
-    else :
+    else 
         return 1;
     end
     return void;
