@@ -1,4 +1,4 @@
-func f()
+def f()
     if (a)
     else
     end
