@@ -63,7 +63,7 @@ putsStatement: //OK
 
 lenStatement: //OK
     LEN LPAR expression
-    RPAR SEMICOLLON;
+    RPAR;
 
 pushStatement: //OK
     PUSH LPAR expression COMMA expression RPAR SEMICOLLON;
@@ -109,7 +109,6 @@ statement: //OK
     | loopDoStatement
     | forStatement
     | putsStatement
-    | lenStatement
     | pushStatement
     | functionCallStatement
     | returnStatement
@@ -185,6 +184,7 @@ otherExpression:
     | lambdaFunction
     | chopAndChompStatement
     | matchPatternStatement
+    | lenStatement
     | filterStatement
     | LPAR (expression) RPAR
     ;

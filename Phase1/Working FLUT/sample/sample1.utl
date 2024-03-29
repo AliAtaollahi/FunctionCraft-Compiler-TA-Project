@@ -1,1 +1,13 @@
-main : print(a::b);
+def main()
+#Hello
+    puts(salam);
+end
+
+=begin
+jjjj
+hzsgfjlgzl
+zsggkkz;
+=end
+
+def compare()
+end

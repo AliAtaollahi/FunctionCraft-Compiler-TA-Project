@@ -38,15 +38,15 @@ public interface UTLListener extends ParseTreeListener {
 	 */
 	void exitFunctionArgumentsDeclaration(UTLParser.FunctionArgumentsDeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UTLParser#body}.
+	 * Enter a parse tree produced by {@link UTLParser#patternMatching}.
 	 * @param ctx the parse tree
 	 */
-	void enterBody(UTLParser.BodyContext ctx);
+	void enterPatternMatching(UTLParser.PatternMatchingContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link UTLParser#body}.
+	 * Exit a parse tree produced by {@link UTLParser#patternMatching}.
 	 * @param ctx the parse tree
 	 */
-	void exitBody(UTLParser.BodyContext ctx);
+	void exitPatternMatching(UTLParser.PatternMatchingContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UTLParser#main}.
 	 * @param ctx the parse tree
@@ -78,26 +78,6 @@ public interface UTLListener extends ParseTreeListener {
 	 */
 	void exitFunctionArguments(UTLParser.FunctionArgumentsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UTLParser#splitedExpressionsWithComma}.
-	 * @param ctx the parse tree
-	 */
-	void enterSplitedExpressionsWithComma(UTLParser.SplitedExpressionsWithCommaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#splitedExpressionsWithComma}.
-	 * @param ctx the parse tree
-	 */
-	void exitSplitedExpressionsWithComma(UTLParser.SplitedExpressionsWithCommaContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UTLParser#splitedExpressionsWithCommaAndKey}.
-	 * @param ctx the parse tree
-	 */
-	void enterSplitedExpressionsWithCommaAndKey(UTLParser.SplitedExpressionsWithCommaAndKeyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#splitedExpressionsWithCommaAndKey}.
-	 * @param ctx the parse tree
-	 */
-	void exitSplitedExpressionsWithCommaAndKey(UTLParser.SplitedExpressionsWithCommaAndKeyContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link UTLParser#functionCallStatement}.
 	 * @param ctx the parse tree
 	 */
@@ -128,25 +108,125 @@ public interface UTLListener extends ParseTreeListener {
 	 */
 	void exitIfStatement(UTLParser.IfStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UTLParser#ifStatementWithReturn}.
+	 * Enter a parse tree produced by {@link UTLParser#condition}.
 	 * @param ctx the parse tree
 	 */
-	void enterIfStatementWithReturn(UTLParser.IfStatementWithReturnContext ctx);
+	void enterCondition(UTLParser.ConditionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link UTLParser#ifStatementWithReturn}.
+	 * Exit a parse tree produced by {@link UTLParser#condition}.
 	 * @param ctx the parse tree
 	 */
-	void exitIfStatementWithReturn(UTLParser.IfStatementWithReturnContext ctx);
+	void exitCondition(UTLParser.ConditionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UTLParser#printStatement}.
+	 * Enter a parse tree produced by {@link UTLParser#putsStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterPrintStatement(UTLParser.PrintStatementContext ctx);
+	void enterPutsStatement(UTLParser.PutsStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link UTLParser#printStatement}.
+	 * Exit a parse tree produced by {@link UTLParser#putsStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitPrintStatement(UTLParser.PrintStatementContext ctx);
+	void exitPutsStatement(UTLParser.PutsStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#lenStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLenStatement(UTLParser.LenStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#lenStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLenStatement(UTLParser.LenStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#pushStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterPushStatement(UTLParser.PushStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#pushStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitPushStatement(UTLParser.PushStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#loopDoStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLoopDoStatement(UTLParser.LoopDoStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#loopDoStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLoopDoStatement(UTLParser.LoopDoStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#loopBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterLoopBody(UTLParser.LoopBodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#loopBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitLoopBody(UTLParser.LoopBodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#forStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterForStatement(UTLParser.ForStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#forStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitForStatement(UTLParser.ForStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#range}.
+	 * @param ctx the parse tree
+	 */
+	void enterRange(UTLParser.RangeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#range}.
+	 * @param ctx the parse tree
+	 */
+	void exitRange(UTLParser.RangeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#filterStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFilterStatement(UTLParser.FilterStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#filterStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFilterStatement(UTLParser.FilterStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#matchPatternStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterMatchPatternStatement(UTLParser.MatchPatternStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#matchPatternStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitMatchPatternStatement(UTLParser.MatchPatternStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#chopAndChompStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterChopAndChompStatement(UTLParser.ChopAndChompStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#chopAndChompStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitChopAndChompStatement(UTLParser.ChopAndChompStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#assignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssignment(UTLParser.AssignmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#assignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssignment(UTLParser.AssignmentContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UTLParser#statement}.
 	 * @param ctx the parse tree
@@ -158,35 +238,15 @@ public interface UTLListener extends ParseTreeListener {
 	 */
 	void exitStatement(UTLParser.StatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UTLParser#singleStatement}.
+	 * Enter a parse tree produced by {@link UTLParser#body}.
 	 * @param ctx the parse tree
 	 */
-	void enterSingleStatement(UTLParser.SingleStatementContext ctx);
+	void enterBody(UTLParser.BodyContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link UTLParser#singleStatement}.
+	 * Exit a parse tree produced by {@link UTLParser#body}.
 	 * @param ctx the parse tree
 	 */
-	void exitSingleStatement(UTLParser.SingleStatementContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UTLParser#block}.
-	 * @param ctx the parse tree
-	 */
-	void enterBlock(UTLParser.BlockContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#block}.
-	 * @param ctx the parse tree
-	 */
-	void exitBlock(UTLParser.BlockContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UTLParser#conditionBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterConditionBody(UTLParser.ConditionBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#conditionBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitConditionBody(UTLParser.ConditionBodyContext ctx);
+	void exitBody(UTLParser.BodyContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UTLParser#expression}.
 	 * @param ctx the parse tree
@@ -197,26 +257,6 @@ public interface UTLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpression(UTLParser.ExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UTLParser#andExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterAndExpression(UTLParser.AndExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#andExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitAndExpression(UTLParser.AndExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UTLParser#equalityExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterEqualityExpression(UTLParser.EqualityExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#equalityExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitEqualityExpression(UTLParser.EqualityExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UTLParser#relationalExpression}.
 	 * @param ctx the parse tree
@@ -288,25 +328,15 @@ public interface UTLListener extends ParseTreeListener {
 	 */
 	void exitOtherExpression(UTLParser.OtherExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UTLParser#anonymousFunction}.
+	 * Enter a parse tree produced by {@link UTLParser#lambdaFunction}.
 	 * @param ctx the parse tree
 	 */
-	void enterAnonymousFunction(UTLParser.AnonymousFunctionContext ctx);
+	void enterLambdaFunction(UTLParser.LambdaFunctionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link UTLParser#anonymousFunction}.
+	 * Exit a parse tree produced by {@link UTLParser#lambdaFunction}.
 	 * @param ctx the parse tree
 	 */
-	void exitAnonymousFunction(UTLParser.AnonymousFunctionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UTLParser#sizeExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterSizeExpression(UTLParser.SizeExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#sizeExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitSizeExpression(UTLParser.SizeExpressionContext ctx);
+	void exitLambdaFunction(UTLParser.LambdaFunctionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UTLParser#values}.
 	 * @param ctx the parse tree
@@ -338,15 +368,15 @@ public interface UTLListener extends ParseTreeListener {
 	 */
 	void exitBoolValue(UTLParser.BoolValueContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UTLParser#voidValue}.
+	 * Enter a parse tree produced by {@link UTLParser#functionPointer}.
 	 * @param ctx the parse tree
 	 */
-	void enterVoidValue(UTLParser.VoidValueContext ctx);
+	void enterFunctionPointer(UTLParser.FunctionPointerContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link UTLParser#voidValue}.
+	 * Exit a parse tree produced by {@link UTLParser#functionPointer}.
 	 * @param ctx the parse tree
 	 */
-	void exitVoidValue(UTLParser.VoidValueContext ctx);
+	void exitFunctionPointer(UTLParser.FunctionPointerContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UTLParser#identifier}.
 	 * @param ctx the parse tree

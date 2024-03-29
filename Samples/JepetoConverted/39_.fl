@@ -1,5 +1,5 @@
 def f2()
-    return -> () {return 2; return -> (a, b) {return a;};};
+    return -> () {return -> (a, b) {return a;};};
 end
 
 def main()

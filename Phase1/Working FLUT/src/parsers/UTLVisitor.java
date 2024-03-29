@@ -29,11 +29,11 @@ public interface UTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFunctionArgumentsDeclaration(UTLParser.FunctionArgumentsDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link UTLParser#body}.
+	 * Visit a parse tree produced by {@link UTLParser#patternMatching}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBody(UTLParser.BodyContext ctx);
+	T visitPatternMatching(UTLParser.PatternMatchingContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link UTLParser#main}.
 	 * @param ctx the parse tree
@@ -53,18 +53,6 @@ public interface UTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFunctionArguments(UTLParser.FunctionArgumentsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link UTLParser#splitedExpressionsWithComma}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSplitedExpressionsWithComma(UTLParser.SplitedExpressionsWithCommaContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link UTLParser#splitedExpressionsWithCommaAndKey}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSplitedExpressionsWithCommaAndKey(UTLParser.SplitedExpressionsWithCommaAndKeyContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link UTLParser#functionCallStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -83,17 +71,77 @@ public interface UTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIfStatement(UTLParser.IfStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link UTLParser#ifStatementWithReturn}.
+	 * Visit a parse tree produced by {@link UTLParser#condition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIfStatementWithReturn(UTLParser.IfStatementWithReturnContext ctx);
+	T visitCondition(UTLParser.ConditionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link UTLParser#printStatement}.
+	 * Visit a parse tree produced by {@link UTLParser#putsStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrintStatement(UTLParser.PrintStatementContext ctx);
+	T visitPutsStatement(UTLParser.PutsStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#lenStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLenStatement(UTLParser.LenStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#pushStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPushStatement(UTLParser.PushStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#loopDoStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLoopDoStatement(UTLParser.LoopDoStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#loopBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLoopBody(UTLParser.LoopBodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#forStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitForStatement(UTLParser.ForStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#range}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRange(UTLParser.RangeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#filterStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFilterStatement(UTLParser.FilterStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#matchPatternStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMatchPatternStatement(UTLParser.MatchPatternStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#chopAndChompStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitChopAndChompStatement(UTLParser.ChopAndChompStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#assignment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssignment(UTLParser.AssignmentContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link UTLParser#statement}.
 	 * @param ctx the parse tree
@@ -101,41 +149,17 @@ public interface UTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStatement(UTLParser.StatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link UTLParser#singleStatement}.
+	 * Visit a parse tree produced by {@link UTLParser#body}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSingleStatement(UTLParser.SingleStatementContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link UTLParser#block}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBlock(UTLParser.BlockContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link UTLParser#conditionBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitConditionBody(UTLParser.ConditionBodyContext ctx);
+	T visitBody(UTLParser.BodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link UTLParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitExpression(UTLParser.ExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link UTLParser#andExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAndExpression(UTLParser.AndExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link UTLParser#equalityExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEqualityExpression(UTLParser.EqualityExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link UTLParser#relationalExpression}.
 	 * @param ctx the parse tree
@@ -179,17 +203,11 @@ public interface UTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOtherExpression(UTLParser.OtherExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link UTLParser#anonymousFunction}.
+	 * Visit a parse tree produced by {@link UTLParser#lambdaFunction}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAnonymousFunction(UTLParser.AnonymousFunctionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link UTLParser#sizeExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSizeExpression(UTLParser.SizeExpressionContext ctx);
+	T visitLambdaFunction(UTLParser.LambdaFunctionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link UTLParser#values}.
 	 * @param ctx the parse tree
@@ -209,11 +227,11 @@ public interface UTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBoolValue(UTLParser.BoolValueContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link UTLParser#voidValue}.
+	 * Visit a parse tree produced by {@link UTLParser#functionPointer}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVoidValue(UTLParser.VoidValueContext ctx);
+	T visitFunctionPointer(UTLParser.FunctionPointerContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link UTLParser#identifier}.
 	 * @param ctx the parse tree
