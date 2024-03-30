@@ -1,3 +1,3 @@
 def main()
-    listTimes3 = [x * 3 | x <- [1..10], x * 3 <= 20];
+    listTimes3 = [x * 3 | x -> (1..10), x * 3 < 20];
 end
