@@ -10,10 +10,10 @@ def main()
     end
 
     start = 0;
-    end = 9;
+    finish = 9;
 
-    for num in (start..end)
-        next if (num % 2 == 1);
+    for num in (start..finish)
+        next if (num / 2 == 1);
         puts(num);
     end
 end
