@@ -1,11 +1,11 @@
 def main()
     for num in [1, 2, 3, 4, 5, 6, 7, 8]
-        next if (num % 2 == 1);
+        next if (num / 2 == 1);
         puts(num);
     end
     
     for num in (0..9)
-        next if (num % 2 == 1);
+        next if (num / 2 == 1);
         puts(num);
     end
 
