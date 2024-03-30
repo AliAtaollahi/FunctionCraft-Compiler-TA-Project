@@ -1,4 +1,4 @@
-// Generated from C:/Users/asus/Desktop/Working FLUT/src/main/grammar/UTL.g4 by ANTLR 4.13.1
+// Generated from D:/8/TA/Compiler/Design-Compiler-Course-Projects/Phase1/Working FLUT/src/main/grammar/UTL.g4 by ANTLR 4.13.1
 package parsers;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -58,16 +58,6 @@ public interface UTLListener extends ParseTreeListener {
 	 */
 	void exitMain(UTLParser.MainContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UTLParser#functionCall}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionCall(UTLParser.FunctionCallContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#functionCall}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionCall(UTLParser.FunctionCallContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link UTLParser#functionArguments}.
 	 * @param ctx the parse tree
 	 */
@@ -77,16 +67,6 @@ public interface UTLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunctionArguments(UTLParser.FunctionArgumentsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UTLParser#functionCallStatement}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionCallStatement(UTLParser.FunctionCallStatementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#functionCallStatement}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionCallStatement(UTLParser.FunctionCallStatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UTLParser#returnStatement}.
 	 * @param ctx the parse tree
@@ -227,6 +207,16 @@ public interface UTLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAssignment(UTLParser.AssignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UTLParser#accessList}.
+	 * @param ctx the parse tree
+	 */
+	void enterAccessList(UTLParser.AccessListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UTLParser#accessList}.
+	 * @param ctx the parse tree
+	 */
+	void exitAccessList(UTLParser.AccessListContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UTLParser#statement}.
 	 * @param ctx the parse tree
@@ -377,14 +367,4 @@ public interface UTLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunctionPointer(UTLParser.FunctionPointerContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UTLParser#identifier}.
-	 * @param ctx the parse tree
-	 */
-	void enterIdentifier(UTLParser.IdentifierContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UTLParser#identifier}.
-	 * @param ctx the parse tree
-	 */
-	void exitIdentifier(UTLParser.IdentifierContext ctx);
 }

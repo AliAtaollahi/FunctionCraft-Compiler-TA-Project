@@ -1,4 +1,4 @@
-// Generated from C:/Users/asus/Desktop/Working FLUT/src/main/grammar/UTL.g4 by ANTLR 4.13.1
+// Generated from D:/8/TA/Compiler/Design-Compiler-Course-Projects/Phase1/Working FLUT/src/main/grammar/UTL.g4 by ANTLR 4.13.1
 package parsers;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -41,23 +41,11 @@ public interface UTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMain(UTLParser.MainContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link UTLParser#functionCall}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunctionCall(UTLParser.FunctionCallContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link UTLParser#functionArguments}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFunctionArguments(UTLParser.FunctionArgumentsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link UTLParser#functionCallStatement}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunctionCallStatement(UTLParser.FunctionCallStatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link UTLParser#returnStatement}.
 	 * @param ctx the parse tree
@@ -142,6 +130,12 @@ public interface UTLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAssignment(UTLParser.AssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link UTLParser#accessList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAccessList(UTLParser.AccessListContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link UTLParser#statement}.
 	 * @param ctx the parse tree
@@ -232,10 +226,4 @@ public interface UTLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunctionPointer(UTLParser.FunctionPointerContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link UTLParser#identifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIdentifier(UTLParser.IdentifierContext ctx);
 }

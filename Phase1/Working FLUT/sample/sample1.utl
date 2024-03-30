@@ -1,13 +1,3 @@
-def main()
-#Hello
-    puts(salam);
-end
-
-=begin
-jjjj
-hzsgfjlgzl
-zsggkkz;
-=end
-
-def compare()
-end
+ def main()
+x + y * z - b / c;
+ end

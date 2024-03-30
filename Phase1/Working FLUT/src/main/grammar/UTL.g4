@@ -1,20 +1,20 @@
 grammar UTL;
 
-program: //Pattren Matching
+program:
     (
         functionDeclaration
         | patternMatching
     )*
     main;
 
-functionDeclaration: //OK
-    DEF IDENTIFIER
+functionDeclaration:
+    DEF IDENTIFIER { System.out.println("FuncDec: " + $IDENTIFIER.text); }
     functionArgumentsDeclaration
     body
     END
     ;
 
-functionArgumentsDeclaration: //OK
+functionArgumentsDeclaration:
     LPAR
     (IDENTIFIER
     (COMMA IDENTIFIER)*
@@ -24,98 +24,97 @@ functionArgumentsDeclaration: //OK
     )? RPAR;
 
 patternMatching:
-    PATTERN IDENTIFIER LPAR IDENTIFIER RPAR
+    PATTERN IDENTIFIER { System.out.println("PatternDec: " + $IDENTIFIER.text); }
+    LPAR IDENTIFIER RPAR
     (SEPARATOR condition ASSIGN expression)*
     SEMICOLLON;
 
-main: //OK
-    DEF MAIN
+main:
+    DEF MAIN { System.out.println("MAIN"); }
     LPAR RPAR
     body
     END;
 
-functionCall: //OK
-    identifier
-    LPAR functionArguments RPAR;
-
-functionArguments: //OK
+functionArguments:
     (expression (COMMA expression)* )?;
 
 
-functionCallStatement: //OK
-    functionCall SEMICOLLON;
+returnStatement:
+    RETURN { System.out.println("RETURN"); } (expression)? SEMICOLLON;
 
-returnStatement: //OK
-    RETURN (expression)? SEMICOLLON;
-
-ifStatement: //OK
-    IF condition
+ifStatement:
+    IF { System.out.println("Decision: IF"); } condition
     body
-    (ELSEIF body)*
-    (ELSE body)? END;
+    (ELSEIF { System.out.println("Decision: ELSE IF"); } condition body)*
+    (ELSE { System.out.println("Decision: ELSE"); } body)? END;
 
-condition: //CLEAN
+condition:
     (LPAR expression RPAR ((AND | OR) (LPAR)? condition (RPAR)?)*)*;
 
-putsStatement: //OK
-    PUTS LPAR expression
+putsStatement:
+    PUTS { System.out.println("Built-In: PUTS"); } LPAR expression
     RPAR SEMICOLLON;
 
-lenStatement: //OK
-    LEN LPAR expression RPAR;
+lenStatement:
+    LEN { System.out.println("Built-In: LEN"); } LPAR expression RPAR;
 
-pushStatement: //OK
-    PUSH LPAR expression COMMA expression RPAR SEMICOLLON;
+pushStatement:
+    PUSH { System.out.println("Built-In: PUSH"); } LPAR expression COMMA expression RPAR SEMICOLLON;
 
 loopDoStatement:
-    LOOP DO
+    LOOP DO { System.out.println("Loop: DO"); }
     loopBody
     END;
 
 loopBody:
     (statement
-    | BREAK (IF condition)? SEMICOLLON
-    | NEXT (IF condition)? SEMICOLLON
+    | BREAK { System.out.println("Control: BREAK"); } (IF condition)? SEMICOLLON
+    | NEXT { System.out.println("Control: NEXT"); } (IF condition)? SEMICOLLON
     )*
     (
     returnStatement
     )?;
 
 forStatement:
-    FOR IDENTIFIER IN range
+    FOR { System.out.println("Loop: FOR"); } IDENTIFIER IN range
     loopBody
     END;
 
-range: //CLEAN
+range:
     (LPAR expression DOUBLEDOT expression RPAR)
     | (LBRACK (expression (COMMA expression)*) RBRACK)
     | IDENTIFIER;
 
 filterStatement:
-    LBRACK expression SEPARATOR IDENTIFIER ARROW range COMMA expression (COMMA expression)* RBRACK;
+    { System.out.println("Structure: FILTER"); } LBRACK expression SEPARATOR IDENTIFIER
+    ARROW range COMMA expression (COMMA expression)* RBRACK;
 
 matchPatternStatement:
-    IDENTIFIER DOT MATCH LPAR expression RPAR;
+    { System.out.println("Built-In: MATCH"); } IDENTIFIER DOT MATCH LPAR expression RPAR;
 
 chopAndChompStatement:
-    (CHOP | CHOMP) LPAR expression RPAR;
+    (CHOP { System.out.println("Built-In: CHOP"); }
+    | CHOMP { System.out.println("Built-In: CHOMP"); }) LPAR expression RPAR;
 
 assignment:
-    IDENTIFIER ASSIGN expression SEMICOLLON;
+    IDENTIFIER { System.out.println("Assignment: " + $IDENTIFIER.text); } (accessList)?
+    ASSIGN expression SEMICOLLON;
 
-statement: //OK
+accessList:
+    LBRACK expression RBRACK;
+
+statement:
     ifStatement
     | loopDoStatement
     | forStatement
     | putsStatement
     | pushStatement
-    | functionCallStatement
     | expression SEMICOLLON
     | assignment
     ;
 
 
-body: //OK
+body:
     (statement)*
     (
     returnStatement
@@ -123,74 +122,73 @@ body: //OK
 
 expression:
     relationalExpression
-    ((EQUAL
-    | NOT_EQUAL
-    | IS_NOT
-    | IS
-    ) relationalExpression
+    ((op = EQUAL
+    | op = NOT_EQUAL
+    | op = IS_NOT
+    | op = IS
+    ) relationalExpression { System.out.println("Operator: " + $op.text); }
     )*
     ;
 
 relationalExpression:
     additiveExpression
-    ((GREATER_THAN
-    | LESS_THAN
-    ) additiveExpression
+    ((op = GREATER_THAN
+    | op = LESS_THAN
+    ) additiveExpression { System.out.println("Operator: " + $op.text); }
     )*
     ;
 
 additiveExpression:
     multiplicativeExpression
-    ((PLUS
-    | MINUS
-    ) multiplicativeExpression
+    ((op = PLUS
+    | op = MINUS
+    ) multiplicativeExpression { System.out.println("Operator: " + $op.text); }
     )*
     ;
 
 multiplicativeExpression:
     preUnaryExpression
-    ((MULT
-    |  DIVIDE
-    ) preUnaryExpression
+    ((op = MULT
+    | op = DIVIDE
+    ) preUnaryExpression { System.out.println("Operator: " + $op.text); }
     )*;
 
 preUnaryExpression:
-    ((NOT
-    | MINUS
-    | INCREMENT
-    | DECREMENT
-    ) preUnaryExpression
+    ((op = NOT
+    | op = MINUS
+    | op = INCREMENT
+    | op = DECREMENT
+    ) preUnaryExpression { System.out.println("Operator: " + $op.text); }
     )
     | appendExpression
     ;
 
-appendExpression: //???
+appendExpression:
     accessExpression
-    (APPEND accessExpression
+    (APPEND accessExpression { System.out.println("Operator: " + $APPEND.text); }
     )*
     ;
 
-accessExpression: //???
+accessExpression:
     otherExpression
     (LPAR functionArguments
-    RPAR)*
-    (LBRACK expression
-    RBRACK)*
+    RPAR { System.out.println("FunctionCall"); } )*
+    (accessList)*
     ;
 
 otherExpression:
     values
-    | identifier
+    | IDENTIFIER
     | lambdaFunction
     | chopAndChompStatement
     | matchPatternStatement
     | filterStatement
     | lenStatement
-    | LPAR (expression) RPAR
+    | LPAR (expression)? RPAR
     ;
 
-lambdaFunction: //OK
-    ARROW functionArgumentsDeclaration
+lambdaFunction:
+    ARROW { System.out.println("Structure: LAMBDA"); } functionArgumentsDeclaration
      LBRACE body RBRACE functionArguments
     ;
 
@@ -215,10 +213,6 @@ boolValue:
 
 functionPointer:
     METHOD LPAR COLON IDENTIFIER RPAR;
-
-identifier:
-    IDENTIFIER
-    ;
 
 
 DEF: 'def';

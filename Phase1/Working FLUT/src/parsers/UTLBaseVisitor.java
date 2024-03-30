@@ -1,4 +1,4 @@
-// Generated from C:/Users/asus/Desktop/Working FLUT/src/main/grammar/UTL.g4 by ANTLR 4.13.1
+// Generated from D:/8/TA/Compiler/Design-Compiler-Course-Projects/Phase1/Working FLUT/src/main/grammar/UTL.g4 by ANTLR 4.13.1
 package parsers;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -53,21 +53,7 @@ public class UTLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements UT
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunctionCall(UTLParser.FunctionCallContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitFunctionArguments(UTLParser.FunctionArgumentsContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitFunctionCallStatement(UTLParser.FunctionCallStatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -166,6 +152,13 @@ public class UTLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements UT
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitAssignment(UTLParser.AssignmentContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitAccessList(UTLParser.AccessListContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -271,11 +264,4 @@ public class UTLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements UT
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitFunctionPointer(UTLParser.FunctionPointerContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitIdentifier(UTLParser.IdentifierContext ctx) { return visitChildren(ctx); }
 }

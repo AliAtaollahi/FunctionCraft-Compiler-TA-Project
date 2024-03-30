@@ -1,2 +1,0 @@
-//Line 25: Argument x not declared in function f
-//Line 25: Argument y not declared in function f
