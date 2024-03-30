@@ -1,0 +1,22 @@
+def compare()
+
+    if(a)
+        puts(1);
+    else
+        puts(1);
+    end
+
+    return true;
+    
+    puts(a);
+
+    return(false);
+
+    if(b)
+        puts(a);
+    end
+end
+
+def main()
+    puts("salam");
+end

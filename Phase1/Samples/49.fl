@@ -1,0 +1,27 @@
+def P_L_C_1402()
+    puts(a << len(b));
+    puts(len(a << b));
+    puts(a << (len(b)));
+    if (a is b) 
+        return -> (a, b) {return a[b][b];} (1, "string", true, [1,2,3,[1,2,3]], -> () {return 1;});
+    end
+    return [1,2,3,4,5] << 6;
+end
+
+# hi i"m simple comment
+
+def f()
+    if (a is not 10 > 56 / len(b[a * 2 - 3]))
+    else
+        return (f() + 2)[a - b - c * 2][a + b / c];
+    end
+    if (2 is 3)
+        puts("2" << "3");
+    end
+    return len(list1);
+end
+
+def main()
+    puts(len(a));
+end
+# this is just a testing comment

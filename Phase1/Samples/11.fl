@@ -1,0 +1,10 @@
+def list_printer(l, i)
+    if (i is not len(l))
+        puts(l[i]);
+        list_printer(l, i + 1);
+    end
+end
+
+def main()
+    list_printer([[1, 2, 3], [1, 2], [1, 2, 3, 4]], 0);
+end
