@@ -1,0 +1,7 @@
+def compare()
+    return -> (a) {return a;} (1);
+end
+
+def main()
+    puts("salam");
+end

@@ -1,0 +1,6 @@
+def list_printer(l, i)
+end
+
+def main()
+    list_printer([[1, 2, 3], "string", true], 0);
+end

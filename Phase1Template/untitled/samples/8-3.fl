@@ -1,0 +1,8 @@
+def compare(a, b)
+    return a + b;
+end
+
+def main()
+    compare_ptr = method(:compare);
+    puts(compare_ptr(2, 3));
+end

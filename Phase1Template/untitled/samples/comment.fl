@@ -1,0 +1,11 @@
+=begin
+Lorem ipsum dolor sit amet, 
+consectetur adipiscing elit, sed
+do eiusmod tempor incididunt ut labore et 
+dolore magna aliqua. 
+=end
+
+def main()
+    puts("salam"); # This is comment
+    # This is comment
+end
