@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Delivery_phase2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Sources/Jepeto/Delivery_phase2/antlr-4.8-complete.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Sources/Jepeto/Delivery_phase2/antlr-4.9.2-complete.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

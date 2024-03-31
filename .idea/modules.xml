@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Design-Compiler-Course-Projects.iml" filepath="$PROJECT_DIR$/.idea/Design-Compiler-Course-Projects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Phase2/Jepeto-Compiler-main/Jepeto-Compiler-main.iml" filepath="$PROJECT_DIR$/Phase2/Jepeto-Compiler-main/Jepeto-Compiler-main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Phase1/Phase1.iml" filepath="$PROJECT_DIR$/Phase1/Phase1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sources/Questionarios/Questionarios.iml" filepath="$PROJECT_DIR$/Sources/Questionarios/Questionarios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sources/Jepeto/2021-Spring(Jepeto)/plc-spring1400-jepeto/Utilities/Utilities.iml" filepath="$PROJECT_DIR$/Sources/Jepeto/2021-Spring(Jepeto)/plc-spring1400-jepeto/Utilities/Utilities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Phase2/Working FLUT/Working FLUT.iml" filepath="$PROJECT_DIR$/Phase2/Working FLUT/Working FLUT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sources/Jepeto/2021-Spring(Jepeto)/plc-spring1400-jepeto/plc-spring1400-jepeto.iml" filepath="$PROJECT_DIR$/Sources/Jepeto/2021-Spring(Jepeto)/plc-spring1400-jepeto/plc-spring1400-jepeto.iml" />
+    </modules>
+  </component>
+</project>
