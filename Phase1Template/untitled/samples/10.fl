@@ -1,0 +1,10 @@
+def f()
+    puts(f());
+    puts([1,2,3,4]);
+    puts(true);
+    puts(false);
+end
+
+def main()
+    puts("salam");
+end

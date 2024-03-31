@@ -1,0 +1,9 @@
+def f()
+    if (a)
+    else
+    end
+    return;
+end
+
+def main()
+end

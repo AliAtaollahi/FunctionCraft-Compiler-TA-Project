@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jarFiles">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Sources/Jepeto/2021-Spring(Jepeto)/plc-spring1400-jepeto/Utilities/jarFiles/jasmin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Sources/Jepeto/2021-Spring(Jepeto)/plc-spring1400-jepeto/Utilities/jarFiles/classFileAnalyzer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
