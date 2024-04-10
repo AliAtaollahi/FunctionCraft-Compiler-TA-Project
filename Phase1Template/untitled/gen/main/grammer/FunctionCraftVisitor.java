@@ -155,6 +155,12 @@ public interface FunctionCraftVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(FunctionCraftParser.ExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link FunctionCraftParser#eqaulityExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqaulityExpression(FunctionCraftParser.EqaulityExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link FunctionCraftParser#relationalExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -178,12 +184,6 @@ public interface FunctionCraftVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPreUnaryExpression(FunctionCraftParser.PreUnaryExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link FunctionCraftParser#appendExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAppendExpression(FunctionCraftParser.AppendExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link FunctionCraftParser#accessExpression}.
 	 * @param ctx the parse tree

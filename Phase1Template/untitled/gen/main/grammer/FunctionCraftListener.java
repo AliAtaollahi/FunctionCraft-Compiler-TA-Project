@@ -248,6 +248,16 @@ public interface FunctionCraftListener extends ParseTreeListener {
 	 */
 	void exitExpression(FunctionCraftParser.ExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link FunctionCraftParser#eqaulityExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqaulityExpression(FunctionCraftParser.EqaulityExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FunctionCraftParser#eqaulityExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqaulityExpression(FunctionCraftParser.EqaulityExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link FunctionCraftParser#relationalExpression}.
 	 * @param ctx the parse tree
 	 */
@@ -287,16 +297,6 @@ public interface FunctionCraftListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPreUnaryExpression(FunctionCraftParser.PreUnaryExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link FunctionCraftParser#appendExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterAppendExpression(FunctionCraftParser.AppendExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link FunctionCraftParser#appendExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitAppendExpression(FunctionCraftParser.AppendExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link FunctionCraftParser#accessExpression}.
 	 * @param ctx the parse tree

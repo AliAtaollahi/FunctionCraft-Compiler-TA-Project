@@ -305,6 +305,18 @@ public class FunctionCraftBaseListener implements FunctionCraftListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterEqaulityExpression(FunctionCraftParser.EqaulityExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEqaulityExpression(FunctionCraftParser.EqaulityExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterRelationalExpression(FunctionCraftParser.RelationalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -348,18 +360,6 @@ public class FunctionCraftBaseListener implements FunctionCraftListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPreUnaryExpression(FunctionCraftParser.PreUnaryExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAppendExpression(FunctionCraftParser.AppendExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAppendExpression(FunctionCraftParser.AppendExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
