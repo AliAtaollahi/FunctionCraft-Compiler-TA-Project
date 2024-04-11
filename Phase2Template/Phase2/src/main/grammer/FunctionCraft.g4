@@ -8,37 +8,112 @@ program returns [Program flProgram]:
         $flProgram.setLine(1);
     }
     (
-        f = functionDeclaration{$flProgram.addFunctionDeclaration(f.functionDeclarationRet);}
-        | p = patternMatching{$fl.Program.addPatternDeclaration(p.patternRet);}
+        f = functionDeclaration{$flProgram.addFunctionDeclaration($f.functionDeclarationRet);}
+        | p = patternMatching{$flProgram.addPatternDeclaration($p.patternRet);}
     )*
-    m = main{$flProgram.setMain(m.mainRet);};
+    m = main{$flProgram.setMain($m.mainRet);};
 
 functionDeclaration returns [FunctionDeclaration functionDeclarationRet]:
-    DEF IDENTIFIER
-    functionArgumentsDeclaration
-    body
+    {
+        $functionDeclarationRet = new FunctionDeclaration();
+    }
+    def = DEF {$functionDeclarationRet.setLine($def.line);} id = IDENTIFIER {
+        Identifier id_ = new Identifier($id.text);
+        id_.setLine($id.line);
+        $functionDeclarationRet.setFunctionName(id_);
+    }
+    f = functionArgumentsDeclaration {$functionDeclarationRet.setArgs($f.argRet);}
+    b = body {$functionDeclarationRet.setBody($b.bodyRet);}
     END
     ;
 
-functionArgumentsDeclaration:
+functionArgumentsDeclaration returns [ArrayList<VarDeclaration> argRet]:
+    {
+        $argRet = new ArrayList<VarDeclaration>();
+    }
     LPAR
-    (IDENTIFIER
-    (COMMA IDENTIFIER)*
+    (id1 = IDENTIFIER
+    {
+        Identifier id_ = new Identifier(id1.text);
+        id_.setLine($id1.line);
+        VarDeclaration = newVarDec(id_);
+        $argRet.add(newVarDec);
+    }
+    (COMMA id2 = IDENTIFIER
+        {
+            Identifier id_ = new Identifier(id2.text);
+            id_.setLine($id2.line);
+            VarDeclaration = newVarDec(id_);
+            $argRet.add(newVarDec);
+        }
+    )*
     (
-    COMMA LBRACK IDENTIFIER ASSIGN expression (COMMA IDENTIFIER ASSIGN expression)* RBRACK
+    COMMA LBRACK id3 = IDENTIFIER
+     {
+        Identifier id_ = new Identifier(id3.text);
+        id_.setLine($id3.line);
+        VarDeclaration = newVarDec(id_);
+     }
+     ASSIGN e1 = expression
+      {
+        newVarDec.setDefaultVal(e1.expRet);
+        $argRet.add(newVarDec);
+      }
+      (COMMA id4 = IDENTIFIER
+       {
+            Identifier id_ = new Identifier(id4.text);
+            id_.setLine($id4.line);
+            VarDeclaration = newVarDec(id_);
+       }
+       ASSIGN e2 = expression
+       {
+            newVarDec.setDefaultVal(e2.expRet);
+            $argRet.add(newVarDec);
+       }
+       )* RBRACK
     )?
     )? RPAR;
 
 patternMatching returns [PatternDeclaration patternRet]:
-    PATTERN IDENTIFIER
-    LPAR IDENTIFIER RPAR
-    (PATTERN_MATCHING_SEPARATOR condition ASSIGN expression)*
+    pat = PATTERN
+    {
+        int patternLine = $pat.line;
+    }
+    patternName = IDENTIFIER
+    {
+        Identifier patternNameId = new Identifier($patternName.text);
+        patternNameId.setLine($patternName.line);
+    }
+    LPAR targetVar = IDENTIFIER
+    {
+        Identifier targetVariable = new Identifier($targetVar.text);
+        targetVariable.setLine($targetVar.line);
+        $patternRet = new PatternDeclaration(patternNameId, targetVariable);
+        $patternRet.setLine(patternLine);
+    }
+    RPAR
+    (PATTERN_MATCHING_SEPARATOR c = condition
+     {
+        $patternRet.setConditions($c.conditionRet);
+     }
+     ASSIGN e = expression
+     {
+        $patternRet.addReturnExp($e.expRet);
+     }
+     )*
     SEMICOLLON;
 
 main returns [MainDeclaration mainRet]:
-    DEF MAIN
+    {
+        $mainRet = new MainDeclaration();
+    }
+    DEF m = MAIN
+    {
+        $mainRet.setLine($m.line);
+    }
     LPAR RPAR
-    body
+    b = body
+    {$mainRet.setBody($b.bodyRet);}
     END;
 
 functionArguments:
@@ -54,8 +129,17 @@ ifStatement:
     (ELSEIF condition body)*
     (ELSE body)? END;
 
-condition:
-    (LPAR expression RPAR ((AND | OR) (LPAR)? condition (RPAR)?)*)*;
+condition returns [ArrayList<Expression> conditionRet]:
+    {
+        $conditionRet = new ArrayList<Expression>();
+    }
+    (LPAR e = expression
+     {$conditionRet.add($e.expRet);}
+     RPAR ((AND | OR) (LPAR)? c = condition
+     {
+        $conditionRet.addAll($c.conditionRet);
+     }
+     (RPAR)?)*)*;
 
 putsStatement:
     PUTS LPAR expression
@@ -126,14 +210,14 @@ statement:
     ;
 
 
-body:
+body returns [ArrayList<Statement> bodyRet]:
     (statement)*
     (
     returnStatement
     )?;
 
 
-expression:
+expression returns [Expression expRet]:
     expression APPEND eqaulityExpression
     | eqaulityExpression;
 
