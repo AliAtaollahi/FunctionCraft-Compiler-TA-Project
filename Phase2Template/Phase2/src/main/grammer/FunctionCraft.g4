@@ -4,16 +4,17 @@ grammar FunctionCraft;
 
 program returns [Program flProgram]:
     {
-
+        $flProgram = new Program();
+        $flProgram.setLine(1);
     }
     (
-        functionDeclaration
-        | patternMatching
+        f = functionDeclaration{$flProgram.addFunctionDeclaration(f.functionDeclarationRet);}
+        | p = patternMatching{$fl.Program.addPatternDeclaration(p.patternRet);}
     )*
-    main;
+    m = main{$flProgram.setMain(m.mainRet);};
 
-functionDeclaration:
-    DEF IDENTIFIER { System.out.println("FuncDec: " + $IDENTIFIER.text); }
+functionDeclaration returns [FunctionDeclaration functionDeclarationRet]:
+    DEF IDENTIFIER
     functionArgumentsDeclaration
     body
     END
@@ -28,14 +29,14 @@ functionArgumentsDeclaration:
     )?
     )? RPAR;
 
-patternMatching:
-    PATTERN IDENTIFIER { System.out.println("PatternDec: " + $IDENTIFIER.text); }
+patternMatching returns [PatternDeclaration patternRet]:
+    PATTERN IDENTIFIER
     LPAR IDENTIFIER RPAR
     (PATTERN_MATCHING_SEPARATOR condition ASSIGN expression)*
     SEMICOLLON;
 
-main:
-    DEF MAIN { System.out.println("MAIN"); }
+main returns [MainDeclaration mainRet]:
+    DEF MAIN
     LPAR RPAR
     body
     END;
@@ -45,43 +46,43 @@ functionArguments:
 
 
 returnStatement:
-    RETURN { System.out.println("RETURN"); } (expression)? SEMICOLLON;
+    RETURN (expression)? SEMICOLLON;
 
 ifStatement:
-    IF { System.out.println("Decision: IF"); } condition
+    IF condition
     body
-    (ELSEIF { System.out.println("Decision: ELSE IF"); } condition body)*
-    (ELSE { System.out.println("Decision: ELSE"); } body)? END;
+    (ELSEIF condition body)*
+    (ELSE body)? END;
 
 condition:
     (LPAR expression RPAR ((AND | OR) (LPAR)? condition (RPAR)?)*)*;
 
 putsStatement:
-    PUTS { System.out.println("Built-In: PUTS"); } LPAR expression
+    PUTS LPAR expression
     RPAR SEMICOLLON;
 
 lenStatement:
-    LEN { System.out.println("Built-In: LEN"); } LPAR expression RPAR;
+    LEN LPAR expression RPAR;
 
 pushStatement:
-    PUSH { System.out.println("Built-In: PUSH"); } LPAR expression COMMA expression RPAR SEMICOLLON;
+    PUSH LPAR expression COMMA expression RPAR SEMICOLLON;
 
 loopDoStatement:
-    LOOP DO { System.out.println("Loop: DO"); }
+    LOOP DO
     loopBody
     END;
 
 loopBody:
     (statement
-    | BREAK { System.out.println("Control: BREAK"); } (IF condition)? SEMICOLLON
-    | NEXT { System.out.println("Control: NEXT"); } (IF condition)? SEMICOLLON
+    | BREAK (IF condition)? SEMICOLLON
+    | NEXT (IF condition)? SEMICOLLON
     )*
     (
     returnStatement
     )?;
 
 forStatement:
-    FOR { System.out.println("Loop: FOR"); } IDENTIFIER IN range
+    FOR IDENTIFIER IN range
     loopBody
     END;
 
@@ -91,18 +92,18 @@ range:
     | IDENTIFIER;
 
 filterStatement:
-    { System.out.println("Structure: FILTER"); } LBRACK expression SEPARATOR IDENTIFIER
+    LBRACK expression SEPARATOR IDENTIFIER
     ARROW range COMMA expression (COMMA expression)* RBRACK;
 
 matchPatternStatement:
-    { System.out.println("Built-In: MATCH"); } IDENTIFIER DOT MATCH LPAR expression RPAR;
+    IDENTIFIER DOT MATCH LPAR expression RPAR;
 
 chopAndChompStatement:
-    (CHOP { System.out.println("Built-In: CHOP"); }
-    | CHOMP { System.out.println("Built-In: CHOMP"); }) LPAR expression RPAR;
+    (CHOP
+    | CHOMP) LPAR expression RPAR;
 
 assignment:
-    IDENTIFIER { System.out.println("Assignment: " + $IDENTIFIER.text); } (accessList)?
+    IDENTIFIER (accessList)?
     (ASSIGN
     | PLUS_ASSIGN
     | MINUS_ASSIGN
@@ -133,7 +134,7 @@ body:
 
 
 expression:
-    expression APPEND eqaulityExpression { System.out.println("Operator: " + $APPEND.text); }
+    expression APPEND eqaulityExpression
     | eqaulityExpression;
 
 
@@ -141,7 +142,7 @@ eqaulityExpression:
     eqaulityExpression
     (op = EQUAL
     | op = NOT_EQUAL
-    ) relationalExpression { System.out.println("Operator: " + $op.text); }
+    ) relationalExpression
     | relationalExpression;
 
 relationalExpression:
@@ -150,7 +151,7 @@ relationalExpression:
     | op = LESS_THAN
     | op = LESS_EQUAL_THAN
     | op = GREATER_EQUAL_THAN
-    ) additiveExpression { System.out.println("Operator: " + $op.text); }
+    ) additiveExpression
     | additiveExpression;
 
 
@@ -158,7 +159,7 @@ additiveExpression:
     additiveExpression
     (op = PLUS
     | op = MINUS
-    ) multiplicativeExpression { System.out.println("Operator: " + $op.text); }
+    ) multiplicativeExpression
     | multiplicativeExpression;
 
 
@@ -166,7 +167,7 @@ multiplicativeExpression:
     multiplicativeExpression
     (op = MULT
     | op = DIVIDE
-    ) preUnaryExpression { System.out.println("Operator: " + $op.text); }
+    ) preUnaryExpression
     | preUnaryExpression;
 
 
@@ -175,13 +176,13 @@ preUnaryExpression:
     | op = MINUS
     | op = INCREMENT
     | op = DECREMENT
-    ) accessExpression { System.out.println("Operator: " + $op.text); }
+    ) accessExpression
     | accessExpression;
 
 
 accessExpression:
     otherExpression
-    (LPAR { System.out.println("FunctionCall"); } functionArguments
+    (LPAR functionArguments
     RPAR)*
     (accessList)*
     ;
@@ -199,7 +200,7 @@ otherExpression:
 
 
 lambdaFunction:
-    ARROW { System.out.println("Structure: LAMBDA"); } functionArgumentsDeclaration
+    ARROW  functionArgumentsDeclaration
      LBRACE body RBRACE functionArguments
     ;
 
