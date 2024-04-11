@@ -116,12 +116,26 @@ main returns [MainDeclaration mainRet]:
     {$mainRet.setBody($b.bodyRet);}
     END;
 
-functionArguments:
-    (expression (COMMA expression)* )?;
+functionArguments returns [ArrayList<Expression> funcArgsRet]:
+    {
+        $funcArgsRet = new ArrayList<Expression>();
+    }
+    (e1 = expression
+    {
+       $funcArgsRet.add($e1.expRet);
+    }
+    (COMMA e2 = expression
+    {
+       $funcArgsRet.add($e2.expRet);
+    }
+    )* )?;
 
 
-returnStatement:
-    RETURN (expression)? SEMICOLLON;
+returnStatement returns [ReturnStatement returnStmtRet]:
+    {
+        $returnStmtRet = new ReturnStatement();
+    }
+    RETURN (e = expression{$returnStmtRet.setReturnExp(e.expRet);})? SEMICOLLON;
 
 ifStatement:
     IF condition
