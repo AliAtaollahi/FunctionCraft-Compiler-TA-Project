@@ -137,11 +137,37 @@ returnStatement returns [ReturnStatement returnStmtRet]:
     }
     RETURN (e = expression{$returnStmtRet.setReturnExp(e.expRet);})? SEMICOLLON;
 
-ifStatement:
-    IF condition
-    body
-    (ELSEIF condition body)*
-    (ELSE body)? END;
+ifStatement returns[IfStatement ifRet]:
+    {
+        $ifRet = new IfStatement();
+    }
+    if = IF
+    {
+        $ifRet.setLine($if.line);
+    }
+    c1 = condition {$ifRet.addCondition($c1.conditionRet);}
+    b = body {$ifRet.setThenBody($b.bodyRet);}
+    {
+        ArrayList<Statement> tempArray = new ArrayList<Statement>();
+    }
+    (ELSEIF c2 = condition
+     {
+        $ifRet.addCondition($c2.conditionRet);
+     }
+     b1 = body
+     {
+        tempArray.addAll($b1.bodyRet);
+     }
+     )*
+    (ELSE b2 = body
+     {
+        tempArray.addAll($b2.bodyRet);
+     }
+    )?
+     {
+        $ifRet.setElseBody(tempArray);
+     }
+     END;
 
 condition returns [ArrayList<Expression> conditionRet]:
     {
@@ -155,28 +181,51 @@ condition returns [ArrayList<Expression> conditionRet]:
      }
      (RPAR)?)*)*;
 
-putsStatement:
-    PUTS LPAR expression
+putsStatement returns [PutStatement putRet]:
+    p = PUTS LPAR e = expression
+    {
+        $putRet = new PutStatement($e.expRet);
+        $putRet.setLine($p.line);
+    }
     RPAR SEMICOLLON;
 
-lenStatement:
-    LEN LPAR expression RPAR;
+lenStatement returns [LenStatement lenRet]:
+    l = LEN LPAR e = expression
+    {
+        $lenRet = new LenStatement($e.expRet);
+        $lenRet.setLine($l.line);
+    }
+    RPAR;
 
-pushStatement:
-    PUSH LPAR expression COMMA expression RPAR SEMICOLLON;
+pushStatement returns [PushStatement pushRet]:
+    p = PUSH LPAR e1 = expression COMMA e2 = expression RPAR SEMICOLLON
+    {
+        $pushRet = new PushStatement($e1.expRet, $e2.expRet);
+        $pushRet.setLine($p.line);
+    }
+    ;
 
-loopDoStatement:
-    LOOP DO
-    loopBody
+loopDoStatement returns [LoopDoStatement loopDoRet]:
+    l1 = LOOP DO
+    l2 = loopBody
+    {
+        $loopDoRet = new LoopDoStatement(l2.loopStmts, l2.loopExps, l2.loopRetStmt);
+        $loopDoRet.setLine($l1.line);
+    }
     END;
 
-loopBody:
-    (statement
-    | BREAK (IF condition)? SEMICOLLON
-    | NEXT (IF condition)? SEMICOLLON
+loopBody returns [ArrayList<Statement> loopStmts, ArrayList<Expression> loopExps, ReturnStatement loopRetStmt]:
+    {
+        $loopStmts = new ArrayList<Statement>();
+        $loopExps = new ArrayList<Expression>();
+        $loopRetStmt = new ReturnStatement();
+    }
+    (s = statement {$loopStmts.add($s.stmtRet);}
+    | BREAK (IF c1 = condition{$loopExps.addAll($c1.conditionRet);})? SEMICOLLON
+    | NEXT (IF c2 = condition{$loopExps.addAll($c2.conditionRet);})? SEMICOLLON
     )*
     (
-    returnStatement
+    r = returnStatement {$loopRetStmt = $r.returnStmtRet;}
     )?;
 
 forStatement:
@@ -213,7 +262,7 @@ assignment:
 accessList:
     LBRACK expression RBRACK;
 
-statement:
+statement returns [Statement stmtRet]:
     ifStatement
     | loopDoStatement
     | forStatement
