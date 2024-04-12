@@ -228,15 +228,46 @@ loopBody returns [ArrayList<Statement> loopStmts, ArrayList<Expression> loopExps
     r = returnStatement {$loopRetStmt = $r.returnStmtRet;}
     )?;
 
-forStatement:
-    FOR IDENTIFIER IN range
-    loopBody
-    END;
+forStatement returns [ForStatement forStRet]:
+    f = FOR id = IDENTIFIER IN r = range
+    l = loopBody
+    END
+    {
+        $forStRet = new ForStatement(new Identifier($id.text),
+                                     $r.rangeRet, $l.loopExps, $l.loopStmts,
+                                     $l.loopRetStmt);
+        $forStRet.setLine($f.line);
+    }
+    ;
 
-range:
-    (LPAR expression DOUBLEDOT expression RPAR)
-    | (LBRACK (expression (COMMA expression)*) RBRACK)
-    | IDENTIFIER;
+range returns [ArrayList<Expression> rangeRet]:
+    {
+        $rangeRet = new ArrayList<Expression>();
+    }
+    (LPAR e1 = expression
+    {
+        $rangeRet.add($e1.expRet);
+    }
+    DOUBLEDOT e2 = expression
+    {
+        $rangeRet.add($e2.expRet);
+    }
+    RPAR)
+    | (LBRACK (e3 = expression
+    {
+        $rangeRet.add($e3.expRet);
+    }
+    (COMMA e4 = expression
+    {
+        $rangeRet.add($e4.expRet);
+    }
+    )*) RBRACK)
+    | id = IDENTIFIER
+    {
+        Identifier id_ = new Identifier($id.text);
+        $rangeRet.add(id_);
+    }
+    ;
 
 filterStatement:
     LBRACK expression SEPARATOR IDENTIFIER

@@ -21,4 +21,5 @@ public interface IVisitor<T> {
     T visit(LenStatement lenStatement);
     T visit(PushStatement pushStatement);
     T visit(LoopDoStatement loopDoStatement);
+    T visit(ForStatement forStatement);
 }
