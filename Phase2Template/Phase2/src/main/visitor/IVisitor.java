@@ -22,4 +22,6 @@ public interface IVisitor<T> {
     T visit(PushStatement pushStatement);
     T visit(LoopDoStatement loopDoStatement);
     T visit(ForStatement forStatement);
+    T visit(FilterStatement filterStatement);
+    T visit(MatchPatternStatement matchPatternStatement);
 }

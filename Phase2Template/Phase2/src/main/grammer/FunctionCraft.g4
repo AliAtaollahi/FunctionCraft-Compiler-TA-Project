@@ -269,16 +269,43 @@ range returns [ArrayList<Expression> rangeRet]:
     }
     ;
 
-filterStatement:
-    LBRACK expression SEPARATOR IDENTIFIER
-    ARROW range COMMA expression (COMMA expression)* RBRACK;
+filterStatement returns [FilterStatement filterStatementRet]:
+    {
+        ArrayList<Expression> conditionExps = new ArrayList<Expression>();
+    }
+    brack = LBRACK e1 = expression SEPARATOR id = IDENTIFIER
+    ARROW r = range COMMA e2 = expression
+    {
+        conditionExps.add($e2.expRet);
+    }
+    (COMMA e3 = expression
+    {
+        conditionExps.add($e3.expRet);
+    }
+    )*
+    {
+        Identifier id_ = new Identifier($id.text);
+        id_.setLine($id.line);
+        $filterStatementRet = new FilterStatement(id_, $e1.expRet,
+                                                  conditionExps, $r.rangeRet);
+        $filterStatementRet.setLine($brack.line);
+    }
+    RBRACK;
 
-matchPatternStatement:
-    IDENTIFIER DOT MATCH LPAR expression RPAR;
+matchPatternStatement returns [MatchPatternStatement matchPatRet]:
+    id = IDENTIFIER DOT m = MATCH LPAR e = expression RPAR
+    {
+        Identifier id_ = new Identifier($id.text);
+        $matchPatRet = new MatchPatternStatement(id_, $e.expRet);
+        $matchPatRet.setLine($m.line);
+    }
+    ;
 
-chopAndChompStatement:
-    (CHOP
-    | CHOMP) LPAR expression RPAR;
+// todo:move match, filter, to expression
+chopStatement:
+    CHOP LPAR expression RPAR;
+chompStatement:
+    CHOMP LPAR expression RPAR;
 
 assignment:
     IDENTIFIER (accessList)?
@@ -369,7 +396,8 @@ otherExpression:
     values
     | IDENTIFIER
     | lambdaFunction
-    | chopAndChompStatement
+    | chopStatement
+    |chompStatement
     | matchPatternStatement
     | filterStatement
     | lenStatement
