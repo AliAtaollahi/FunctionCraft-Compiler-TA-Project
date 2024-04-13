@@ -372,33 +372,56 @@ body returns [ArrayList<Statement> bodyRet]:
 
 
 expression returns [Expression expRet]:
-    expression APPEND eqaulityExpression
-    | eqaulityExpression;
+    e1 = expression a = APPEND e2 = eqaulityExpression
+    {
+        if(!($e1.expRet instanceof AppendExpression)){
+            $expRet = new AppendExpression($e1.expRet);
+            $expRet.setLine($a.line);
+        }
+        else{
+            $e1.expRet.addAppendedExpression($e2.expRet)
+            $expRet = $e1.expRet;
+        }
+    }
+    | e3 = eqaulityExpression {$expRet = $e3.expRet;};
 
 
-eqaulityExpression:
-    eqaulityExpression
-    (op = EQUAL
-    | op = NOT_EQUAL
-    ) relationalExpression
-    | relationalExpression;
+eqaulityExpression returns [Expression expRet]:
+    {
+        BinaryOperator op;
+    }
+    e1 = eqaulityExpression
+    (op1 = EQUAL {op = BinaryOperator.EQUAL;}
+    | op2 = NOT_EQUAL {op = BinaryOperator.NOT_EQUAL;}
+    ) r1 = relationalExpression {$expRet = new BinaryExpression($e1.expRet, $r1.expRet, op);}
+    | r2 = relationalExpression {$expRet = $r2.expRet;};
 
-relationalExpression:
-    relationalExpression
-    (op = GREATER_THAN
-    | op = LESS_THAN
-    | op = LESS_EQUAL_THAN
-    | op = GREATER_EQUAL_THAN
-    ) additiveExpression
-    | additiveExpression;
+relationalExpression returns [Expression expRet]:
+    {
+        BinaryOperator op;
+    }
+    r1 = relationalExpression
+    (op = GREATER_THAN {op = BinaryOperator.GREATER_THAN;}
+    | LESS_THAN {op = BinaryOperator.LESS_THAN;}
+    | LESS_EQUAL_THAN {op = BinaryOperator.LESS_EQUAL_THAN;}
+    | GREATER_EQUAL_THAN {op = BinaryOperator.GREATER_EQUAL_THAN;}
+    ) a1 = additiveExpression {$expRet = new BinaryExpression($r1.expRet, $a1.expRet, op);}
+    | a2 = additiveExpression {$expRet = $a2.expRet;};
 
 
-additiveExpression:
-    additiveExpression
-    (op = PLUS
-    | op = MINUS
-    ) multiplicativeExpression
-    | multiplicativeExpression;
+additiveExpression returns [Expression expRet]:
+    {
+        BinaryOperator op;
+    }
+    a1 = additiveExpression
+    (PLUS {op = BinaryOperator.PLUS;}
+    | MINUS {op = BinaryOperator.MINUS;}
+    ) m1 = multiplicativeExpression {$expRet = new BinaryExpression($a1.expRet, $m1.expRet, op);}
+    | m2 = multiplicativeExpression
+    {
+        $expRet = $m2.expRet;
+    }
+    ;
 
 
 multiplicativeExpression:
@@ -433,7 +456,7 @@ otherExpression:
     |chompStatement
     | matchPatternStatement
     | filterStatement
-    | lenStatement
+    | lenStatement//move len to expression
     | LPAR (expression)? RPAR;
 
 

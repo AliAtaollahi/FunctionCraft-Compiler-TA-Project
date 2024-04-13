@@ -28,4 +28,6 @@ public interface IVisitor<T> {
     T visit(ChompStatement chompStatement);
     T visit(AssignStatement assignStatement);
     T visit(ExpressionStatement expressionStatement);
+    T visit(AppendExpression appendExpression);
+    T visit(BinaryExpression binaryExpression);
 }
