@@ -1,10 +1,8 @@
-package main.ast.nodes.statement;
+package main.ast.nodes.expression;
 
-import main.ast.nodes.expression.Expression;
-import main.ast.nodes.expression.Identifier;
 import main.visitor.IVisitor;
 
-public class MatchPatternStatement extends Statement{
+public class MatchPatternStatement extends Expression{
     private Identifier patternId;
     Expression matchArgument;
     public MatchPatternStatement(Identifier patternId, Expression matchArgument){

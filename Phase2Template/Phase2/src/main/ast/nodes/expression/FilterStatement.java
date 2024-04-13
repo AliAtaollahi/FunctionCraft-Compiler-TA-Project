@@ -1,13 +1,10 @@
-package main.ast.nodes.statement;
+package main.ast.nodes.expression;
 
-import main.ast.nodes.expression.Expression;
-import main.ast.nodes.expression.Identifier;
 import main.visitor.IVisitor;
 
 import java.util.ArrayList;
 
-//visit Identifier first
-public class FilterStatement extends Statement{
+public class FilterStatement extends Expression{
     private Identifier iteratorId;
     private Expression filterExpression;
     private ArrayList<Expression> conditionalExpressions = new ArrayList<>();

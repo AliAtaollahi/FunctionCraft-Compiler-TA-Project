@@ -5,7 +5,7 @@ import main.ast.nodes.declaration.FunctionDeclaration;
 import main.ast.nodes.declaration.MainDeclaration;
 import main.ast.nodes.declaration.PatternDeclaration;
 import main.ast.nodes.declaration.VarDeclaration;
-import main.ast.nodes.expression.Identifier;
+import main.ast.nodes.expression.*;
 import main.ast.nodes.statement.*;
 
 public interface IVisitor<T> {
@@ -24,4 +24,8 @@ public interface IVisitor<T> {
     T visit(ForStatement forStatement);
     T visit(FilterStatement filterStatement);
     T visit(MatchPatternStatement matchPatternStatement);
+    T visit(ChopStatement chopStatement);
+    T visit(ChompStatement chompStatement);
+    T visit(AssignStatement assignStatement);
+    T visit(ExpressionStatement expressionStatement);
 }
