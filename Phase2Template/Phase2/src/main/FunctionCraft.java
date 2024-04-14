@@ -3,6 +3,7 @@ package main;
 
 
 import main.ast.nodes.Program;
+import main.visitor.astPrinter.AstPrinter;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -19,6 +20,7 @@ public class FunctionCraft {
         CommonTokenStream tokens = new CommonTokenStream(flLexer);
         FunctionCraftParser flParser = new FunctionCraftParser(tokens);
         Program program = flParser.program().flProgram;
+        AstPrinter astPrinter = new AstPrinter();
 
     }
 }

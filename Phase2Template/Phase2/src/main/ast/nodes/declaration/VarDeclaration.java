@@ -8,7 +8,10 @@ public class VarDeclaration extends Declaration{
     private Identifier name;
     private Expression defaultVal;
 
-    public VarDeclaration(Identifier name){this.name = name;}
+    public VarDeclaration(Identifier name){
+        this.name = name;
+        this.defaultVal = null;
+    }
     public Identifier getName(){return this.name;}
     public void setName(Identifier name){this.name = name;}
     public Expression getDefaultVal(){return this.defaultVal;}
