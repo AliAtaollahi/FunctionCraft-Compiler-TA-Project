@@ -1,5 +1,14 @@
 // Generated from U:/UT/6/PLC_TA/Design-Compiler-Course-Projects/Phase2Template/Phase2/src/main/grammer/FunctionCraft.g4 by ANTLR 4.13.1
 package parsers;
+
+    import main.ast.nodes.*;
+    import main.ast.nodes.declaration.*;
+    import main.ast.nodes.statement.*;
+    import main.ast.nodes.expression.*;
+    import main.ast.nodes.expression.operators.*;
+    import main.ast.nodes.expression.value.*;
+    import main.ast.nodes.expression.value.primitive.*;
+
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -188,15 +197,25 @@ public interface FunctionCraftListener extends ParseTreeListener {
 	 */
 	void exitMatchPatternStatement(FunctionCraftParser.MatchPatternStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link FunctionCraftParser#chopAndChompStatement}.
+	 * Enter a parse tree produced by {@link FunctionCraftParser#chopStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterChopAndChompStatement(FunctionCraftParser.ChopAndChompStatementContext ctx);
+	void enterChopStatement(FunctionCraftParser.ChopStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link FunctionCraftParser#chopAndChompStatement}.
+	 * Exit a parse tree produced by {@link FunctionCraftParser#chopStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitChopAndChompStatement(FunctionCraftParser.ChopAndChompStatementContext ctx);
+	void exitChopStatement(FunctionCraftParser.ChopStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FunctionCraftParser#chompStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterChompStatement(FunctionCraftParser.ChompStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FunctionCraftParser#chompStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitChompStatement(FunctionCraftParser.ChompStatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link FunctionCraftParser#assignment}.
 	 * @param ctx the parse tree

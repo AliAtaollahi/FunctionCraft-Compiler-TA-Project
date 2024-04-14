@@ -1,5 +1,14 @@
 // Generated from U:/UT/6/PLC_TA/Design-Compiler-Course-Projects/Phase2Template/Phase2/src/main/grammer/FunctionCraft.g4 by ANTLR 4.13.1
 package parsers;
+
+    import main.ast.nodes.*;
+    import main.ast.nodes.declaration.*;
+    import main.ast.nodes.statement.*;
+    import main.ast.nodes.expression.*;
+    import main.ast.nodes.expression.operators.*;
+    import main.ast.nodes.expression.value.*;
+    import main.ast.nodes.expression.value.primitive.*;
+
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -119,11 +128,17 @@ public interface FunctionCraftVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMatchPatternStatement(FunctionCraftParser.MatchPatternStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link FunctionCraftParser#chopAndChompStatement}.
+	 * Visit a parse tree produced by {@link FunctionCraftParser#chopStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitChopAndChompStatement(FunctionCraftParser.ChopAndChompStatementContext ctx);
+	T visitChopStatement(FunctionCraftParser.ChopStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FunctionCraftParser#chompStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitChompStatement(FunctionCraftParser.ChompStatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link FunctionCraftParser#assignment}.
 	 * @param ctx the parse tree

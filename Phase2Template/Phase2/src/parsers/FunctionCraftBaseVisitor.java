@@ -1,5 +1,14 @@
 // Generated from U:/UT/6/PLC_TA/Design-Compiler-Course-Projects/Phase2Template/Phase2/src/main/grammer/FunctionCraft.g4 by ANTLR 4.13.1
 package parsers;
+
+    import main.ast.nodes.*;
+    import main.ast.nodes.declaration.*;
+    import main.ast.nodes.statement.*;
+    import main.ast.nodes.expression.*;
+    import main.ast.nodes.expression.operators.*;
+    import main.ast.nodes.expression.value.*;
+    import main.ast.nodes.expression.value.primitive.*;
+
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -144,7 +153,14 @@ public class FunctionCraftBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitChopAndChompStatement(FunctionCraftParser.ChopAndChompStatementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitChopStatement(FunctionCraftParser.ChopStatementContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitChompStatement(FunctionCraftParser.ChompStatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

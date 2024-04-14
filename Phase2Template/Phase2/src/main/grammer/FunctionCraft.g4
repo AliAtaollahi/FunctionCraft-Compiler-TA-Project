@@ -1,5 +1,14 @@
 grammar FunctionCraft;
 
+@header{
+    import main.ast.nodes.*;
+    import main.ast.nodes.declaration.*;
+    import main.ast.nodes.statement.*;
+    import main.ast.nodes.expression.*;
+    import main.ast.nodes.expression.operators.*;
+    import main.ast.nodes.expression.value.*;
+    import main.ast.nodes.expression.value.primitive.*;
+}
 
 
 program returns [Program flProgram]:
@@ -34,41 +43,41 @@ functionArgumentsDeclaration returns [ArrayList<VarDeclaration> argRet]:
     LPAR
     (id1 = IDENTIFIER
     {
-        Identifier id_ = new Identifier(id1.text);
+        Identifier id_ = new Identifier($id1.text);
         id_.setLine($id1.line);
-        VarDeclaration = newVarDec(id_);
+        VarDeclaration newVarDec = new VarDeclaration(id_);
         $argRet.add(newVarDec);
     }
     (COMMA id2 = IDENTIFIER
         {
-            Identifier id_ = new Identifier(id2.text);
-            id_.setLine($id2.line);
-            VarDeclaration = newVarDec(id_);
-            $argRet.add(newVarDec);
+            Identifier id_2 = new Identifier($id2.text);
+            id_2.setLine($id2.line);
+            VarDeclaration newVarDec2 = new VarDeclaration(id_2);
+            $argRet.add(newVarDec2);
         }
     )*
     (
     COMMA LBRACK id3 = IDENTIFIER
      {
-        Identifier id_ = new Identifier(id3.text);
+        Identifier id_3 = new Identifier($id3.text);
         id_.setLine($id3.line);
-        VarDeclaration = newVarDec(id_);
+        VarDeclaration newVarDec3 = new VarDeclaration(id_3);
      }
      ASSIGN e1 = expression
       {
-        newVarDec.setDefaultVal(e1.expRet);
-        $argRet.add(newVarDec);
+        newVarDec3.setDefaultVal($e1.expRet);
+        $argRet.add(newVarDec3);
       }
       (COMMA id4 = IDENTIFIER
        {
-            Identifier id_ = new Identifier(id4.text);
-            id_.setLine($id4.line);
-            VarDeclaration = newVarDec(id_);
+            Identifier id_4 = new Identifier($id4.text);
+            id_4.setLine($id4.line);
+            VarDeclaration newVarDec4 = new VarDeclaration(id_);
        }
        ASSIGN e2 = expression
        {
-            newVarDec.setDefaultVal(e2.expRet);
-            $argRet.add(newVarDec);
+            newVarDec4.setDefaultVal($e2.expRet);
+            $argRet.add(newVarDec4);
        }
        )* RBRACK
     )?
@@ -135,15 +144,15 @@ returnStatement returns [ReturnStatement returnStmtRet]:
     {
         $returnStmtRet = new ReturnStatement();
     }
-    RETURN (e = expression{$returnStmtRet.setReturnExp(e.expRet);})? SEMICOLLON;
+    RETURN (e = expression{$returnStmtRet.setReturnExp($e.expRet);})? SEMICOLLON;
 
 ifStatement returns[IfStatement ifRet]:
     {
         $ifRet = new IfStatement();
     }
-    if = IF
+    i = IF
     {
-        $ifRet.setLine($if.line);
+        $ifRet.setLine($i.line);
     }
     c1 = condition {$ifRet.addCondition($c1.conditionRet);}
     b = body {$ifRet.setThenBody($b.bodyRet);}
@@ -209,7 +218,7 @@ loopDoStatement returns [LoopDoStatement loopDoRet]:
     l1 = LOOP DO
     l2 = loopBody
     {
-        $loopDoRet = new LoopDoStatement(l2.loopStmts, l2.loopExps, l2.loopRetStmt);
+        $loopDoRet = new LoopDoStatement($l2.loopStmts, $l2.loopExps, $l2.loopRetStmt);
         $loopDoRet.setLine($l1.line);
     }
     END;
@@ -345,12 +354,12 @@ accessList returns [Expression accessListExp]:
     LBRACK e = expression {$accessListExp = $e.expRet;} RBRACK;
 
 statement returns [Statement stmtRet]:
-    if = ifStatement {$stmtRet = $if.ifRet;}
+    i = ifStatement {$stmtRet = $i.ifRet;}
     | loop = loopDoStatement {$stmtRet = $loop.loopDoRet;}
-    | for = forStatement {$stmtRet = $for.forStRet;}
+    | f = forStatement {$stmtRet = $f.forStRet;}
     | puts = putsStatement {$stmtRet = $puts.putRet;}
     | push = pushStatement {$stmtRet = $push.pushRet;}
-    | e = expression
+    | e = expression {$stmtRet = new ExpressionStatement($e.expRet);}
      {
         ExpressionStatement expStmt = new ExpressionStatement($e.expRet);
         $stmtRet = expStmt;
@@ -379,8 +388,9 @@ expression returns [Expression expRet]:
             $expRet.setLine($a.line);
         }
         else{
-            $e1.expRet.addAppendedExpression($e2.expRet)
-            $expRet = $e1.expRet;
+            AppendExpression appendExp = (AppendExpression) $e1.expRet;
+            appendExp.addAppendedExpression($e2.expRet);
+            $expRet = appendExp;
         }
     }
     | e3 = eqaulityExpression {$expRet = $e3.expRet;};
@@ -472,10 +482,12 @@ accessExpression returns [Expression expRet]:
             $expRet = $o.expRet;
         }
         else{
-            $expRet = new AccessExpression($o.expRet, args);
+            AccessExpression accessExp = new AccessExpression($o.expRet, args);
             if(isMultiDimentional){
-                $expRet.setDimentionalAccess(dimentions);
+
+                accessExp.setDimentionalAccess(dimentions);
             }
+            $expRet = accessExp;
         }
     }
     ;
@@ -489,10 +501,10 @@ otherExpression returns [Expression expRet]:
     }
     | lambda = lambdaFunction {$expRet = $lambda.lambdaRet;}
     | chop = chopStatement {$expRet = $chop.chopRet;}
-    | chomp = chompStatement {$expRet = chomp.chompRet;}
+    | chomp = chompStatement {$expRet = $chomp.chompRet;}
     | match = matchPatternStatement {$expRet = $match.matchPatRet;}
     | f = filterStatement {$expRet = $f.filterStatementRet;}
-    | len = lenStatement {$expRet = $len.lenRet;}
+    | len_ = lenStatement {$expRet = $len_.lenRet;}
     | LPAR (e = expression {$expRet = $e.expRet;})? RPAR;
 
 
@@ -511,7 +523,7 @@ values returns [Value valRet]:
     b = boolValue {$valRet = $b.boolValRet;}
     | s = STRING_VALUE {$valRet = new StringValue($s.text); $valRet.setLine($s.line);}
     | i = INT_VALUE {$valRet = new IntValue($i.int);$valRet.setLine($i.line);}
-    | float = FLOAT_VALUE {$valRet = new FloatValue(Float.parseFloat($float.text));$valRet.setLine($float.line);}
+    | float_ = FLOAT_VALUE {$valRet = new FloatValue(Float.parseFloat($float_.text));$valRet.setLine($float_.line);}
     | l = listValue {$valRet = $l.listValRet;}
     | f = functionPointer {$valRet = $f.fpRet;};
 

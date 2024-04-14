@@ -1,6 +1,15 @@
 // Generated from U:/UT/6/PLC_TA/Design-Compiler-Course-Projects/Phase2Template/Phase2/src/main/grammer/FunctionCraft.g4 by ANTLR 4.13.1
 package parsers;
 
+    import main.ast.nodes.*;
+    import main.ast.nodes.declaration.*;
+    import main.ast.nodes.statement.*;
+    import main.ast.nodes.expression.*;
+    import main.ast.nodes.expression.operators.*;
+    import main.ast.nodes.expression.value.*;
+    import main.ast.nodes.expression.value.primitive.*;
+
+
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -233,13 +242,25 @@ public class FunctionCraftBaseListener implements FunctionCraftListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterChopAndChompStatement(FunctionCraftParser.ChopAndChompStatementContext ctx) { }
+	@Override public void enterChopStatement(FunctionCraftParser.ChopStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitChopAndChompStatement(FunctionCraftParser.ChopAndChompStatementContext ctx) { }
+	@Override public void exitChopStatement(FunctionCraftParser.ChopStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterChompStatement(FunctionCraftParser.ChompStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitChompStatement(FunctionCraftParser.ChompStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

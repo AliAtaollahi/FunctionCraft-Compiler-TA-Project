@@ -1,5 +1,14 @@
 // Generated from U:/UT/6/PLC_TA/Design-Compiler-Course-Projects/Phase2Template/Phase2/src/main/grammer/FunctionCraft.g4 by ANTLR 4.13.1
-package main.grammer;
+package /parsers;
+
+    import main.ast.node.*;
+    import main.ast.node.declaration.*;
+    import main.ast.node.statement.*;
+    import main.ast.node.expression.*;
+    import main.ast.node.expression.operators.*;
+    import main.ast.node.expression.value.*;
+    import main.ast.node.expression.primitive.*;
+
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
