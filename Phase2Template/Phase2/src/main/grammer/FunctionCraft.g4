@@ -386,21 +386,21 @@ expression returns [Expression expRet]:
     | e3 = eqaulityExpression {$expRet = $e3.expRet;};
 
 
-eqaulityExpression returns [Expression expRet]:
+eqaulityExpression returns[Expression expRet]:
+    e1 = eqaulityExpression
     {
         BinaryOperator op;
     }
-    e1 = eqaulityExpression
     (op1 = EQUAL {op = BinaryOperator.EQUAL;}
     | op2 = NOT_EQUAL {op = BinaryOperator.NOT_EQUAL;}
     ) r1 = relationalExpression {$expRet = new BinaryExpression($e1.expRet, $r1.expRet, op);}
     | r2 = relationalExpression {$expRet = $r2.expRet;};
 
 relationalExpression returns [Expression expRet]:
+    r1 = relationalExpression
     {
         BinaryOperator op;
     }
-    r1 = relationalExpression
     (op = GREATER_THAN {op = BinaryOperator.GREATER_THAN;}
     | LESS_THAN {op = BinaryOperator.LESS_THAN;}
     | LESS_EQUAL_THAN {op = BinaryOperator.LESS_EQUAL_THAN;}
@@ -410,10 +410,10 @@ relationalExpression returns [Expression expRet]:
 
 
 additiveExpression returns [Expression expRet]:
-    {
-        BinaryOperator op;
-    }
     a1 = additiveExpression
+    {
+            BinaryOperator op;
+    }
     (PLUS {op = BinaryOperator.PLUS;}
     | MINUS {op = BinaryOperator.MINUS;}
     ) m1 = multiplicativeExpression {$expRet = new BinaryExpression($a1.expRet, $m1.expRet, op);}
@@ -425,10 +425,10 @@ additiveExpression returns [Expression expRet]:
 
 
 multiplicativeExpression returns [Expression expRet]:
-    {
-        BinaryOperator op;
-    }
     m1 = multiplicativeExpression
+    {
+            BinaryOperator op;
+    }
     (MULT {op = BinaryOperator.MULT;}
     |DIVIDE {op = BinaryOperator.DIVIDE;}
     ) p1 = preUnaryExpression {$expRet = new BinaryExpression($m1.expRet, $p1.expRet, op);}
