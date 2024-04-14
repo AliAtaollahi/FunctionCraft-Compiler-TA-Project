@@ -1445,7 +1445,7 @@ public class FunctionCraftParser extends Parser {
 
 			        ((LoopBodyContext)_localctx).loopStmts =  new ArrayList<Statement>();
 			        ((LoopBodyContext)_localctx).loopExps =  new ArrayList<Expression>();
-			        ((LoopBodyContext)_localctx).loopRetStmt =  new ReturnStatement();
+			        ((LoopBodyContext)_localctx).loopRetStmt =  null;
 			    
 			setState(296);
 			_errHandler.sync(this);

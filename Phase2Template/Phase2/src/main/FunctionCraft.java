@@ -21,6 +21,7 @@ public class FunctionCraft {
         FunctionCraftParser flParser = new FunctionCraftParser(tokens);
         Program program = flParser.program().flProgram;
         AstPrinter astPrinter = new AstPrinter();
+        astPrinter.visit(program);
 
     }
 }

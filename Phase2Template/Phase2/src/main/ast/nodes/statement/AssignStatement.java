@@ -59,7 +59,7 @@ public class AssignStatement extends Statement{
         return assignExpression;
     }
     @Override
-    public String toString(){return "Assign:"+ this.assignedId.toString();}
+    public String toString(){return "AssignTo:"+ this.assignedId.toString();}
     @Override
     public <T> T accept(IVisitor<T> visitor){return visitor.visit(this);}
 }

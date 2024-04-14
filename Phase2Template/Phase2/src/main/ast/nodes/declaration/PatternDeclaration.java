@@ -29,7 +29,7 @@ public class PatternDeclaration extends Declaration{
     public void setReturnExp(ArrayList<Expression> returnExp){this.returnExp = returnExp;}
     public void addReturnExp(Expression returnExp){this.returnExp.add(returnExp);}
     @Override
-    public String toString(){return "PatternDeclaration:" + patternName;}
+    public String toString(){return "PatternDeclaration:" + patternName + " on variable:" + targetVariable.getName();}
     @Override
     public <T> T accept(IVisitor<T>visitor){return visitor.visit(this);}
 
