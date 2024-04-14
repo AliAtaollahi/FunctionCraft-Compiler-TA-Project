@@ -424,69 +424,120 @@ additiveExpression returns [Expression expRet]:
     ;
 
 
-multiplicativeExpression:
-    multiplicativeExpression
-    (op = MULT
-    | op = DIVIDE
-    ) preUnaryExpression
-    | preUnaryExpression;
+multiplicativeExpression returns [Expression expRet]:
+    {
+        BinaryOperator op;
+    }
+    m1 = multiplicativeExpression
+    (MULT {op = BinaryOperator.MULT;}
+    |DIVIDE {op = BinaryOperator.DIVIDE;}
+    ) p1 = preUnaryExpression {$expRet = new BinaryExpression($m1.expRet, $p1.expRet, op);}
+    | p2 = preUnaryExpression {$expRet = $p2.expRet;};
 
 
-preUnaryExpression:
-    (op = NOT
-    | op = MINUS
-    | op = INCREMENT
-    | op = DECREMENT
-    ) accessExpression
-    | accessExpression;
+preUnaryExpression returns [Expression expRet]:
+    {
+        UnaryOperator op;
+    }
+    (NOT {op = UnaryOperator.NOT;}
+    |MINUS {op = UnaryOperator.MINUS;}
+    |INCREMENT {op = UnaryOperator.INC;}
+    |DECREMENT {op = UnaryOperator.DEC;}
+    ) a1 = accessExpression {$expRet = new UnaryExpression($a1.expRet, op);}
+    | a2 = accessExpression {$expRet = $a2.expRet;};
 
 
-accessExpression:
-    otherExpression
-    (LPAR functionArguments
+accessExpression returns [Expression expRet]:
+    {
+        boolean isAccessExpression = false;
+        boolean isMultiDimentional = false;
+        ArrayList<Expression> args = new ArrayList<Expression>();
+        ArrayList<Expression> dimentions = new ArrayList<Expression>();
+    }
+    o = otherExpression
+    (LPAR f = functionArguments //arrayList of expression
+    {
+        isAccessExpression = true;
+        args.addAll($f.funcArgsRet);
+    }
     RPAR)*
-    (accessList)*
+    (a = accessList //single expression
+    {
+        isMultiDimentional = true;
+        dimentions.add($a.accessListExp);
+    }
+    )*
+    {
+        if(!isAccessExpression){
+            $expRet = $o.expRet;
+        }
+        else{
+            $expRet = new AccessExpression($o.expRet, args);
+            if(isMultiDimentional){
+                $expRet.setDimentionalAccess(dimentions);
+            }
+        }
+    }
     ;
 
-otherExpression:
-    values
-    | IDENTIFIER
-    | lambdaFunction
-    | chopStatement
-    |chompStatement
-    | matchPatternStatement
-    | filterStatement
-    | lenStatement//move len to expression
-    | LPAR (expression)? RPAR;
+otherExpression returns [Expression expRet]:
+    v = values {$expRet = $v.valRet;}
+    | id = IDENTIFIER
+    {
+        $expRet = new Identifier($id.text);
+        $expRet.setLine($id.line);
+    }
+    | lambda = lambdaFunction {$expRet = $lambda.lambdaRet;}
+    | chop = chopStatement {$expRet = $chop.chopRet;}
+    | chomp = chompStatement {$expRet = chomp.chompRet;}
+    | match = matchPatternStatement {$expRet = $match.matchPatRet;}
+    | f = filterStatement {$expRet = $f.filterStatementRet;}
+    | len = lenStatement {$expRet = $len.lenRet;}
+    | LPAR (e = expression {$expRet = $e.expRet;})? RPAR;
 
 
 
-lambdaFunction:
-    ARROW  functionArgumentsDeclaration
-     LBRACE body RBRACE functionArguments
+lambdaFunction returns [Expression lambdaRet]:
+    a = ARROW  fd = functionArgumentsDeclaration
+     LBRACE b = body RBRACE fa = functionArguments
+     {
+        $lambdaRet = new LambdaExpression($fd.argRet, $b.bodyRet, $fa.funcArgsRet);
+        $lambdaRet.setLine($a.line);
+     }
     ;
 
 
-values:
-    boolValue
-    | STRING_VALUE
-    | INT_VALUE
-    | FLOAT_VALUE
-    | listValue
-    | functionPointer;
+values returns [Value valRet]:
+    b = boolValue {$valRet = $b.boolValRet;}
+    | s = STRING_VALUE {$valRet = new StringValue($s.text); $valRet.setLine($s.line);}
+    | i = INT_VALUE {$valRet = new IntValue($i.int);$valRet.setLine($i.line);}
+    | float = FLOAT_VALUE {$valRet = new FloatValue(Float.parseFloat($float.text));$valRet.setLine($float.line);}
+    | l = listValue {$valRet = $l.listValRet;}
+    | f = functionPointer {$valRet = $f.fpRet;};
 
-listValue:
-    LBRACK functionArguments
+listValue returns [ListValue listValRet]:
+    l = LBRACK f = functionArguments
     RBRACK
+    {
+        $listValRet = new ListValue($f.funcArgsRet);
+        $listValRet.setLine($l.line);
+    }
     ;
 
-boolValue:
-    TRUE
-    | FALSE
+boolValue returns [BoolValue boolValRet]:
+    t = TRUE {$boolValRet = new BoolValue(true); $boolValRet.setLine($t.line);}
+    | f = FALSE {$boolValRet = new BoolValue(false); $boolValRet.setLine($f.line);}
     ;
 
-functionPointer:
-    METHOD LPAR COLON IDENTIFIER RPAR;
+functionPointer returns [FunctionPointer fpRet]:
+    m = METHOD LPAR COLON id = IDENTIFIER RPAR
+    {
+        Identifier id_ = new Identifier($id.text);
+        id_.setLine($id.line);
+        $fpRet = new FunctionPointer(id_);
+        $fpRet.setLine($m.line);
+    }
+    ;
 
 
 DEF: 'def';

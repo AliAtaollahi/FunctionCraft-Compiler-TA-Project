@@ -1,9 +1,8 @@
-package main.ast.nodes.statement;
+package main.ast.nodes.expression;
 
-import main.ast.nodes.expression.Expression;
 import main.visitor.IVisitor;
 
-public class LenStatement extends Statement{
+public class LenStatement extends Expression{
     private Expression expression;
     public LenStatement(Expression expression){this.expression = expression;}
     public Expression getExpression(){return this.expression;}
