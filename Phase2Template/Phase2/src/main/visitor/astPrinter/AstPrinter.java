@@ -17,7 +17,7 @@ import main.visitor.Visitor;
 
 public class AstPrinter extends Visitor<Void> {
     public void printMessage(int line, String message){
-        System.out.println("line:" + String.valueOf(line) + message);
+        System.out.println("line:" + String.valueOf(line) + "->" + message);
     }
 
     @Override

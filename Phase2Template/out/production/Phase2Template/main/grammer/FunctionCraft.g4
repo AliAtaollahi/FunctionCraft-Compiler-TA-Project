@@ -30,6 +30,7 @@ functionDeclaration returns [FunctionDeclaration functionDeclarationRet]:
         Identifier id_ = new Identifier($id.text);
         id_.setLine($id.line);
         $functionDeclarationRet.setFunctionName(id_);
+        $functionDeclarationRet.setLine($def.line);
     }
     f = functionArgumentsDeclaration {$functionDeclarationRet.setArgs($f.argRet);}
     b = body {$functionDeclarationRet.setBody($b.bodyRet);}
@@ -144,7 +145,10 @@ returnStatement returns [ReturnStatement returnStmtRet]:
     {
         $returnStmtRet = new ReturnStatement();
     }
-    RETURN (e = expression{$returnStmtRet.setReturnExp($e.expRet);})? SEMICOLLON;
+    r = RETURN (e = expression{
+        $returnStmtRet.setReturnExp($e.expRet);
+        $returnStmtRet.setLine($r.line);
+    })? SEMICOLLON;
 
 ifStatement returns[IfStatement ifRet]:
     {
@@ -397,25 +401,27 @@ expression returns [Expression expRet]:
 
 
 eqaulityExpression returns[Expression expRet]:
-    e1 = eqaulityExpression
+    e1 = relationalExpression
     {
         BinaryOperator op;
+        int line;
     }
-    (op1 = EQUAL {op = BinaryOperator.EQUAL;}
-    | op2 = NOT_EQUAL {op = BinaryOperator.NOT_EQUAL;}
-    ) r1 = relationalExpression {$expRet = new BinaryExpression($e1.expRet, $r1.expRet, op);}
+    (op1 = EQUAL {op = BinaryOperator.EQUAL;line = $op1.line;}
+    | op2 = NOT_EQUAL {op = BinaryOperator.NOT_EQUAL;line = $op2.line;}
+    ) r1 = relationalExpression {$expRet = new BinaryExpression($e1.expRet, $r1.expRet, op);$expRet.setLine(line);}
     | r2 = relationalExpression {$expRet = $r2.expRet;};
 
 relationalExpression returns [Expression expRet]:
     r1 = relationalExpression
     {
         BinaryOperator op;
+        int line;
     }
-    (op = GREATER_THAN {op = BinaryOperator.GREATER_THAN;}
-    | LESS_THAN {op = BinaryOperator.LESS_THAN;}
-    | LESS_EQUAL_THAN {op = BinaryOperator.LESS_EQUAL_THAN;}
-    | GREATER_EQUAL_THAN {op = BinaryOperator.GREATER_EQUAL_THAN;}
-    ) a1 = additiveExpression {$expRet = new BinaryExpression($r1.expRet, $a1.expRet, op);}
+    (gt = GREATER_THAN {op = BinaryOperator.GREATER_THAN;line = $gt.line;}
+    | lt = LESS_THAN {op = BinaryOperator.LESS_THAN;line = $lt.line;}
+    | let = LESS_EQUAL_THAN {op = BinaryOperator.LESS_EQUAL_THAN;line = $let.line;}
+    | get = GREATER_EQUAL_THAN {op = BinaryOperator.GREATER_EQUAL_THAN;line = $get.line;}
+    ) a1 = additiveExpression {$expRet = new BinaryExpression($r1.expRet, $a1.expRet, op);$expRet.setLine(line);}
     | a2 = additiveExpression {$expRet = $a2.expRet;};
 
 
@@ -423,10 +429,11 @@ additiveExpression returns [Expression expRet]:
     a1 = additiveExpression
     {
             BinaryOperator op;
+            int line;
     }
-    (PLUS {op = BinaryOperator.PLUS;}
-    | MINUS {op = BinaryOperator.MINUS;}
-    ) m1 = multiplicativeExpression {$expRet = new BinaryExpression($a1.expRet, $m1.expRet, op);}
+    (p = PLUS {op = BinaryOperator.PLUS;line = $p.line;}
+    | m = MINUS {op = BinaryOperator.MINUS;line = $m.line;}
+    ) m1 = multiplicativeExpression {$expRet = new BinaryExpression($a1.expRet, $m1.expRet, op);$expRet.setLine(line);}
     | m2 = multiplicativeExpression
     {
         $expRet = $m2.expRet;
@@ -438,22 +445,24 @@ multiplicativeExpression returns [Expression expRet]:
     m1 = multiplicativeExpression
     {
             BinaryOperator op;
+            int line;
     }
-    (MULT {op = BinaryOperator.MULT;}
-    |DIVIDE {op = BinaryOperator.DIVIDE;}
-    ) p1 = preUnaryExpression {$expRet = new BinaryExpression($m1.expRet, $p1.expRet, op);}
+    (m = MULT {op = BinaryOperator.MULT;line = $m.line;}
+    |d = DIVIDE {op = BinaryOperator.DIVIDE;line = $d.line;}
+    ) p1 = preUnaryExpression {$expRet = new BinaryExpression($m1.expRet, $p1.expRet, op);$expRet.setLine(line);}
     | p2 = preUnaryExpression {$expRet = $p2.expRet;};
 
 
 preUnaryExpression returns [Expression expRet]:
     {
         UnaryOperator op;
+        int line;
     }
-    (NOT {op = UnaryOperator.NOT;}
-    |MINUS {op = UnaryOperator.MINUS;}
-    |INCREMENT {op = UnaryOperator.INC;}
-    |DECREMENT {op = UnaryOperator.DEC;}
-    ) a1 = accessExpression {$expRet = new UnaryExpression($a1.expRet, op);}
+    (n = NOT {op = UnaryOperator.NOT;line = $n.line;}
+    |m = MINUS {op = UnaryOperator.MINUS;line = $m.line;}
+    |i = INCREMENT {op = UnaryOperator.INC;line = $i.line;}
+    |d = DECREMENT {op = UnaryOperator.DEC;line = $d.line;}
+    ) a1 = accessExpression {$expRet = new UnaryExpression($a1.expRet, op);$expRet.setLine(line);}
     | a2 = accessExpression {$expRet = $a2.expRet;};
 
 
@@ -488,6 +497,7 @@ accessExpression returns [Expression expRet]:
                 accessExp.setDimentionalAccess(dimentions);
             }
             $expRet = accessExp;
+            $expRet.setLine($o.expRet.getLine());
         }
     }
     ;
