@@ -47,6 +47,7 @@ functionArgumentsDeclaration returns [ArrayList<VarDeclaration> argRet]:
         Identifier id_ = new Identifier($id1.text);
         id_.setLine($id1.line);
         VarDeclaration newVarDec = new VarDeclaration(id_);
+        newVarDec.setLine($id1.line);
         $argRet.add(newVarDec);
     }
     (COMMA id2 = IDENTIFIER
@@ -54,6 +55,7 @@ functionArgumentsDeclaration returns [ArrayList<VarDeclaration> argRet]:
             Identifier id_2 = new Identifier($id2.text);
             id_2.setLine($id2.line);
             VarDeclaration newVarDec2 = new VarDeclaration(id_2);
+            newVarDec2.setLine($id2.line);
             $argRet.add(newVarDec2);
         }
     )*
@@ -63,6 +65,7 @@ functionArgumentsDeclaration returns [ArrayList<VarDeclaration> argRet]:
         Identifier id_3 = new Identifier($id3.text);
         id_.setLine($id3.line);
         VarDeclaration newVarDec3 = new VarDeclaration(id_3);
+        newVarDec3.setLine($id3.line);
      }
      ASSIGN e1 = expression
       {
@@ -74,6 +77,7 @@ functionArgumentsDeclaration returns [ArrayList<VarDeclaration> argRet]:
             Identifier id_4 = new Identifier($id4.text);
             id_4.setLine($id4.line);
             VarDeclaration newVarDec4 = new VarDeclaration(id_);
+            newVarDec4.setLine($id4.line);
        }
        ASSIGN e2 = expression
        {

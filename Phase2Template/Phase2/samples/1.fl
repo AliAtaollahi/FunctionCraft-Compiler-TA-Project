@@ -1,9 +1,7 @@
-def compare()
-    if (a > b)
-        return "true";
-    else
-        return false;
-    end
+
+
+def compare(a, b)
+    return a+b;
 end
 
 def main()
