@@ -131,17 +131,17 @@ public class ASTErrorDetector extends Visitor<Boolean>{
                 System.out.println(error_msg);
             }
         }
-//        try {
-//            String key = "Function_" + funcDeclaration.getFunctionName().getName();
-//            FunctionSymbolTableItem functionSymbolTableItem = (FunctionSymbolTableItem) SymbolTable.root.getItem(key);
-//            SymbolTable hello = functionSymbolTableItem.getFunctionSymbolTable();
-//            functionSymbolTableItem.setFunctionSymbolTable(functionSymbolTable);
-//        } catch (ItemNotFoundException ignored) {
-//
-//        }
-//        SymbolTable.push(functionSymbolTable);
+        try {
+            String key = "Function_" + funcDeclaration.getFunctionName().getName();
+            FunctionSymbolTableItem functionSymbolTableItem = (FunctionSymbolTableItem) SymbolTable.root.getItem(key);
+            SymbolTable hello = functionSymbolTableItem.getFunctionSymbolTable();
+            functionSymbolTableItem.setFunctionSymbolTable(functionSymbolTable);
+        } catch (ItemNotFoundException ignored) {
+
+        }
+        SymbolTable.push(functionSymbolTable);
         funcDeclaration.getBody().accept(this);
-//        SymbolTable.pop();
+        SymbolTable.pop();
         return null;
     }
 

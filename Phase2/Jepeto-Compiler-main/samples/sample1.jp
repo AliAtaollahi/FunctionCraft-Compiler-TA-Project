@@ -73,3 +73,5 @@ PLC):
     return
 
      Cn(a = 50);
+
+func abbas(a):{return cos(a);}
