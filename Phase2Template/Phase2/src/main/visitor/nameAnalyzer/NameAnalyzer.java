@@ -122,7 +122,7 @@ public class NameAnalyzer extends Visitor<Void> {
 
         } else{
             try{
-                SymbolTable.root.getItem(VarItem.START_KEY + identifier.getName());
+                SymbolTable.top.getItem(VarItem.START_KEY + identifier.getName());
             }catch (ItemNotFound e){
                 nameErrors.add(new VariableNotDeclared(identifier.getLine(), identifier.getName()));
             }

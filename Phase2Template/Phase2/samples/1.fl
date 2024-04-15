@@ -1,6 +1,6 @@
 
 
-def compare(a, b)
+def compare(b)
     return a+b;
 end
 
