@@ -3310,12 +3310,14 @@ public class FunctionCraftParser extends Parser {
 			        }
 			        else{
 			            AccessExpression accessExp = new AccessExpression(((AccessExpressionContext)_localctx).o.expRet, args);
+			            accessExp.setIsFunctionCall(isAccessExpression);
 			            if(isMultiDimentional){
 
 			                accessExp.setDimentionalAccess(dimentions);
 			            }
 			            ((AccessExpressionContext)_localctx).expRet =  accessExp;
 			            _localctx.expRet.setLine(((AccessExpressionContext)_localctx).o.expRet.getLine());
+
 			        }
 			    
 			}

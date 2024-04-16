@@ -5,6 +5,7 @@ package main;
 import main.ast.nodes.Program;
 import main.compileError.CompileError;
 import main.visitor.astPrinter.AstPrinter;
+import main.visitor.nameAnalyzer.DependencyDetector;
 import main.visitor.nameAnalyzer.NameAnalyzer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -28,6 +29,12 @@ public class FunctionCraft {
         nameAnalyzer.visit(program);
         for(CompileError compileError : nameAnalyzer.nameErrors){
             System.out.println(compileError.getErrorMessage());
+        }
+        DependencyDetector dependencyDetector = new DependencyDetector();
+        dependencyDetector.visit(program);
+        dependencyDetector.findDependency();
+        for(CompileError circularDependency : dependencyDetector.dependencyError){
+            System.out.println(circularDependency.getErrorMessage());
         }
     }
 }

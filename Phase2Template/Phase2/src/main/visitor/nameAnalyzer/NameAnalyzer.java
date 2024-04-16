@@ -348,15 +348,35 @@ public class NameAnalyzer extends Visitor<Void> {
     }
     @Override
     public Void visit(AccessExpression accessExpression){
-        if(!accessExpression.getArguments().isEmpty()){
+        int minArgRequired = 0;
+        int maxArgRequired = 0;
+        if(accessExpression.isFunctionCall()){
             isFunctionCallId = true;
             accessExpression.getAccessedExpression().accept(this);
+            Identifier functionName = (Identifier) accessExpression.getAccessedExpression();
+            try{
+                FunctionItem functionItem = (FunctionItem) SymbolTable.root.getItem(FunctionItem.START_KEY + functionName.getName());
+                maxArgRequired = functionItem.getFunctionDeclaration().getArgs().size();
+                for(VarDeclaration varDeclaration : functionItem.getFunctionDeclaration().getArgs()){
+                    if(varDeclaration.getDefaultVal() != null){
+                        minArgRequired += 1;
+                    }
+                }
+                minArgRequired = maxArgRequired - minArgRequired;
+            }catch (ItemNotFound ignored){}
+
         }
         else{
             accessExpression.getAccessedExpression().accept(this);
         }
+        int numberOfProvidedArgs = 0;
         for(Expression expression : accessExpression.getArguments()){
+            numberOfProvidedArgs += 1;
             expression.accept(this);
+        }
+        if((numberOfProvidedArgs < minArgRequired) || (numberOfProvidedArgs > maxArgRequired)){
+            Identifier functionName = (Identifier) accessExpression.getAccessedExpression();
+            nameErrors.add(new ArgMisMatch(accessExpression.getLine(), functionName.getName()));
         }
         for(Expression expression : accessExpression.getDimentionalAccess()){
             expression.accept(this);

@@ -496,12 +496,14 @@ accessExpression returns [Expression expRet]:
         }
         else{
             AccessExpression accessExp = new AccessExpression($o.expRet, args);
+            accessExp.setIsFunctionCall(isAccessExpression);
             if(isMultiDimentional){
 
                 accessExp.setDimentionalAccess(dimentions);
             }
             $expRet = accessExp;
             $expRet.setLine($o.expRet.getLine());
+
         }
     }
     ;

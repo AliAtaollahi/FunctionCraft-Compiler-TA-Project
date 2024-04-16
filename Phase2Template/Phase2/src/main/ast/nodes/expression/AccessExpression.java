@@ -6,12 +6,19 @@ import java.util.ArrayList;
 
 public class AccessExpression extends Expression{
     private Expression accessedExpression;
+    private boolean isFunctionCall;
     private ArrayList<Expression> arguments = new ArrayList<>();
     private ArrayList<Expression> dimentionalAccess = new ArrayList<>();
+    public void setIsFunctionCall(boolean isFunctionCall){this.isFunctionCall = isFunctionCall;}
+
+    public boolean isFunctionCall() {
+        return isFunctionCall;
+    }
 
     public AccessExpression(Expression accessedExpression, ArrayList<Expression> arguments){
         this.accessedExpression = accessedExpression;
         this.arguments = arguments;
+        this.isFunctionCall = false;
     }
 
     public Expression getAccessedExpression() {

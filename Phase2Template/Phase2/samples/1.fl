@@ -1,9 +1,38 @@
 
 
-def compare(b)
-    return a+b;
+def y()
+    return z();
 end
 
+def z()
+    return hh();
+end
+
+def hh()
+    y();
+end
+
+def f()
+    g();
+end
+
+def g()
+    return h();
+end
+
+def h()
+    return f();
+end
+
+
+def abbas(a, b, [c = 2])
+    return a + b + c;
+end
+
+
 def main()
+    a = 5;
+    b = 6;
     puts("salam");
+    abbas(a, b);
 end
