@@ -1,5 +1,5 @@
 
-
+=begin
 def y()
     return z();
 end
@@ -23,9 +23,9 @@ end
 def h()
     return f();
 end
+=end
 
-
-def abbas(a, b, [c = 2])
+def abbas(a, b, [c=2])
     return a + b + c;
 end
 

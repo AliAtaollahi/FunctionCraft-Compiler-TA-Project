@@ -3,7 +3,6 @@ package main.compileError.nameErrors;
 import main.compileError.CompileError;
 
 public class RedefinitionOfPattern extends CompileError {
-    int line;
     String name;
     public RedefinitionOfPattern(int line, String name){
         this.line = line;

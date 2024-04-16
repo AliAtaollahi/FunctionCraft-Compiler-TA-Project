@@ -3,7 +3,6 @@ package main.compileError.nameErrors;
 import main.compileError.CompileError;
 
 public class IdenticalArgFunctionName extends CompileError {
-    private int line;
     private String name;
     public IdenticalArgFunctionName(int line, String name){
         this.line = line;

@@ -15,6 +15,7 @@ import parsers.FunctionCraftParser;
 
 
 import java.io.IOException;
+import java.util.*;
 
 public class FunctionCraft {
     public static void main(String[] args) throws IOException{
@@ -23,10 +24,9 @@ public class FunctionCraft {
         CommonTokenStream tokens = new CommonTokenStream(flLexer);
         FunctionCraftParser flParser = new FunctionCraftParser(tokens);
         Program program = flParser.program().flProgram;
-//        AstPrinter astPrinter = new AstPrinter();
-//        astPrinter.visit(program);
         NameAnalyzer nameAnalyzer = new NameAnalyzer();
         nameAnalyzer.visit(program);
+        nameAnalyzer.nameErrors.sort(Comparator.comparingInt(CompileError::getLine));
         for(CompileError compileError : nameAnalyzer.nameErrors){
             System.out.println(compileError.getErrorMessage());
         }
@@ -35,6 +35,10 @@ public class FunctionCraft {
         dependencyDetector.findDependency();
         for(CompileError circularDependency : dependencyDetector.dependencyError){
             System.out.println(circularDependency.getErrorMessage());
+        }
+        if(nameAnalyzer.nameErrors.size() + dependencyDetector.dependencyError.size() == 0){
+            AstPrinter astPrinter = new AstPrinter();
+            astPrinter.visit(program);
         }
     }
 }

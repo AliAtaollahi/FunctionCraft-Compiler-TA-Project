@@ -3,7 +3,6 @@ package main.compileError.nameErrors;
 import main.compileError.CompileError;
 
 public class ArgMisMatch extends CompileError {
-    int line;
     String functionName;
     public ArgMisMatch(int line, String functionName){
         this.line = line;

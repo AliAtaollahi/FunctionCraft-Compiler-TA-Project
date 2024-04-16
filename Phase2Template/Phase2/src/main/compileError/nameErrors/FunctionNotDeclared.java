@@ -3,7 +3,6 @@ package main.compileError.nameErrors;
 import main.compileError.CompileError;
 
 public class FunctionNotDeclared extends CompileError {
-    private int line;
     private String name;
     public FunctionNotDeclared(int line, String name){
         this.line = line;
