@@ -44,16 +44,9 @@ returnStatement:
 
 ifStatement:
     IF { System.out.println("Decision: IF"); } condition
-    body
-    (ELSEIF { System.out.println("Decision: ELSE IF"); } condition body)*
-    (ELSE { System.out.println("Decision: ELSE"); } body)? END;
-
-ifInLoop:
-    IF { System.out.println("Decision: IF"); } condition
     loopBody
     (ELSEIF { System.out.println("Decision: ELSE IF"); } condition loopBody)*
-    (ELSE { System.out.println("Decision: ELSE"); } loopBody)? END
-;
+    (ELSE { System.out.println("Decision: ELSE"); } loopBody)? END;
 
 condition:
     LPAR expression RPAR;
@@ -74,7 +67,7 @@ loopDoStatement:
     END;
 
 loopBody:
-    (statement |ifInLoop
+    (statement
     | BREAK { System.out.println("Control: BREAK"); } (IF condition)? SEMICOLLON
     | NEXT { System.out.println("Control: NEXT"); } (IF condition)? SEMICOLLON
     )*
@@ -194,7 +187,7 @@ posUnaryExpression:
 
 accessExpression:
     otherExpression
-    (LPAR { System.out.println("FunctionCall"); } functionArguments
+    (LPAR { System.out.println("Function Call"); } functionArguments
     RPAR)*
     (accessList)*
     ;
