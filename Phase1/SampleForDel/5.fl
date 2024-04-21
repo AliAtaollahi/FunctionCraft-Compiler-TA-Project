@@ -1,0 +1,64 @@
+# hi i"m simple comment
+
+def f()
+    if (a != 10 > 56 / len(b[a * 2 - 3]))
+    else
+        return (f() + 2)[a - b - c * 2][a + b / c];
+    end
+    if (2 == 3)
+        puts("2" << "3");
+    end
+    return len(list1);
+end
+
+def chopFunc()
+    puts(chop(chop(chop("painter"))));
+    puts("Hello World!\nThis is my first program\n");
+end
+
+# this is just a testing comment
+
+def func(a, b, c)
+    if ((a >= b) && (c < a))
+        if((!(a)) || ((b == c) && (a != 10)))
+            return 1;
+        end
+    else 
+        return 1;
+    end
+    return -1;
+end
+
+
+def g()
+    return -> (arg1, arg2, arg3) {return arg1 << arg2 << arg3;};
+end
+
+def f()
+    return method(:g);
+end
+
+def h() 
+    puts(f("Hello","","World!"));
+end
+
+def func2()
+    return -> () {return -> (a, b) {return a;};};
+end
+
+def doFunc(arg1, arg2, fptr)
+    return fptr(arg1, arg2);
+end
+
+def lambdaFunc()
+    f("Hello", 
+      "World", 
+      -> (first, second) {return first << second << ".";});
+end
+
+
+def main()
+    puts(lambdaFunc());
+end
+
+

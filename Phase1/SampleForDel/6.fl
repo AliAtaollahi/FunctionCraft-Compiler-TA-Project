@@ -1,0 +1,53 @@
+=begin
+Hello World, 
+Just a Comment, sad
+Nothing Special
+GoodBye. 
+=end
+
+def loopDoFunc()
+    loop do
+        puts("start");
+        break if (a);
+        next if (b);
+        puts("end");
+        if ((a > b) || (a == b))
+            puts("Wow");
+            break;
+        end
+    end
+end
+
+pattern fib(n)
+    | (n == 0) = 1
+    | (n == 1) = 1
+    | (n > 2) = fib (n-1) + fib (n-2)
+;
+
+def matchPatternFunc()
+    fib_5 = fib.match(5);
+end
+
+
+def main()
+    for num in [1, 2, 3, 4, 5, 6, 7, 8]
+        next if (num / 2 == 1);
+        puts(num);
+    end
+    
+    for num in (0..9)
+        if (num == 8)
+            break;
+        end
+        next if (num / 2 == 1);
+        puts(num);
+    end
+
+    start = 0;
+    finish = 9;
+
+    for num in (start..finish)
+        next if (num / 2 == 1);
+        puts(num);
+    end
+end

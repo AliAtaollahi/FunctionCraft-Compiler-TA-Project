@@ -1,0 +1,23 @@
+def f1(a, b, c)
+    return f2(1) + f2(1, 2, 3);
+end
+
+def f2 (a, [b = 10, c = 20])
+    return a + b + c;
+end
+
+def f3()
+    return ((a != b) > !(c));
+end
+
+def f4()
+    return -> () {return [[1,2,3]];}() [0][1] * (true != false);
+end
+
+def f5()
+    return -> () { return -> () { return 1;}; }();
+end
+
+def main()
+    puts(f1());
+end

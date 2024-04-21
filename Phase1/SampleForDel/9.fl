@@ -1,0 +1,30 @@
+def lambdaIndex(list)
+    a = list[-> (a) {return 19 * a;}(13)]; 
+    return a + list[-> () {return 10;}];
+end
+
+#Just a comment
+#Hello
+
+def exprFunc(x, y)
+    a = b + c * f / h;
+    b = a - y + h * j / l;
+    return a + b - x + y;
+end
+
+def func()
+    cnt = 1;
+    loop do
+        cnt += 1;
+        if (cnt >= 100)
+            break;
+        end 
+    end
+    return cnt;
+end
+
+def main()
+    list = [1, 2, 3];
+    list = list << [func()];
+    return list[100 - 99 + 1 - 1];
+end

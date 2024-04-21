@@ -1,0 +1,30 @@
+FuncDec: f1
+Decision: IF
+Operator: >
+Operator: >
+Operator: &&
+Decision: IF
+Built-In: LEN
+Operator: >
+RETURN
+Structure: LAMBDA
+RETURN
+Structure: LAMBDA
+Decision: IF
+Operator: >
+RETURN
+Decision: ELSE
+RETURN
+Decision: IF
+Structure: LAMBDA
+RETURN
+Built-In: PUTS
+RETURN
+Decision: ELSE
+RETURN
+Decision: ELSE
+RETURN
+Decision: ELSE
+RETURN
+MAIN
+Built-In: PUTS

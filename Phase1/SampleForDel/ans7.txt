@@ -1,0 +1,48 @@
+FuncDec: f1
+Function Call
+Built-In: PUTS
+Operator: *
+Operator: +
+Operator: -
+Operator: +
+Built-In: PUTS
+Function Call
+Function Call
+Built-In: PUTS
+Function Call
+RETURN
+Function Call
+Operator: +
+FuncDec: f2
+Decision: IF
+Built-In: LEN
+Operator: -
+Operator: >
+RETURN
+Built-In: PUTS
+Function Call
+Operator: +
+RETURN
+FuncDec: f3
+Decision: IF
+Operator: ==
+Operator: !=
+Operator: &&
+RETURN
+Decision: ELSE
+RETURN
+FuncDec: f4
+RETURN
+Structure: LAMBDA
+Built-In: PUTS
+RETURN
+FuncDec: f5
+RETURN
+MAIN
+Built-In: PUTS
+Function Call
+Structure: LAMBDA
+RETURN
+Operator: *
+Operator: +
+Operator: +

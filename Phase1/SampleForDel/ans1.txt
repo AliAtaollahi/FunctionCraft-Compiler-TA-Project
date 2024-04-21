@@ -1,0 +1,32 @@
+FuncDec: func
+Decision: IF
+Operator: >
+Decision: IF
+Operator: >
+Built-In: PUTS
+RETURN
+Decision: ELSE
+RETURN
+Decision: ELSE
+Decision: IF
+Operator: >
+RETURN
+Decision: ELSE
+RETURN
+FuncDec: compare
+Decision: IF
+Operator: >
+RETURN
+Decision: ELSE
+RETURN
+FuncDec: add
+RETURN
+Operator: +
+MAIN
+Operator: <<
+Assignment: c
+Built-In: PUSH
+Built-In: PUTS
+Function Call
+Built-In: PUTS
+Built-In: LEN

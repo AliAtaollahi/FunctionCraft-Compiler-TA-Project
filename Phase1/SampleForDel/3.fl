@@ -1,0 +1,24 @@
+def addToList(a, b, c)
+   return a[(i + 1)] << b[2] << c[10] << len(b) << 3;
+end
+
+def apppend(a)
+    return [[1,2,3]] << a << [[]];
+end
+
+def f(a, b, c)
+    puts(1);
+    if (1)
+        puts(1);
+        return;
+    else
+        puts(2);
+    end
+end
+
+def main()
+    b = 12 / 45 * 6 - 3;
+    a = a + c * d - e / f + g;
+    b += a * 10;
+    puts(a);
+end
