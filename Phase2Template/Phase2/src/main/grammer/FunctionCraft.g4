@@ -156,6 +156,8 @@ returnStatement returns [ReturnStatement returnStmtRet]:
 ifStatement returns[IfStatement ifRet]:
     {
         $ifRet = new IfStatement();
+        ArrayList<Statement> tempThenStmts = new ArrayList<>();
+        ArrayList<Statement> tempElseStmts = new ArrayList<>();
     }
     i = IF
     {
@@ -163,26 +165,39 @@ ifStatement returns[IfStatement ifRet]:
     }
     (c1 = condition {$ifRet.addCondition($c1.conditionRet);} | LPAR c2 = condition RPAR {$ifRet.addCondition($c2.conditionRet);})
 
-    b = body {$ifRet.setThenBody($b.bodyRet);}
+    b = loopBody
     {
-        ArrayList<Statement> tempArray = new ArrayList<Statement>();
+        tempThenStmts.addAll($b.loopStmts);
+        $ifRet.addCondition($b.loopExps);
+        if($b.loopRetStmt != null){
+            tempThenStmts.add($b.loopRetStmt);
+        }
     }
-    (ELSEIF LPAR c2 = condition RPAR
+    (ELSEIF (LPAR c2 = condition RPAR | c2 = condition)
      {
         $ifRet.addCondition($c2.conditionRet);
      }
-     b1 = body
+     b1 = loopBody
      {
-        tempArray.addAll($b1.bodyRet);
+        tempElseStmts.addAll($b1.loopStmts);
+        $ifRet.addCondition($b1.loopExps);
+        if($b1.loopRetStmt != null){
+            tempThenStmts.add($b1.loopRetStmt);
+        }
      }
      )*
-    (ELSE b2 = body
+    (ELSE b2 = loopBody
      {
-        tempArray.addAll($b2.bodyRet);
+        tempElseStmts.addAll($b2.loopStmts);
+        $ifRet.addCondition($b2.loopExps);
+        if($b2.loopRetStmt != null){
+            tempThenStmts.add($b2.loopRetStmt);
+        }
      }
     )?
      {
-        $ifRet.setElseBody(tempArray);
+        $ifRet.setThenBody(tempThenStmts);
+        $ifRet.setElseBody(tempElseStmts);
      }
      END;
 
@@ -270,7 +285,11 @@ range returns [ArrayList<Expression> rangeRet]:
         $rangeRet.add($e2.expRet);
     }
     RPAR)
-    | (LBRACK (e3 = expression
+    |
+    {
+        $rangeRet = new ArrayList<Expression>();
+    }
+     (LBRACK (e3 = expression
     {
         $rangeRet.add($e3.expRet);
     }
@@ -279,9 +298,14 @@ range returns [ArrayList<Expression> rangeRet]:
         $rangeRet.add($e4.expRet);
     }
     )*) RBRACK)
-    | id = IDENTIFIER
+    |
+    {
+        $rangeRet = new ArrayList<Expression>();
+    }
+     id = IDENTIFIER
     {
         Identifier id_ = new Identifier($id.text);
+        id_.setLine($id.line);
         $rangeRet.add(id_);
     }
     ;
@@ -526,15 +550,23 @@ otherExpression returns [Expression expRet]:
 
 
 
+//lambdaFunction returns [Expression lambdaRet]:
+//    a = ARROW  fd = functionArgumentsDeclaration
+//     LBRACE b = body RBRACE fa = functionArguments
+//     {
+//        $lambdaRet = new LambdaExpression($fd.argRet, $b.bodyRet, $fa.funcArgsRet);
+//        $lambdaRet.setLine($a.line);
+//     }
+//    ;
+
 lambdaFunction returns [Expression lambdaRet]:
     a = ARROW  fd = functionArgumentsDeclaration
-     LBRACE b = body RBRACE fa = functionArguments
+     LBRACE b = body RBRACE
      {
-        $lambdaRet = new LambdaExpression($fd.argRet, $b.bodyRet, $fa.funcArgsRet);
+        $lambdaRet = new LambdaExpression($fd.argRet, $b.bodyRet);
         $lambdaRet.setLine($a.line);
      }
     ;
-
 
 values returns [Value valRet]:
     b = boolValue {$valRet = $b.boolValRet;}

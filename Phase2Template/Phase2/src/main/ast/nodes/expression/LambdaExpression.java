@@ -9,17 +9,17 @@ import java.util.ArrayList;
 public class LambdaExpression extends Expression{
     ArrayList<VarDeclaration> declarationArgs = new ArrayList<>();
     ArrayList<Statement> body = new ArrayList<>();
-    ArrayList<Expression> args =  new ArrayList<>();
+//    ArrayList<Expression> args =  new ArrayList<>();
     public LambdaExpression(ArrayList<VarDeclaration> declarationArgs, ArrayList<Statement> body
-                            , ArrayList<Expression> args){
+                            ){
         this.declarationArgs = declarationArgs;
-        this.args = args;
+//        this.args = args;
         this.body = body;
     }
 
-    public void setArgs(ArrayList<Expression> args) {
-        this.args = args;
-    }
+//    public void setArgs(ArrayList<Expression> args) {
+//        this.args = args;
+//    }
 
     public void setBody(ArrayList<Statement> body) {
         this.body = body;
@@ -29,9 +29,9 @@ public class LambdaExpression extends Expression{
         this.declarationArgs = declarationArgs;
     }
 
-    public ArrayList<Expression> getArgs() {
-        return args;
-    }
+//    public ArrayList<Expression> getArgs() {
+//        return args;
+//    }
 
     public ArrayList<Statement> getBody() {
         return body;

@@ -125,7 +125,9 @@ public class AstPrinter extends Visitor<Void> {
         for(Expression expression : loopDoStatement.getLoopConditions()){
             expression.accept(this);
         }
-        loopDoStatement.getLoopRetStmt().accept(this);
+        if(loopDoStatement.getLoopRetStmt() != null) {
+            loopDoStatement.getLoopRetStmt().accept(this);
+        }
         return null;
     }
     @Override
@@ -234,9 +236,9 @@ public class AstPrinter extends Visitor<Void> {
         for(Statement statement : lambdaExpression.getBody()){
             statement.accept(this);
         }
-        for(Expression expression: lambdaExpression.getArgs()){
-            expression.accept(this);
-        }
+//        for(Expression expression: lambdaExpression.getArgs()){
+//            expression.accept(this);
+//        }
         return null;
     }
     @Override

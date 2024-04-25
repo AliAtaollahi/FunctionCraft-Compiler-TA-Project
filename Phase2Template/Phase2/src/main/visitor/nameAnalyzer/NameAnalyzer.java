@@ -29,6 +29,7 @@ public class NameAnalyzer extends Visitor<Void> {
     public ArrayList<CompileError> nameErrors = new ArrayList<>();
     boolean isFunctionCallId = false;
     boolean isPatternMatchId = false;
+    boolean isLambdaAccess = false;
     @Override
     public Void visit(Program program){
         SymbolTable.root = new SymbolTable();
@@ -108,7 +109,7 @@ public class NameAnalyzer extends Visitor<Void> {
     }
     @Override
     public Void visit(Identifier identifier){
-        if(isFunctionCallId){
+        if(isFunctionCallId && !isLambdaAccess){
             try{
                 SymbolTable.root.getItem(FunctionItem.START_KEY + identifier.getName());
             }catch (ItemNotFound e){
@@ -355,18 +356,20 @@ public class NameAnalyzer extends Visitor<Void> {
         if(accessExpression.isFunctionCall()){
             isFunctionCallId = true;
             accessExpression.getAccessedExpression().accept(this);
-            Identifier functionName = (Identifier) accessExpression.getAccessedExpression();
-            try{
-                FunctionItem functionItem = (FunctionItem) SymbolTable.root.getItem(FunctionItem.START_KEY + functionName.getName());
-                maxArgRequired = functionItem.getFunctionDeclaration().getArgs().size();
-                for(VarDeclaration varDeclaration : functionItem.getFunctionDeclaration().getArgs()){
-                    if(varDeclaration.getDefaultVal() != null){
-                        minArgRequired += 1;
+            if(!isLambdaAccess) {
+                Identifier functionName = (Identifier) accessExpression.getAccessedExpression();
+                try {
+                    FunctionItem functionItem = (FunctionItem) SymbolTable.root.getItem(FunctionItem.START_KEY + functionName.getName());
+                    maxArgRequired = functionItem.getFunctionDeclaration().getArgs().size();
+                    for (VarDeclaration varDeclaration : functionItem.getFunctionDeclaration().getArgs()) {
+                        if (varDeclaration.getDefaultVal() != null) {
+                            minArgRequired += 1;
+                        }
                     }
+                    minArgRequired = maxArgRequired - minArgRequired;
+                } catch (ItemNotFound ignored) {
+                    functionNotDeclared = true;
                 }
-                minArgRequired = maxArgRequired - minArgRequired;
-            }catch (ItemNotFound ignored){
-                functionNotDeclared = true;
             }
 
         }
@@ -379,12 +382,15 @@ public class NameAnalyzer extends Visitor<Void> {
             expression.accept(this);
         }
         if(!functionNotDeclared && ((numberOfProvidedArgs < minArgRequired) || (numberOfProvidedArgs > maxArgRequired))){
-            Identifier functionName = (Identifier) accessExpression.getAccessedExpression();
-            nameErrors.add(new ArgMisMatch(accessExpression.getLine(), functionName.getName()));
+            if(!isLambdaAccess) {
+                Identifier functionName = (Identifier) accessExpression.getAccessedExpression();
+                nameErrors.add(new ArgMisMatch(accessExpression.getLine(), functionName.getName()));
+            }
         }
         for(Expression expression : accessExpression.getDimentionalAccess()){
             expression.accept(this);
         }
+        isLambdaAccess = false;
         return null;
     }
     @Override
@@ -399,12 +405,14 @@ public class NameAnalyzer extends Visitor<Void> {
             }
         }
         SymbolTable.push(currentScopeSymbolTable);
+        isLambdaAccess = true;
         for(Statement statement : lambdaExpression.getBody()){
             statement.accept(this);
         }
-        for(Expression expression : lambdaExpression.getArgs()){
-            expression.accept(this);
-        }
+
+//        for(Expression expression : lambdaExpression.getArgs()){
+//            expression.accept(this);
+//        }
         SymbolTable.pop();
         return null;
     }

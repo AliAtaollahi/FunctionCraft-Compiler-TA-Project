@@ -8,18 +8,51 @@ def g()
     return h();
 end
 
+def get_size(i)
+    return len(g()[i]);
+end
+
+
+def getList()
+    return [[1, 2]];
+end
+
 def h()
     a = 5;
     b = 2;
     if (a>b)
         return;
-    elseif((a+b>2) || (a<0))
+    elseif (a<b) && (a>b)
         return;
     else
         return;
     end
 end
 
+def foo()
+    return ->(arg1, arg2){return arg1+arg2;}(1, 2);
+end
+
 def main()
-    puts("Loop!");
+    a = 5;
+    b = 10;
+    c = 5;
+    puts("HELLO" << " " << "WORLD");
+    list = [1, 2, 3];
+    for num in (1..10)
+        next if(num/2 == 1);
+        puts(num);
+    end
+    list << a << b << c;
+    loop do
+        if (a>b)
+            break;
+        elseif ((b==0) && (a>2))
+            next;
+        else
+            return 0;
+        end
+    end
+    puts(get_size(0));
+    ->(arg1, arg2){return arg1+arg2;}(1, 2);
 end

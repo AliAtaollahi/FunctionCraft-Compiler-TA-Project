@@ -5,6 +5,7 @@ import main.ast.nodes.declaration.FunctionDeclaration;
 import main.ast.nodes.expression.AccessExpression;
 import main.ast.nodes.expression.Expression;
 import main.ast.nodes.expression.Identifier;
+import main.ast.nodes.expression.LambdaExpression;
 import main.ast.nodes.statement.ExpressionStatement;
 import main.ast.nodes.statement.ReturnStatement;
 import main.ast.nodes.statement.Statement;
@@ -35,9 +36,11 @@ public class DependencyDetector extends Visitor<Void> {
                 if(exp.getExpression() instanceof AccessExpression){
                     AccessExpression accessExpression = (AccessExpression) exp.getExpression();
                     if(accessExpression.isFunctionCall()){
-                        Identifier id_ = (Identifier) accessExpression.getAccessedExpression();
-                        dependencyGraph.addEdge(functionDeclaration.getFunctionName().getName(),
-                                id_.getName());
+                        if(!(accessExpression.getAccessedExpression() instanceof LambdaExpression)) {
+                            Identifier id_ = (Identifier) accessExpression.getAccessedExpression();
+                            dependencyGraph.addEdge(functionDeclaration.getFunctionName().getName(),
+                                    id_.getName());
+                        }
                     }
                 }
             }
@@ -47,9 +50,11 @@ public class DependencyDetector extends Visitor<Void> {
                     if(returnStatement.getReturnExp() instanceof AccessExpression){
                         AccessExpression accessExpression = (AccessExpression) returnStatement.getReturnExp();
                         if(accessExpression.isFunctionCall()){
-                            Identifier id_ = (Identifier) accessExpression.getAccessedExpression();
-                            dependencyGraph.addEdge(functionDeclaration.getFunctionName().getName()
-                                                    , id_.getName());
+                            if(!(accessExpression.getAccessedExpression() instanceof LambdaExpression)) {
+                                Identifier id_ = (Identifier) accessExpression.getAccessedExpression();
+                                dependencyGraph.addEdge(functionDeclaration.getFunctionName().getName()
+                                        , id_.getName());
+                            }
                         }
                     }
                 }
