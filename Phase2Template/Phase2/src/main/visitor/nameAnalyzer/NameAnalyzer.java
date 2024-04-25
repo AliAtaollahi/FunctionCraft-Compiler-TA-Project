@@ -74,6 +74,7 @@ public class NameAnalyzer extends Visitor<Void> {
                 newId.setName(freshName);
                 patternDeclaration.setPatternName(newId);
                 PatternItem newItem = new PatternItem(patternDeclaration);
+                patternItems.add(newItem);
                 try{
                     SymbolTable.root.put(newItem);
                 }catch (ItemAlreadyExists ignored){}
@@ -350,6 +351,7 @@ public class NameAnalyzer extends Visitor<Void> {
     public Void visit(AccessExpression accessExpression){
         int minArgRequired = 0;
         int maxArgRequired = 0;
+        boolean functionNotDeclared = false;
         if(accessExpression.isFunctionCall()){
             isFunctionCallId = true;
             accessExpression.getAccessedExpression().accept(this);
@@ -363,7 +365,9 @@ public class NameAnalyzer extends Visitor<Void> {
                     }
                 }
                 minArgRequired = maxArgRequired - minArgRequired;
-            }catch (ItemNotFound ignored){}
+            }catch (ItemNotFound ignored){
+                functionNotDeclared = true;
+            }
 
         }
         else{
@@ -374,7 +378,7 @@ public class NameAnalyzer extends Visitor<Void> {
             numberOfProvidedArgs += 1;
             expression.accept(this);
         }
-        if((numberOfProvidedArgs < minArgRequired) || (numberOfProvidedArgs > maxArgRequired)){
+        if(!functionNotDeclared && ((numberOfProvidedArgs < minArgRequired) || (numberOfProvidedArgs > maxArgRequired))){
             Identifier functionName = (Identifier) accessExpression.getAccessedExpression();
             nameErrors.add(new ArgMisMatch(accessExpression.getLine(), functionName.getName()));
         }

@@ -14,7 +14,9 @@ import parsers.FunctionCraftLexer;
 import parsers.FunctionCraftParser;
 
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class FunctionCraft {
@@ -27,13 +29,17 @@ public class FunctionCraft {
         NameAnalyzer nameAnalyzer = new NameAnalyzer();
         nameAnalyzer.visit(program);
         nameAnalyzer.nameErrors.sort(Comparator.comparingInt(CompileError::getLine));
+        FileWriter fileWriter = new FileWriter("samples/out11.txt");
+        PrintWriter printWriter = new PrintWriter(fileWriter);
         for(CompileError compileError : nameAnalyzer.nameErrors){
+            printWriter.println(compileError.getErrorMessage());
             System.out.println(compileError.getErrorMessage());
         }
         DependencyDetector dependencyDetector = new DependencyDetector();
         dependencyDetector.visit(program);
         dependencyDetector.findDependency();
         for(CompileError circularDependency : dependencyDetector.dependencyError){
+            printWriter.println(circularDependency.getErrorMessage());
             System.out.println(circularDependency.getErrorMessage());
         }
         if(nameAnalyzer.nameErrors.size() + dependencyDetector.dependencyError.size() == 0){

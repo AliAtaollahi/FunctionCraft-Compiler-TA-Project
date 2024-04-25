@@ -1,0 +1,16 @@
+def get_size(get_size)
+    return len(g()[get_size]);
+end
+
+def g()
+    return [[1, 2]];
+end
+
+
+def f(a, b, a)
+    return compare(a, b);
+end
+
+def main()
+    puts(get_size(1));
+end

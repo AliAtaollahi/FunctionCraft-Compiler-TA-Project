@@ -1,0 +1,19 @@
+def f(a, b, [c = 2])
+    return a + b + c;
+end
+
+
+def g(a, b, c)
+    f(a, b);
+    return a + b + c;
+end
+
+
+def main()
+    a = 1;
+    b = 2;
+    f(a, b, c);
+    f(b);
+    f(a, b);
+    g(a, b);
+end

@@ -1,0 +1,5 @@
+Line:1-> target variable fib has same name with pattern
+Line:4-> variable n is not declared
+Line:4-> variable n is not declared
+Line:4-> variable n is not declared
+Line:8-> pattern fib_ is not declared

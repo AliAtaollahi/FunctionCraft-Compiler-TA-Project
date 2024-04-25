@@ -1,0 +1,25 @@
+
+def f()
+    return g();
+end
+
+
+def g()
+    return h();
+end
+
+def h()
+    a = 5;
+    b = 2;
+    if (a>b)
+        return;
+    elseif((a+b>2) || (a<0))
+        return;
+    else
+        return;
+    end
+end
+
+def main()
+    puts("Loop!");
+end

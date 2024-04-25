@@ -1,0 +1,9 @@
+pattern fib(fib)
+    | (n == 0) = 1
+    | (n == 1) = 1
+    | (n > 2) = fib.match(n-1) + fib.match(n-2)
+;
+
+def main()
+    fib_5 = fib_.match(5);
+end

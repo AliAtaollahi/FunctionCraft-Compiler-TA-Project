@@ -1,0 +1,9 @@
+Line:28-> target variable a has same name with pattern
+Line:33-> argument myFunc has same name with function
+Line:33-> argument a is duplicated
+Line:45-> variable c is not declared
+Line:45-> number of arguments provided for function myFunc does not match with its declaration
+Line:47-> function ali is not declared
+Line:47-> number of arguments provided for function ali does not match with its declaration
+*-> defenition of functions hh, z, y contains circular dependency
+*-> defenition of functions f, 

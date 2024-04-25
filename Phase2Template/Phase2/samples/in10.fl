@@ -1,0 +1,20 @@
+def f()
+    return g();
+end
+
+
+def g()
+    return h();
+end
+
+def h()
+    return y();
+end
+
+def y()
+    return f();
+end
+
+def main()
+    puts(get_size(1));
+end

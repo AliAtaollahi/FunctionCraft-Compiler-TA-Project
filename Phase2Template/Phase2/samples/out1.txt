@@ -1,0 +1,4 @@
+Line:2-> variable a is not declared
+Line:3-> variable a is not declared
+Line:3-> variable c is not declared
+Line:4-> variable a is not declared

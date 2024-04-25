@@ -1,0 +1,3 @@
+Line:1-> argument get_size has same name with function
+Line:10-> argument a is duplicated
+Line:11-> function compare is not declared

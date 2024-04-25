@@ -151,8 +151,7 @@ returnStatement returns [ReturnStatement returnStmtRet]:
     }
     r = RETURN (e = expression{
         $returnStmtRet.setReturnExp($e.expRet);
-        $returnStmtRet.setLine($r.line);
-    })? SEMICOLLON;
+    })? {$returnStmtRet.setLine($r.line);} SEMICOLLON;
 
 ifStatement returns[IfStatement ifRet]:
     {
@@ -162,12 +161,13 @@ ifStatement returns[IfStatement ifRet]:
     {
         $ifRet.setLine($i.line);
     }
-    c1 = condition {$ifRet.addCondition($c1.conditionRet);}
+    (c1 = condition {$ifRet.addCondition($c1.conditionRet);} | LPAR c2 = condition RPAR {$ifRet.addCondition($c2.conditionRet);})
+
     b = body {$ifRet.setThenBody($b.bodyRet);}
     {
         ArrayList<Statement> tempArray = new ArrayList<Statement>();
     }
-    (ELSEIF c2 = condition
+    (ELSEIF LPAR c2 = condition RPAR
      {
         $ifRet.addCondition($c2.conditionRet);
      }
@@ -242,7 +242,7 @@ loopBody returns [ArrayList<Statement> loopStmts, ArrayList<Expression> loopExps
     | NEXT (IF c2 = condition{$loopExps.addAll($c2.conditionRet);})? SEMICOLLON
     )*
     (
-    r = returnStatement {$loopRetStmt = $r.returnStmtRet;}
+    r = returnStatement {$loopRetStmt = $r.returnStmtRet;$loopRetStmt.setLine($r.returnStmtRet.getLine());}
     )?;
 
 forStatement returns [ForStatement forStRet]:
@@ -313,6 +313,7 @@ matchPatternStatement returns [MatchPatternStatement matchPatRet]:
     id = IDENTIFIER DOT m = MATCH LPAR e = expression RPAR
     {
         Identifier id_ = new Identifier($id.text);
+        id_.setLine($id.line);
         $matchPatRet = new MatchPatternStatement(id_, $e.expRet);
         $matchPatRet.setLine($m.line);
     }

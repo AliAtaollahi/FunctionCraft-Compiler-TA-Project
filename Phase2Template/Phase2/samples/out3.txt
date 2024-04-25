@@ -1,0 +1,1 @@
+Line:1-> argument compare has same name with function

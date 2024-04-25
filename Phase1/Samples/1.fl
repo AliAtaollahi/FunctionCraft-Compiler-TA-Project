@@ -3,5 +3,3 @@ def main()
     push(a, c);
     puts(a);
 end
-
-
