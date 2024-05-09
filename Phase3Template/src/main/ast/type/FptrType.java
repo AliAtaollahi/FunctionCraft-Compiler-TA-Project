@@ -1,4 +1,4 @@
-package main.ast.type.primitiveType;
+package main.ast.type;
 
 import main.ast.type.Type;
 
