@@ -5,11 +5,7 @@ import main.ast.type.Type;
 
 public class VarItem extends SymbolTableItem{
     public static String START_KEY = "VAR:";
-    public Type type;
-
-    public VarItem(Identifier identifier){
-        this.name = identifier.getName();
-    }
+    private Type type;
 
     public Type getType() {
         return type;
@@ -18,6 +14,11 @@ public class VarItem extends SymbolTableItem{
     public void setType(Type type) {
         this.type = type;
     }
+
+    public VarItem(Identifier identifier){
+        this.name = identifier.getName();
+    }
+
 
     @Override
     public String getKey(){return START_KEY + this.name;}

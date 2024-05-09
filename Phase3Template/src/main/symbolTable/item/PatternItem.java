@@ -1,12 +1,23 @@
 package main.symbolTable.item;
 
 import main.ast.nodes.declaration.PatternDeclaration;
+import main.ast.type.Type;
 import main.symbolTable.SymbolTable;
 
 public class PatternItem extends SymbolTableItem{
     public static final String START_KEY = "Pattern:";
     private SymbolTable patternSymbolTable;
     private PatternDeclaration patternDeclaration;
+    private Type targetVarType;
+
+    public Type getTargetVarType() {
+        return targetVarType;
+    }
+
+    public void setTargetVarType(Type targetVarType) {
+        this.targetVarType = targetVarType;
+    }
+
     public PatternItem(PatternDeclaration patternDeclaration){
         this.patternDeclaration = patternDeclaration;
         this.name = this.patternDeclaration.getPatternName().getName();
