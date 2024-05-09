@@ -2,6 +2,7 @@ package main.visitor.type;
 
 import main.ast.nodes.expression.Expression;
 import main.ast.type.Type;
+import main.ast.type.primitiveType.*;
 import main.symbolTable.SymbolTable;
 import main.visitor.Visitor;
 
