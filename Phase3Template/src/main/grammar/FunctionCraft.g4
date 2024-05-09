@@ -167,38 +167,13 @@ ifStatement returns[IfStatement ifRet]:
 
     b = loopBody
     {
-        tempThenStmts.addAll($b.loopStmts);
-        $ifRet.addCondition($b.loopExps);
-        if($b.loopRetStmt != null){
-            tempThenStmts.add($b.loopRetStmt);
-        }
+        $ifRet.setThenBody($b.loopStmts);
     }
-    (ELSEIF (LPAR c2 = condition RPAR | c2 = condition)
-     {
-        $ifRet.addCondition($c2.conditionRet);
-     }
-     b1 = loopBody
-     {
-        tempElseStmts.addAll($b1.loopStmts);
-        $ifRet.addCondition($b1.loopExps);
-        if($b1.loopRetStmt != null){
-            tempThenStmts.add($b1.loopRetStmt);
-        }
-     }
-     )*
     (ELSE b2 = loopBody
      {
-        tempElseStmts.addAll($b2.loopStmts);
-        $ifRet.addCondition($b2.loopExps);
-        if($b2.loopRetStmt != null){
-            tempThenStmts.add($b2.loopRetStmt);
-        }
+        $ifRet.setElseBody($b2.loopStmts);
      }
     )?
-     {
-        $ifRet.setThenBody(tempThenStmts);
-        $ifRet.setElseBody(tempElseStmts);
-     }
      END;
 
 condition returns [ArrayList<Expression> conditionRet]:
@@ -246,18 +221,30 @@ loopDoStatement returns [LoopDoStatement loopDoRet]:
     }
     END;
 
-loopBody returns [ArrayList<Statement> loopStmts, ArrayList<Expression> loopExps, ReturnStatement loopRetStmt]:
+loopBody returns [ArrayList<Statement> loopStmts]:
     {
         $loopStmts = new ArrayList<Statement>();
-        $loopExps = new ArrayList<Expression>();
-        $loopRetStmt = null;
     }
     (s = statement {$loopStmts.add($s.stmtRet);}
-    | BREAK (IF c1 = condition{$loopExps.addAll($c1.conditionRet);})? SEMICOLLON
-    | NEXT (IF c2 = condition{$loopExps.addAll($c2.conditionRet);})? SEMICOLLON
+    | BREAK
+     {
+        BreakStatement b = new BreakStatement();
+     }
+    (IF c1 = condition{
+        b.setConditions($c1.conditionRet);
+    })? {$loopStmts.add(b);} SEMICOLLON
+    | NEXT
+    {
+        NextStatement n = new NextStatement();
+    }
+    (IF c2 = condition
+    {
+        n.setConditions($c2.conditionRet);
+    }
+    )? {$loopStmts.add(n);} SEMICOLLON
     )*
     (
-    r = returnStatement {$loopRetStmt = $r.returnStmtRet;$loopRetStmt.setLine($r.returnStmtRet.getLine());}
+    r = returnStatement {$loopStmts.add($r.returnStmtRet);}
     )?;
 
 forStatement returns [ForStatement forStRet]:
