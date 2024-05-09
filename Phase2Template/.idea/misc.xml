@@ -13,6 +13,16 @@
           <option name="language" value="" />
           <option name="generateVisitor" value="true" />
         </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/Phase2/src/main/grammar/FunctionCraft.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="U:\UT\6\PLC_TA\Design-Compiler-Course-Projects\Phase2Template\Phase2\src" />
+          <option name="libDir" value="" />
+          <option name="encoding" value="" />
+          <option name="pkg" value="parsers" />
+          <option name="language" value="" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
       </list>
     </option>
   </component>

@@ -1,0 +1,31 @@
+
+def f()
+    return g();
+end
+
+def g()
+    for i in (1..10)
+        f();
+    end
+end
+
+def h(i)
+    a = 5;
+    return f();
+end
+
+
+
+
+def main()
+    l = [1, 2, 3];
+    for i in (1..10)
+        b = i+2;
+    end
+    a = 10;
+    c = 15;
+    loop do
+        ab = 5;
+    end
+    puts(ab);
+end

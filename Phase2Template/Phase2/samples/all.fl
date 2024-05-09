@@ -25,17 +25,18 @@ def h()
     return myfunc2(a, b);
 end
 
-pattern a(a)
-    |(a == 1)= a
-    |(a == 2)= a+1
-    ;
-
-def myFunc(myFunc, a, a,b, [c=2])
-    return a + b + c;
-end
 
 def myfunc2(a, b, [c=1])
     return;
+end
+
+def myfunc2()
+    return;
+end
+
+
+def aa(a, b, c)
+    return a+b+c;
 end
 
 def main()
@@ -45,4 +46,5 @@ def main()
     myFunc(c, b);
     myfunc2(a, b);
     ali(a);
+    aa(a, b);
 end

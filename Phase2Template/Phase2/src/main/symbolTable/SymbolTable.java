@@ -36,4 +36,10 @@ public class SymbolTable {
         }
         throw new ItemNotFound();
     }
+    public SymbolTable copy() {
+        SymbolTable newSymbolTable = new SymbolTable();
+        newSymbolTable.items.putAll(this.items);
+        return newSymbolTable;
+    }
+
 }

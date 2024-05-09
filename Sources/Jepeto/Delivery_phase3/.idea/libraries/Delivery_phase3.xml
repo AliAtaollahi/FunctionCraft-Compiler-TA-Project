@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Delivery_phase3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/antlr-4.8-complete.jar!/" />
+      <root url="jar://$PROJECT_DIR$/antlr-4.9.2-complete.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

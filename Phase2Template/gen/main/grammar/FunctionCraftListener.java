@@ -1,5 +1,5 @@
 // Generated from U:/UT/6/PLC_TA/Design-Compiler-Course-Projects/Phase2Template/Phase2/src/main/grammar/FunctionCraft.g4 by ANTLR 4.13.1
-package parsers;
+package main.grammar;
 
     import main.ast.nodes.*;
     import main.ast.nodes.declaration.*;

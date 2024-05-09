@@ -1,5 +1,5 @@
 // Generated from U:/UT/6/PLC_TA/Design-Compiler-Course-Projects/Phase2Template/Phase2/src/main/grammar/FunctionCraft.g4 by ANTLR 4.13.1
-package parsers;
+package main.grammar;
 
     import main.ast.nodes.*;
     import main.ast.nodes.declaration.*;
@@ -3320,7 +3320,6 @@ public class FunctionCraftParser extends Parser {
 
 			        boolean isAccessExpression = false;
 			        boolean isMultiDimentional = false;
-			        boolean isFunctionCall = false;
 			        ArrayList<Expression> args = new ArrayList<Expression>();
 			        ArrayList<Expression> dimentions = new ArrayList<Expression>();
 			    
@@ -3339,7 +3338,6 @@ public class FunctionCraftParser extends Parser {
 					((AccessExpressionContext)_localctx).f = functionArguments();
 
 					        isAccessExpression = true;
-					        isFunctionCall =true;
 					        args.addAll(((AccessExpressionContext)_localctx).f.funcArgsRet);
 					    
 					setState(584);
@@ -3362,7 +3360,6 @@ public class FunctionCraftParser extends Parser {
 					((AccessExpressionContext)_localctx).a = accessList();
 
 					        isMultiDimentional = true;
-					        isAccessExpression = true;
 					        dimentions.add(((AccessExpressionContext)_localctx).a.accessListExp);
 					    
 					}
@@ -3374,11 +3371,12 @@ public class FunctionCraftParser extends Parser {
 			}
 
 			        if(!isAccessExpression){
+			            System.out.println("here")
 			            ((AccessExpressionContext)_localctx).expRet =  ((AccessExpressionContext)_localctx).o.expRet;
 			        }
 			        else{
 			            AccessExpression accessExp = new AccessExpression(((AccessExpressionContext)_localctx).o.expRet, args);
-			            accessExp.setIsFunctionCall(isFunctionCall);
+			            accessExp.setIsFunctionCall(isAccessExpression);
 			            if(isMultiDimentional){
 
 			                accessExp.setDimentionalAccess(dimentions);

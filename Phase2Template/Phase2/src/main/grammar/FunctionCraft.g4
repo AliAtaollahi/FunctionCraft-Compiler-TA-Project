@@ -63,7 +63,7 @@ functionArgumentsDeclaration returns [ArrayList<VarDeclaration> argRet]:
     COMMA LBRACK id3 = IDENTIFIER
      {
         Identifier id_3 = new Identifier($id3.text);
-        id_.setLine($id3.line);
+        id_3.setLine($id3.line);
         VarDeclaration newVarDec3 = new VarDeclaration(id_3);
         newVarDec3.setLine($id3.line);
      }
@@ -76,7 +76,7 @@ functionArgumentsDeclaration returns [ArrayList<VarDeclaration> argRet]:
        {
             Identifier id_4 = new Identifier($id4.text);
             id_4.setLine($id4.line);
-            VarDeclaration newVarDec4 = new VarDeclaration(id_);
+            VarDeclaration newVarDec4 = new VarDeclaration(id_4);
             newVarDec4.setLine($id4.line);
        }
        ASSIGN e2 = expression
@@ -499,6 +499,7 @@ accessExpression returns [Expression expRet]:
     {
         boolean isAccessExpression = false;
         boolean isMultiDimentional = false;
+        boolean isFunctionCall = false;
         ArrayList<Expression> args = new ArrayList<Expression>();
         ArrayList<Expression> dimentions = new ArrayList<Expression>();
     }
@@ -506,12 +507,14 @@ accessExpression returns [Expression expRet]:
     (LPAR f = functionArguments //arrayList of expression
     {
         isAccessExpression = true;
+        isFunctionCall =true;
         args.addAll($f.funcArgsRet);
     }
     RPAR)*
     (a = accessList //single expression
     {
         isMultiDimentional = true;
+        isAccessExpression = true;
         dimentions.add($a.accessListExp);
     }
     )*
@@ -521,7 +524,7 @@ accessExpression returns [Expression expRet]:
         }
         else{
             AccessExpression accessExp = new AccessExpression($o.expRet, args);
-            accessExp.setIsFunctionCall(isAccessExpression);
+            accessExp.setIsFunctionCall(isFunctionCall);
             if(isMultiDimentional){
 
                 accessExp.setDimentionalAccess(dimentions);

@@ -22,7 +22,7 @@ public class PatternDeclaration extends Declaration{
     public Identifier getTargetVariable(){return this.targetVariable;}
 
     public ArrayList<Expression> getConditions(){return this.conditions;}
-    public void setConditions(ArrayList<Expression> conditions){this.conditions = conditions;}
+    public void setConditions(ArrayList<Expression> conditions){this.conditions.addAll((conditions));}
     public void addCondition(Expression condition){this.conditions.add(condition);}
 
     public ArrayList<Expression> getReturnExp(){return this.returnExp;}

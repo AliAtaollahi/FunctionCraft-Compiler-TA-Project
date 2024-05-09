@@ -20,10 +20,12 @@ import main.symbolTable.exceptions.ItemAlreadyExists;
 import main.symbolTable.exceptions.ItemNotFound;
 import main.symbolTable.item.FunctionItem;
 import main.symbolTable.item.PatternItem;
+import main.symbolTable.item.SymbolTableItem;
 import main.symbolTable.item.VarItem;
 import main.visitor.Visitor;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class NameAnalyzer extends Visitor<Void> {
     public ArrayList<CompileError> nameErrors = new ArrayList<>();
@@ -205,6 +207,8 @@ public class NameAnalyzer extends Visitor<Void> {
     }
     @Override
     public Void visit(IfStatement ifStatement){
+        SymbolTable currentSymbolTable = SymbolTable.top.copy();
+        SymbolTable.push(currentSymbolTable);
         for(Expression expression : ifStatement.getConditions()){
             expression.accept(this);
         }
@@ -214,6 +218,7 @@ public class NameAnalyzer extends Visitor<Void> {
         for(Statement statement : ifStatement.getElseBody()){
             statement.accept(this);
         }
+        SymbolTable.pop();
         return null;
     }
     @Override
@@ -234,6 +239,8 @@ public class NameAnalyzer extends Visitor<Void> {
     }
     @Override
     public Void visit(LoopDoStatement loopDoStatement){
+        SymbolTable currentSymbolTable = SymbolTable.top.copy();
+        SymbolTable.push(currentSymbolTable);
         for(Statement statement : loopDoStatement.getLoopBodyStmts()){
             statement.accept(this);
         }
@@ -243,11 +250,12 @@ public class NameAnalyzer extends Visitor<Void> {
         if(loopDoStatement.getLoopRetStmt() != null){
             loopDoStatement.getLoopRetStmt().accept(this);
         }
+        SymbolTable.pop();
         return null;
     }
     @Override
     public Void visit(ForStatement forStatement){
-        SymbolTable currenctScopeSymbolTable = SymbolTable.top;
+        SymbolTable currenctScopeSymbolTable = SymbolTable.top.copy();
         VarItem varItem = new VarItem(forStatement.getIteratorId());
         try{
             currenctScopeSymbolTable.put(varItem);
@@ -387,10 +395,11 @@ public class NameAnalyzer extends Visitor<Void> {
                 nameErrors.add(new ArgMisMatch(accessExpression.getLine(), functionName.getName()));
             }
         }
+        isLambdaAccess = false;
         for(Expression expression : accessExpression.getDimentionalAccess()){
             expression.accept(this);
         }
-        isLambdaAccess = false;
+
         return null;
     }
     @Override
