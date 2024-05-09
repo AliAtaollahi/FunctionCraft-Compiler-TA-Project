@@ -10,33 +10,20 @@ import java.util.ArrayList;
 public class ForStatement extends Statement{
     private Identifier iteratorId;
     private ArrayList<Expression> rangeExpressions = new ArrayList<>();
-    private ArrayList<Expression> loopBodyExpressions = new ArrayList<>();
-    private ArrayList<Statement> loopBody = new ArrayList<>();
-    private ReturnStatement returnStatement;
-    public ForStatement(Identifier identifierId, ArrayList<Expression> rangeExpressions
-                        , ArrayList<Expression> loopBodyExpressions, ArrayList<Statement> loopBody
-                        , ReturnStatement returnStatement){
+    private ArrayList<Statement> loopBodyStmts = new ArrayList<>();
+
+    public ForStatement(Identifier identifierId, ArrayList<Expression> rangeExpressions ,ArrayList<Statement> loopBodyStmts){
         this.iteratorId = identifierId;
         this.rangeExpressions = rangeExpressions;
-        this.loopBodyExpressions = loopBodyExpressions;
-        this.loopBody = loopBody;
-        this.returnStatement = returnStatement;
-
-    }
-    public ArrayList<Expression> getLoopBodyExpressions() {
-        return loopBodyExpressions;
-    }
-
-    public ReturnStatement getReturnStatement() {
-        return returnStatement;
+        this.loopBodyStmts = loopBodyStmts;
     }
 
     public ArrayList<Expression> getRangeExpressions() {
         return rangeExpressions;
     }
 
-    public ArrayList<Statement> getLoopBody() {
-        return loopBody;
+    public ArrayList<Statement> getLoopBodyStmts() {
+        return loopBodyStmts;
     }
 
     public Identifier getIteratorId() {
@@ -47,20 +34,12 @@ public class ForStatement extends Statement{
         this.iteratorId = iteratorId;
     }
 
-    public void setLoopBody(ArrayList<Statement> loopBody) {
-        this.loopBody = loopBody;
-    }
-
-    public void setLoopBodyExpressions(ArrayList<Expression> loopBodyExpressions) {
-        this.loopBodyExpressions = loopBodyExpressions;
+    public void setLoopBodyStmts(ArrayList<Statement> loopBodyStmts) {
+        this.loopBodyStmts = loopBodyStmts;
     }
 
     public void setRangeExpressions(ArrayList<Expression> rangeExpressions) {
         this.rangeExpressions = rangeExpressions;
-    }
-
-    public void setReturnStatement(ReturnStatement returnStatement) {
-        this.returnStatement = returnStatement;
     }
 
     @Override

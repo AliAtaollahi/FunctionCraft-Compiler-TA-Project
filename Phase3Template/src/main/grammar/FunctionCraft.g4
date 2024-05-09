@@ -167,11 +167,11 @@ ifStatement returns[IfStatement ifRet]:
 
     b = loopBody
     {
-        $ifRet.setThenBody($b.loopStmts);
+        $ifRet.setThenBody($b.loopStmtsRet);
     }
     (ELSE b2 = loopBody
      {
-        $ifRet.setElseBody($b2.loopStmts);
+        $ifRet.setElseBody($b2.loopStmtsRet);
      }
     )?
      END;
@@ -216,23 +216,23 @@ loopDoStatement returns [LoopDoStatement loopDoRet]:
     l1 = LOOP DO
     l2 = loopBody
     {
-        $loopDoRet = new LoopDoStatement($l2.loopStmts, $l2.loopExps, $l2.loopRetStmt);
+        $loopDoRet = new LoopDoStatement($l2.loopStmtsRet);
         $loopDoRet.setLine($l1.line);
     }
     END;
 
-loopBody returns [ArrayList<Statement> loopStmts]:
+loopBody returns [ArrayList<Statement> loopStmtsRet]:
     {
-        $loopStmts = new ArrayList<Statement>();
+        $loopStmtsRet = new ArrayList<Statement>();
     }
-    (s = statement {$loopStmts.add($s.stmtRet);}
+    (s = statement {$loopStmtsRet.add($s.stmtRet);}
     | BREAK
      {
         BreakStatement b = new BreakStatement();
      }
     (IF c1 = condition{
         b.setConditions($c1.conditionRet);
-    })? {$loopStmts.add(b);} SEMICOLLON
+    })? {$loopStmtsRet.add(b);} SEMICOLLON
     | NEXT
     {
         NextStatement n = new NextStatement();
@@ -241,10 +241,10 @@ loopBody returns [ArrayList<Statement> loopStmts]:
     {
         n.setConditions($c2.conditionRet);
     }
-    )? {$loopStmts.add(n);} SEMICOLLON
+    )? {$loopStmtsRet.add(n);} SEMICOLLON
     )*
     (
-    r = returnStatement {$loopStmts.add($r.returnStmtRet);}
+    r = returnStatement {$loopStmtsRet.add($r.returnStmtRet);}
     )?;
 
 forStatement returns [ForStatement forStRet]:
@@ -252,9 +252,7 @@ forStatement returns [ForStatement forStRet]:
     l = loopBody
     END
     {
-        $forStRet = new ForStatement(new Identifier($id.text),
-                                     $r.rangeRet, $l.loopExps, $l.loopStmts,
-                                     $l.loopRetStmt);
+        $forStRet = new ForStatement(new Identifier($id.text), $r.rangeRet, $l.loopStmtsRet);
         $forStRet.setLine($f.line);
     }
     ;
