@@ -1,6 +1,9 @@
 package main.ast.type;
 
-import main.ast.nodes.Node;
+
 
 public abstract class Type {
+    public boolean sameType(Type other){
+        return (this.getClass().equals(other.getClass())) && !((this instanceof NoType) || (other instanceof NoType));
+    }
 }
