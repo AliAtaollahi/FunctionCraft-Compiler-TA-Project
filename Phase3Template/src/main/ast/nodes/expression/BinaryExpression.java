@@ -14,7 +14,7 @@ public class BinaryExpression extends Expression{
         this.binaryOperator = binaryOperator;
     }
 
-    public BinaryOperator getBinaryOperator() {
+    public BinaryOperator getOperator() {
         return binaryOperator;
     }
 

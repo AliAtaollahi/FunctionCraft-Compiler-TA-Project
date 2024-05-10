@@ -5,10 +5,10 @@ import main.visitor.IVisitor;
 
 public class UnaryExpression extends Expression{
     private Expression expression;
-    private UnaryOperator op;
-    public UnaryExpression(Expression expression, UnaryOperator op){
+    private UnaryOperator unaryOperator;
+    public UnaryExpression(Expression expression, UnaryOperator unaryOperator){
         this.expression = expression;
-        this.op = op;
+        this.unaryOperator = unaryOperator;
     }
 
     public void setExpression(Expression expression) {
@@ -19,15 +19,15 @@ public class UnaryExpression extends Expression{
         return expression;
     }
 
-    public UnaryOperator getOp() {
-        return op;
+    public UnaryOperator getOperator() {
+        return unaryOperator;
     }
 
-    public void setOp(UnaryOperator op) {
-        this.op = op;
+    public void setOp(UnaryOperator unaryOperator) {
+        this.unaryOperator = unaryOperator;
     }
     @Override
-    public String toString(){return "UnaryExpression_" + op.name();}
+    public String toString(){return "UnaryExpression_" + unaryOperator.name();}
     @Override
     public <T> T accept(IVisitor<T> visitor){return visitor.visit(this);}
 }
