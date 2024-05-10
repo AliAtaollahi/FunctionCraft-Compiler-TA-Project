@@ -7,6 +7,4 @@ public abstract class CompileError{
     public int getLine() {
         return line;
     }
-
-
 }
