@@ -25,7 +25,19 @@ public class ListType extends Type {
 //    public void setTypeSet(boolean typeSet) {
 //        this.typeSet = typeSet;
 //    }
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        ListType castedObj = (ListType) obj;
+        return type.sameType(castedObj.getType());
+    }
+    @Override
+    public int hashCode() {
+        return 31 * type.hashCode();
+    }
     @Override
     public String toString() {
         return "ListType";

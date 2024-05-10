@@ -12,7 +12,9 @@ import parsers.FunctionCraftLexer;
 import parsers.FunctionCraftParser;
 
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class FunctionCraft {
@@ -24,5 +26,11 @@ public class FunctionCraft {
         Program program = flParser.program().flProgram;
         TypeChecker typeChecker = new TypeChecker();
         typeChecker.visit(program);
+        FileWriter fileWriter = new FileWriter("samples/out11.txt");
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        for(CompileError compileError : typeChecker.typeErrors){
+            printWriter.println(compileError.getErrorMessage());
+            System.out.println(compileError.getErrorMessage());
+        }
     }
 }

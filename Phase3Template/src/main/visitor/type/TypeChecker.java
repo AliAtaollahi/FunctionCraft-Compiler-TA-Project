@@ -15,10 +15,7 @@ import main.symbolTable.exceptions.*;
 import main.symbolTable.item.*;
 import main.visitor.Visitor;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TypeChecker extends Visitor<Type> {
     public ArrayList<CompileError> typeErrors = new ArrayList<>();
@@ -45,7 +42,7 @@ public class TypeChecker extends Visitor<Type> {
     }
     @Override
     public Type visit(PatternDeclaration patternDeclaration){
-        SymbolTable.push(SymbolTable.top.copy());
+        SymbolTable.push(new SymbolTable());
         try {
             PatternItem patternItem = (PatternItem) SymbolTable.root.getItem(PatternItem.START_KEY +
                     patternDeclaration.getPatternName().getName());
@@ -61,7 +58,7 @@ public class TypeChecker extends Visitor<Type> {
                     return new NoType();
                 }
             }
-            Set<Type> returnTypes = new LinkedHashSet<>();
+            Set<Type> returnTypes = new HashSet<>();
             for(Expression expression : patternDeclaration.getReturnExp()){
                 returnTypes.add(expression.accept(this));
             }
@@ -134,12 +131,12 @@ public class TypeChecker extends Visitor<Type> {
                 typeErrors.add(new IsNotIndexable(accessExpression.getLine()));
                 return new NoType();
             }
-            Set<Type> accessTypes = new LinkedHashSet<>();
+            Set<Type> accessTypes = new HashSet<>();
             for(Expression expression : accessExpression.getDimentionalAccess()){
                 accessTypes.add(expression.accept(this));
             }
             if(! (accessTypes.stream().toList().getFirst() instanceof IntType)){
-                typeErrors.add(new ListAccessIndexIsNotInt(accessExpression.getLine()));
+                typeErrors.add(new AccessIndexIsNotInt(accessExpression.getLine()));
                 return new NoType();
             }
         }
@@ -147,7 +144,7 @@ public class TypeChecker extends Visitor<Type> {
     }
     @Override
     public Type visit(FunctionDeclaration functionDeclaration){
-        SymbolTable.push(SymbolTable.top.copy());
+        SymbolTable.push(new SymbolTable());
         try {//TODO:check
             FunctionItem functionItem = (FunctionItem) SymbolTable.root.getItem(FunctionItem.START_KEY +
                     functionDeclaration.getFunctionName().getName());
@@ -160,7 +157,7 @@ public class TypeChecker extends Visitor<Type> {
                 }catch (ItemAlreadyExists ignored){}
             }
         }catch (ItemNotFound ignored){}
-        Set<Type> returnTypes = new LinkedHashSet<>();
+        Set<Type> returnTypes = new HashSet<>();
         for(Statement statement : functionDeclaration.getBody()){
             if(statement instanceof ReturnStatement returnStatement){
                 returnTypes.add(returnStatement.accept(this));
@@ -225,14 +222,14 @@ public class TypeChecker extends Visitor<Type> {
     @Override
     public Type visit(AssignStatement assignStatement){
         if(assignStatement.isAccessList()){
-            if(! (assignStatement.getAccessListExpression().accept(this) instanceof IntType)){
-                typeErrors.add(new ListAccessIndexIsNotInt(assignStatement.getLine()));
+            if(!(assignStatement.getAccessListExpression().accept(this) instanceof IntType)){
+                typeErrors.add(new AccessIndexIsNotInt(assignStatement.getLine()));
                 return new NoType();
             }
             Type assignExpType = assignStatement.getAssignExpression().accept(this);
             ListType listType = (ListType) assignStatement.getAssignedId().accept(this);
-            if(! assignExpType.sameType(listType.getType())){
-                typeErrors.add(new ListElementsTypesMisMatch(assignStatement.getLine()));//TODO:check
+            if(!assignExpType.sameType(listType.getType())){
+                typeErrors.add(new ListElementsTypesMisMatch(assignStatement.getLine()));
                 return new NoType();
             }
         }
@@ -278,7 +275,7 @@ public class TypeChecker extends Visitor<Type> {
             typeErrors.add(new PushArgumentsTypesMisMatch(pushStatement.getLine()));
             return new NoType();
         }
-
+//a = push(d, f)
         return new NoType();//TODO:check
     }
     @Override
@@ -305,7 +302,7 @@ public class TypeChecker extends Visitor<Type> {
     }
     @Override
     public Type visit(ListValue listValue){
-        Set<Type> listTypes = new LinkedHashSet<>();
+        Set<Type> listTypes = new HashSet<>();
         for(Expression expression : listValue.getElements()){
             listTypes.add(expression.accept(this));
         }
@@ -322,7 +319,7 @@ public class TypeChecker extends Visitor<Type> {
     @Override
     public Type visit(AppendExpression appendExpression){
         Type appendeeType = appendExpression.getAppendee().accept(this);
-        Set<Type> appendedTypes = new LinkedHashSet<>();
+        Set<Type> appendedTypes = new HashSet<>();
         if(!(appendeeType instanceof ListType) && !(appendeeType instanceof StringType)){
             typeErrors.add(new IsNotAppendable(appendExpression.getLine()));
             return new NoType();
@@ -390,7 +387,7 @@ public class TypeChecker extends Visitor<Type> {
     @Override
     public Type visit(LambdaExpression lambdaExpression){
         return new NoType();
-    }
+    } // TODO
     @Override
     public Type visit(LenStatement lenStatement){
         Type argType = lenStatement.getExpression().accept(this);
@@ -429,7 +426,7 @@ public class TypeChecker extends Visitor<Type> {
             }
         }
         else if(rangeType.equals(RangeType.LIST)){
-            Set<Type> typesOfElements = new LinkedHashSet<>();
+            Set<Type> typesOfElements = new HashSet<>();
             for(Expression expression : rangeExpression.getRangeExpressions())
                 typesOfElements.add(expression.accept(this));
 
