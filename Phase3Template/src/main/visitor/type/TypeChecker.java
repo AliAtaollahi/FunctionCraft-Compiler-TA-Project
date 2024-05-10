@@ -3,9 +3,12 @@ package main.visitor.type;
 import main.ast.nodes.Program;
 import main.ast.nodes.declaration.FunctionDeclaration;
 import main.ast.nodes.declaration.MainDeclaration;
-import main.ast.nodes.expression.AccessExpression;
-import main.ast.nodes.expression.Expression;
-import main.ast.nodes.expression.Identifier;
+import main.ast.nodes.expression.*;
+import main.ast.nodes.expression.value.FunctionPointer;
+import main.ast.nodes.expression.value.ListValue;
+import main.ast.nodes.expression.value.primitive.BoolValue;
+import main.ast.nodes.expression.value.primitive.IntValue;
+import main.ast.nodes.expression.value.primitive.StringValue;
 import main.ast.nodes.statement.*;
 import main.ast.type.*;
 import main.ast.type.primitiveType.*;
@@ -127,7 +130,15 @@ public class TypeChecker extends Visitor<Type> {
         SymbolTable.pop();
         return null;
     }
+    @Override
+    public Type visit(AssignStatement assignStatement){
+        if(assignStatement.isAccessList()){
+            
+        }
+        else{
 
+        }
+    }
     @Override
     public Type visit(BreakStatement breakStatement){
         for(Expression expression : breakStatement.getConditions())
@@ -151,7 +162,7 @@ public class TypeChecker extends Visitor<Type> {
         if(!initType.sameType(toBeAddedType)){
             return null;//TODO:error
         }
-        if(!(initType instanceof ListType) || ! (initType instanceof StringType)){
+        if(!(initType instanceof ListType) && ! (initType instanceof StringType)){
             return null; //TODO:error
         }
 
@@ -166,6 +177,104 @@ public class TypeChecker extends Visitor<Type> {
         }
         return null;
     }
+    @Override
+    public Type visit(BoolValue boolValue){
+        return new BoolType();
+    }
+    @Override
+    public Type visit(IntValue intValue){
+        return new IntType();
+    }
+    @Override
+    public Type visit(StringValue stringValue){
+        return new StringType();
+    }
+    @Override
+    public Type visit(ListValue listValue){
+        Set<Type> listTypes = new LinkedHashSet<>();
+        for(Expression expression : listValue.getElements()){
+            listTypes.add(expression.accept(this));
+        }
+        if(listTypes.size() != 1){
+            return null;//TODO:Error
+        }
+        return new ListType(listTypes.stream().toList().getFirst());
+    }
+    @Override
+    public Type visit(FunctionPointer functionPointer){
+        return new FptrType(functionPointer.getId().getName());
+    }
+    @Override
+    public Type visit(AppendExpression appendExpression){
+        Type appendeeType = appendExpression.getAppendee().accept(this);
+        Set<Type> appendedTypes = new LinkedHashSet<>();
+        for(Expression expression: appendExpression.getAppendeds()){
+            appendedTypes.add(expression.accept(this));
+        }
+        if(appendedTypes.size() != 1){
+            return new NoType();//TODO:error
+        }
+        if(!appendeeType.sameType(appendedTypes.stream().toList().getFirst())){
+            return new NoType();//TODO:error
+        }
+        return appendeeType;
+    }
+    @Override
+    public Type visit(BinaryExpression binaryExpression){
+        Type leftOpType = binaryExpression.getFirstOperand().accept(this);
+        Type rightOpType = binaryExpression.getSecondOperand().accept(this);
+        if(!leftOpType.sameType(rightOpType)){
+            return new NoType();//TODO:error
+        }
+        if(!(leftOpType instanceof FloatType) && !(leftOpType instanceof IntType) && !(leftOpType instanceof StringType)){
+            return new NoType();//TODO:error
+        }
+        return leftOpType;
+    }
+
+    @Override
+    public Type visit(ChompStatement chompStatement){
+        return chompStatement.getChompExpression().accept(this);
+    }
+    @Override
+    public Type visit(ChopStatement chopStatement){
+        return chopStatement.getChopExpression().accept(this);
+    }
+    @Override
+    public Type visit(Identifier identifier){
+        try {
+            VarItem varItem = (VarItem) SymbolTable.top.getItem(VarItem.START_KEY + identifier.getName());
+            return varItem.getType();
+
+        }catch (ItemNotFound ignored){}
+        return new NoType();
+    }
+
+    @Override
+    public Type visit(LambdaExpression lambdaExpression){
+        return new NoType();//TODO:do
+    }
+    @Override
+    public Type visit(LenStatement lenStatement){
+        Type queryType = lenStatement.getExpression().accept(this);
+        if(!(queryType instanceof StringType) && !(queryType instanceof ListType)){
+            return new NoType();//TODO:error
+        }
+        return new IntType();
+    }
+    @Override
+    public Type visit(MatchPatternStatement matchPatternStatement){
+        return new NoType();//TODO:do
+    }
+    @Override
+    public Type visit(UnaryExpression unaryExpression){
+        Type expressionType = unaryExpression.getExpression().accept(this);
+        if(!(expressionType instanceof IntType) && !(expressionType instanceof FloatType)){
+            return new NoType();//TODO:error
+        }
+        return expressionType;
+    }
+
 
 
 
