@@ -3,6 +3,7 @@ package main.visitor.type;
 import main.ast.nodes.Program;
 import main.ast.nodes.declaration.FunctionDeclaration;
 import main.ast.nodes.declaration.MainDeclaration;
+import main.ast.nodes.declaration.VarDeclaration;
 import main.ast.nodes.expression.*;
 import main.ast.nodes.expression.value.FunctionPointer;
 import main.ast.nodes.expression.value.ListValue;
@@ -127,11 +128,27 @@ public class TypeChecker extends Visitor<Type> {
     @Override
     public Type visit(AssignStatement assignStatement){
         if(assignStatement.isAccessList()){
-
+            if(! (assignStatement.getAccessListExpression().accept(this) instanceof IntType)){
+                return new NoType();//TODO:not integer
+            }
+            try {
+                VarItem listItem = (VarItem) SymbolTable.top.getItem(VarItem.START_KEY + assignStatement.getAssignedId().getName());
+                Type assignExpType = assignStatement.getAssignExpression().accept(this);
+                ListType listType = (ListType) listItem.getType();
+                if(! assignExpType.sameType(listType.getType())){
+                    return new NoType();//TODO:error
+                }
+            }catch (ItemNotFound ignored){}
         }
         else{
-
+            Type assignExpType = assignStatement.getAssignExpression().accept(this);
+            VarItem newVarItem = new VarItem(assignStatement.getAssignedId());
+            newVarItem.setType(assignExpType);
+            try {
+                SymbolTable.top.put(newVarItem);
+            }catch (ItemAlreadyExists ignored){}
         }
+        return new NoType();
     }
     @Override
     public Type visit(BreakStatement breakStatement){
@@ -276,7 +293,31 @@ public class TypeChecker extends Visitor<Type> {
     }
     @Override
     public Type visit(RangeExpression rangeExpression){
-        return new NoType();//TODO:do
+        if(rangeExpression.getRangeType().equals(RangeType.IDENTIFIER)){
+            Identifier rangeIdentifier = (Identifier) rangeExpression.getRangeExpressions().getFirst();
+            try{
+                VarItem varItem = (VarItem) SymbolTable.top.getItem(VarItem.START_KEY + rangeIdentifier.getName());
+                if(! (varItem.getType() instanceof IntType)){
+                    return new NoType();//TODO:error
+                }
+            }catch (ItemNotFound ignored){}
+        } else if (rangeExpression.getRangeType().equals(RangeType.LIST)) {
+            Set<Type> typesOfElements = new LinkedHashSet<>();
+            for(Expression expression : rangeExpression.getRangeExpressions()){
+                typesOfElements.add(expression.accept(this));
+            }
+            if(typesOfElements.size() != 1){
+                return new NoType();//TODO:Bad List
+            }
+        }
+        else{
+            Type beginRange = rangeExpression.getRangeExpressions().getFirst().accept(this);
+            Type endRange = rangeExpression.getRangeExpressions().getLast().accept(this);
+            if(!(beginRange instanceof IntType) || !(endRange instanceof IntType)){
+                return new NoType();//TODO:Integet only accepted
+            }
+        }
+        return new NoType();
     }
 
 

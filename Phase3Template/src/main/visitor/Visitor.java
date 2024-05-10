@@ -42,8 +42,6 @@ public class Visitor<T> implements IVisitor<T> {
     @Override
     public T visit(ForStatement forStatement){return null;}
     @Override
-    public T visit(FilterStatement filterStatement){return null;}
-    @Override
     public T visit(MatchPatternStatement matchPatternStatement){return null;}
     @Override
     public T visit(ChopStatement chopStatement){return null;}
@@ -75,4 +73,10 @@ public class Visitor<T> implements IVisitor<T> {
     public T visit(StringValue stringValue){return null;}
     @Override
     public T visit(FloatValue floatValue){return null;}
+    @Override
+    public T visit(NextStatement nextStatement){return null;}
+    @Override
+    public T visit(BreakStatement breakStatement){return null;}
+    @Override
+    public T visit(RangeExpression rangeExpression){return null;}
 }
