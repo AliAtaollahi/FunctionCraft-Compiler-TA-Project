@@ -404,7 +404,7 @@ public class NameAnalyzer extends Visitor<Void> {
     }
     @Override
     public Void visit(LambdaExpression lambdaExpression){
-        SymbolTable currentScopeSymbolTable = SymbolTable.top;
+        SymbolTable currentScopeSymbolTable = SymbolTable.top.copy();
         for(VarDeclaration varDeclaration : lambdaExpression.getDeclarationArgs()){
             VarItem varItem = new VarItem(varDeclaration.getName());
             try{

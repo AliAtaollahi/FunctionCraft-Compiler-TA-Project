@@ -13,6 +13,7 @@ import main.ast.nodes.expression.value.primitive.StringValue;
 import main.ast.nodes.statement.*;
 import main.ast.type.*;
 import main.ast.type.primitiveType.*;
+import main.compileError.CompileError;
 import main.symbolTable.SymbolTable;
 import main.symbolTable.exceptions.ItemAlreadyExists;
 import main.symbolTable.exceptions.ItemNotFound;
@@ -26,8 +27,7 @@ import java.util.List;
 import java.util.Set;
 
 public class TypeChecker extends Visitor<Type> {
-
-
+    public ArrayList<CompileError> typeErrors = new ArrayList<>();
     @Override
     public Type visit(Program program){
         SymbolTable.root = new SymbolTable();
@@ -73,22 +73,59 @@ public class TypeChecker extends Visitor<Type> {
                 }
                 functionItem.setArgumentTypes(argTypes);
                 return functionItem.getFunctionDeclaration().accept(this);
-            }catch (ItemNotFound ignored){}
+            }catch (ItemNotFound e){
+                Type nonFunctionType = accessExpression.getAccessedExpression().accept(this);
+                if(! (nonFunctionType instanceof FptrType fptrType)){
+                    return new NoType();//TODO:calling a non callable
+                }
+                else{
+                    try {
+                        FunctionItem functionItem = (FunctionItem) SymbolTable.root.getItem(FunctionItem.START_KEY + fptrType.getFunctionName());
+                        List<VarDeclaration> defaultVals = functionItem.getFunctionDeclaration().getArgs().
+                                stream().
+                                filter(a->a.getDefaultVal() != null).toList();
+                        int i = defaultVals.size() - 1;
+                        while(argTypes.size() < functionItem.getFunctionDeclaration().getArgs().size()){
+                            argTypes.add(defaultVals.get(i).getDefaultVal().accept(this));
+                            i -= 1;
+                        }
+                        functionItem.setArgumentTypes(argTypes);
+                        return functionItem.getFunctionDeclaration().accept(this);
+                    }catch (ItemNotFound ignored){}
 
+                }
+            }
+        }
+        else{
+            Type accessedType = accessExpression.getAccessedExpression().accept(this);
+            if(!(accessedType instanceof StringType) && !(accessedType instanceof ListType)){
+                return new NoType();//TODO:Not Indexable
+            }
+            Set<Type> accessTypes = new LinkedHashSet<>();
+            for(Expression expression : accessExpression.getDimentionalAccess()){
+                accessTypes.add(expression.accept(this));
+            }
+            if(! (accessTypes.stream().toList().getFirst() instanceof IntType)){
+                return new NoType();//TODO:INT index only
+            }
         }
         return null;
     }
     @Override
     public Type visit(FunctionDeclaration functionDeclaration){
+        Set<Type> returnTypes = new LinkedHashSet<>();
         for(Statement statement : functionDeclaration.getBody()){
             if(statement instanceof ReturnStatement returnStatement){
-                return returnStatement.accept(this);
+                returnTypes.add(returnStatement.accept(this));
             }
             else{
                 statement.accept(this);
             }
         }
-        return null;
+        if(returnTypes.size() != 1){
+            return new NoType();//TODO:Incompatible return expressions
+        }
+        return returnTypes.stream().toList().getFirst();
     }
     @Override
     public Type visit(ReturnStatement returnStatement){
@@ -232,7 +269,7 @@ public class TypeChecker extends Visitor<Type> {
     }
     @Override
     public Type visit(AppendExpression appendExpression){
-        Type appendeeType = appendExpression.getAppendee().accept(this);
+        Type appendeeType = appendExpression.getAppendee().accept(this);//TODO:only string or list
         Set<Type> appendedTypes = new LinkedHashSet<>();
         for(Expression expression: appendExpression.getAppendeds()){
             appendedTypes.add(expression.accept(this));
@@ -260,11 +297,11 @@ public class TypeChecker extends Visitor<Type> {
 
     @Override
     public Type visit(ChompStatement chompStatement){
-        return chompStatement.getChompExpression().accept(this);
+        return chompStatement.getChompExpression().accept(this);//TODO:Only String
     }
     @Override
     public Type visit(ChopStatement chopStatement){
-        return chopStatement.getChopExpression().accept(this);
+        return chopStatement.getChopExpression().accept(this);//TODO:Only String
     }
     @Override
     public Type visit(Identifier identifier){
@@ -278,7 +315,7 @@ public class TypeChecker extends Visitor<Type> {
 
     @Override
     public Type visit(LambdaExpression lambdaExpression){
-        return new NoType();//TODO:do
+        return new NoType();
     }
     @Override
     public Type visit(LenStatement lenStatement){
