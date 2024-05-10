@@ -3,6 +3,7 @@ package main.visitor.type;
 import main.ast.nodes.Program;
 import main.ast.nodes.declaration.*;
 import main.ast.nodes.expression.*;
+import main.ast.nodes.expression.operators.BinaryOperator;
 import main.ast.nodes.expression.value.*;
 import main.ast.nodes.expression.value.primitive.*;
 import main.ast.nodes.statement.*;
@@ -350,13 +351,56 @@ public class TypeChecker extends Visitor<Type> {
     public Type visit(BinaryExpression binaryExpression){
         Type leftOpType = binaryExpression.getFirstOperand().accept(this);
         Type rightOpType = binaryExpression.getSecondOperand().accept(this);
-        if(!leftOpType.sameType(rightOpType)){
-            return new NoType();//TODO:error
+        if(!leftOpType.sameType(rightOpType) && !(leftOpType instanceof NoType) && !(rightOpType instanceof NoType)){
+            typeErrors.add(new NonSameOperands(binaryExpression.getLine(), binaryExpression.getBinaryOperator()));
+            return new NoType();
         }
-        if(!(leftOpType instanceof FloatType) && !(leftOpType instanceof IntType) && !(leftOpType instanceof StringType)){
-            return new NoType();//TODO:error
+        BinaryOperator operator = binaryExpression.getBinaryOperator();
+        boolean leftIsNoType = leftOpType instanceof NoType;
+        boolean rightIsNoType = rightOpType instanceof NoType;
+        if(operator.equals(BinaryOperator.DIVIDE)
+        || operator.equals(BinaryOperator.MINUS)
+        || operator.equals(BinaryOperator.MULT)
+        || operator.equals(BinaryOperator.PLUS)){
+            if(leftIsNoType && !rightIsNoType){
+                if(!(rightOpType instanceof IntType) && !(rightOpType instanceof FloatType)){
+                    typeErrors.add(new UnsupportedOperandType(binaryExpression.getLine(), operator.toString()));
+                }
+                return new NoType();
+            } else if (!leftIsNoType && rightIsNoType) {
+                if(!(leftOpType instanceof IntType) && !(leftOpType instanceof FloatType)){
+                    typeErrors.add(new UnsupportedOperandType(binaryExpression.getLine(), operator.toString()));
+                }
+                return new NoType();
+            } else {
+                if(!(rightOpType instanceof IntType) && ! (rightOpType instanceof FloatType)){
+                    typeErrors.add(new UnsupportedOperandType(binaryExpression.getLine(), operator.toString()));
+                    return new NoType();
+                }
+                return rightOpType;
+            }
+        }else{
+            if(leftIsNoType && !rightIsNoType){
+                if(!(rightOpType instanceof IntType) && !(rightOpType instanceof FloatType)){
+                    typeErrors.add(new UnsupportedOperandType(binaryExpression.getLine(), operator.toString()));
+                }
+                return new NoType();
+            } else if (!leftIsNoType && rightIsNoType) {
+                if(!(leftOpType instanceof IntType) && !(leftOpType instanceof FloatType)){
+                    typeErrors.add(new UnsupportedOperandType(binaryExpression.getLine(), operator.toString()));
+                }
+                return new NoType();
+            } else {
+                if(!(rightOpType instanceof IntType) && ! (rightOpType instanceof FloatType)){
+                    typeErrors.add(new UnsupportedOperandType(binaryExpression.getLine(), operator.toString()));
+                    return new NoType();
+                }
+                return new BoolType();
+            }
+
         }
-        return leftOpType;
+
+
     }
     @Override
     public Type visit(UnaryExpression unaryExpression){

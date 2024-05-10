@@ -1633,7 +1633,9 @@ public class FunctionCraftParser extends Parser {
 	public static class RangeContext extends ParserRuleContext {
 		public RangeExpression rangeRet;
 		public ExpressionContext e1;
+		public Token DOUBLEDOT;
 		public ExpressionContext e2;
+		public Token LBRACK;
 		public ExpressionContext e3;
 		public ExpressionContext e4;
 		public Token id;
@@ -1682,7 +1684,7 @@ public class FunctionCraftParser extends Parser {
 
 			        ArrayList<Expression> exps = new ArrayList<Expression>();
 			        RangeType rangeType;
-
+			        int line = 0;
 			    
 			setState(335);
 			_errHandler.sync(this);
@@ -1695,13 +1697,14 @@ public class FunctionCraftParser extends Parser {
 				setState(312);
 				((RangeContext)_localctx).e1 = expression(0);
 				setState(313);
-				match(DOUBLEDOT);
+				((RangeContext)_localctx).DOUBLEDOT = match(DOUBLEDOT);
 				setState(314);
 				((RangeContext)_localctx).e2 = expression(0);
 
 				        exps.add(((RangeContext)_localctx).e1.expRet);
 				        exps.add(((RangeContext)_localctx).e2.expRet);
 				        rangeType = RangeType.DOUBLE_DOT;
+				        line = (((RangeContext)_localctx).DOUBLEDOT!=null?((RangeContext)_localctx).DOUBLEDOT.getLine():0);
 				    
 				setState(316);
 				match(RPAR);
@@ -1715,12 +1718,13 @@ public class FunctionCraftParser extends Parser {
 				    
 				{
 				setState(319);
-				match(LBRACK);
+				((RangeContext)_localctx).LBRACK = match(LBRACK);
 				{
 				setState(320);
 				((RangeContext)_localctx).e3 = expression(0);
 
 				        exps.add(((RangeContext)_localctx).e3.expRet);
+				        line = (((RangeContext)_localctx).LBRACK!=null?((RangeContext)_localctx).LBRACK.getLine():0);
 				    
 				setState(328);
 				_errHandler.sync(this);
@@ -1756,6 +1760,7 @@ public class FunctionCraftParser extends Parser {
 				        id_.setLine((((RangeContext)_localctx).id!=null?((RangeContext)_localctx).id.getLine():0));
 				        exps.add(id_);
 				        rangeType = RangeType.IDENTIFIER;
+				        line = (((RangeContext)_localctx).id!=null?((RangeContext)_localctx).id.getLine():0);
 				    
 				}
 				break;
@@ -1764,6 +1769,7 @@ public class FunctionCraftParser extends Parser {
 			}
 
 			        ((RangeContext)_localctx).rangeRet =  new RangeExpression(rangeType, exps);
+			        _localctx.rangeRet.setLine(line);
 			    
 			}
 		}
