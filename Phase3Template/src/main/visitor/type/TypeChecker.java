@@ -22,6 +22,7 @@ import main.visitor.Visitor;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public class TypeChecker extends Visitor<Type> {
@@ -62,6 +63,14 @@ public class TypeChecker extends Visitor<Type> {
             Identifier functionName = (Identifier)accessExpression.getAccessedExpression();
             try {
                 FunctionItem functionItem = (FunctionItem) SymbolTable.root.getItem(FunctionItem.START_KEY + functionName.getName());
+                List<VarDeclaration> defaultVals = functionItem.getFunctionDeclaration().getArgs().
+                        stream().
+                        filter(a->a.getDefaultVal() != null).toList();
+                int i = defaultVals.size() - 1;
+                while(argTypes.size() < functionItem.getFunctionDeclaration().getArgs().size()){
+                    argTypes.add(defaultVals.get(i).getDefaultVal().accept(this));
+                    i -= 1;
+                }
                 functionItem.setArgumentTypes(argTypes);
                 return functionItem.getFunctionDeclaration().accept(this);
             }catch (ItemNotFound ignored){}
@@ -314,7 +323,7 @@ public class TypeChecker extends Visitor<Type> {
             Type beginRange = rangeExpression.getRangeExpressions().getFirst().accept(this);
             Type endRange = rangeExpression.getRangeExpressions().getLast().accept(this);
             if(!(beginRange instanceof IntType) || !(endRange instanceof IntType)){
-                return new NoType();//TODO:Integet only accepted
+                return new NoType();//TODO:Integer only accepted
             }
         }
         return new NoType();
