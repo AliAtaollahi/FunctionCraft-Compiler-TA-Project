@@ -19,7 +19,7 @@ import java.util.*;
 
 public class TypeChecker extends Visitor<Type> {
     public ArrayList<CompileError> typeErrors = new ArrayList<>();
-
+    private final Set<Type> returnStmtsTypes = new HashSet<>();
     @Override
     public Type visit(Program program){
         SymbolTable.root = new SymbolTable();
@@ -41,8 +41,37 @@ public class TypeChecker extends Visitor<Type> {
         return null;
     }
     @Override
+    public Type visit(FunctionDeclaration functionDeclaration){
+        SymbolTable.push(new SymbolTable());
+        returnStmtsTypes.clear();
+        try {
+            FunctionItem functionItem = (FunctionItem) SymbolTable.root.getItem(FunctionItem.START_KEY +
+                    functionDeclaration.getFunctionName().getName());
+            ArrayList<Type> currentArgTypes = functionItem.getArgumentTypes();
+            for (int i = 0; i < functionDeclaration.getArgs().size(); i++) {
+                VarItem argItem = new VarItem(functionDeclaration.getArgs().get(i).getName());
+                argItem.setType(currentArgTypes.get(i));
+                try {
+                    SymbolTable.top.put(argItem);
+                }catch (ItemAlreadyExists ignored){}
+            }
+        }catch (ItemNotFound ignored){}
+        for(Statement statement : functionDeclaration.getBody())
+            statement.accept(this);
+
+        if(returnStmtsTypes.size() != 1){
+            typeErrors.add(new FunctionIncompatibleReturnTypes(functionDeclaration.getLine(),
+                    functionDeclaration.getFunctionName().getName()));
+            SymbolTable.pop();
+            return new NoType();
+        }
+        SymbolTable.pop();
+        return returnStmtsTypes.stream().toList().getFirst();
+    }
+    @Override
     public Type visit(PatternDeclaration patternDeclaration){
         SymbolTable.push(new SymbolTable());
+        returnStmtsTypes.clear();
         try {
             PatternItem patternItem = (PatternItem) SymbolTable.root.getItem(PatternItem.START_KEY +
                     patternDeclaration.getPatternName().getName());
@@ -58,18 +87,17 @@ public class TypeChecker extends Visitor<Type> {
                     return new NoType();
                 }
             }
-            Set<Type> returnTypes = new HashSet<>();
-            for(Expression expression : patternDeclaration.getReturnExp()){
-                returnTypes.add(expression.accept(this));
-            }
-            if(returnTypes.size() != 1){
-                typeErrors.add(new IncompatibleReturnTypes(patternDeclaration.getLine(),
+            for(Expression expression : patternDeclaration.getReturnExp())
+                returnStmtsTypes.add(expression.accept(this));
+
+            if(returnStmtsTypes.size() != 1){
+                typeErrors.add(new PatternIncompatibleReturnTypes(patternDeclaration.getLine(),
                         patternDeclaration.getPatternName().getName()));
                 SymbolTable.pop();
                 return new NoType();
             }
             SymbolTable.pop();
-            return returnTypes.stream().toList().getFirst();
+            return returnStmtsTypes.stream().toList().getFirst();
         }catch (ItemNotFound ignored){}
         SymbolTable.pop();
         return new NoType();
@@ -142,42 +170,16 @@ public class TypeChecker extends Visitor<Type> {
         }
         return null;
     }
-    @Override
-    public Type visit(FunctionDeclaration functionDeclaration){
-        SymbolTable.push(new SymbolTable());
-        try {//TODO:check
-            FunctionItem functionItem = (FunctionItem) SymbolTable.root.getItem(FunctionItem.START_KEY +
-                    functionDeclaration.getFunctionName().getName());
-            ArrayList<Type> currentArgTypes = functionItem.getArgumentTypes();
-            for (int i = 0; i < functionDeclaration.getArgs().size(); i++) {
-                VarItem argItem = new VarItem(functionDeclaration.getArgs().get(i).getName());
-                argItem.setType(currentArgTypes.get(i));
-                try {
-                    SymbolTable.top.put(argItem);
-                }catch (ItemAlreadyExists ignored){}
-            }
-        }catch (ItemNotFound ignored){}
-        Set<Type> returnTypes = new HashSet<>();
-        for(Statement statement : functionDeclaration.getBody()){
-            if(statement instanceof ReturnStatement returnStatement){
-                returnTypes.add(returnStatement.accept(this));
-            }
-            else{
-                statement.accept(this);
-            }
-        }
-        if(returnTypes.size() != 1){
-            typeErrors.add(new IncompatibleReturnTypes(functionDeclaration.getLine(),
-                    functionDeclaration.getFunctionName().getName()));
-            SymbolTable.pop();
-            return new NoType();
-        }
-        SymbolTable.pop();
-        return returnTypes.stream().toList().getFirst();
-    }
+
     @Override
     public Type visit(ReturnStatement returnStatement){
-        return returnStatement.getReturnExp().accept(this);
+        if(!returnStatement.hasRetExpression()){
+            returnStmtsTypes.add(new NoType());
+            return new NoType();
+        }
+        Type returnType = returnStatement.getReturnExp().accept(this);
+        returnStmtsTypes.add(returnType);
+        return returnType;
     }
     @Override
     public Type visit(ExpressionStatement expressionStatement){
@@ -275,8 +277,8 @@ public class TypeChecker extends Visitor<Type> {
             typeErrors.add(new PushArgumentsTypesMisMatch(pushStatement.getLine()));
             return new NoType();
         }
-//a = push(d, f)
-        return new NoType();//TODO:check
+
+        return new NoType();
     }
     @Override
     public Type visit(PutStatement putStatement){
@@ -285,7 +287,8 @@ public class TypeChecker extends Visitor<Type> {
             typeErrors.add(new IsNotPrintable(putStatement.getLine()));
             return new NoType();
         }
-        return new NoType();//TODO:check
+
+        return new NoType();
 
     }
     @Override
@@ -355,7 +358,14 @@ public class TypeChecker extends Visitor<Type> {
         }
         return leftOpType;
     }
-
+    @Override
+    public Type visit(UnaryExpression unaryExpression){
+        Type expressionType = unaryExpression.getExpression().accept(this);
+        if(!(expressionType instanceof IntType) && !(expressionType instanceof FloatType)){
+            return new NoType();//TODO:error
+        }
+        return expressionType;
+    }
     @Override
     public Type visit(ChompStatement chompStatement){
         if (!(chompStatement.getChompExpression().accept(this) instanceof StringType)) {
@@ -383,7 +393,6 @@ public class TypeChecker extends Visitor<Type> {
         }catch (ItemNotFound ignored){}
         return new NoType();
     }
-
     @Override
     public Type visit(LambdaExpression lambdaExpression){
         return new NoType();
@@ -398,7 +407,7 @@ public class TypeChecker extends Visitor<Type> {
         return new IntType();
     }
     @Override
-    public Type visit(MatchPatternStatement matchPatternStatement){//TODO:check
+    public Type visit(MatchPatternStatement matchPatternStatement){
         try{
             PatternItem patternItem = (PatternItem)SymbolTable.root.getItem(PatternItem.START_KEY +
                     matchPatternStatement.getPatternId().getName());
@@ -408,19 +417,11 @@ public class TypeChecker extends Visitor<Type> {
         return new NoType();
     }
     @Override
-    public Type visit(UnaryExpression unaryExpression){
-        Type expressionType = unaryExpression.getExpression().accept(this);
-        if(!(expressionType instanceof IntType) && !(expressionType instanceof FloatType)){
-            return new NoType();//TODO:error
-        }
-        return expressionType;
-    }
-    @Override
     public Type visit(RangeExpression rangeExpression){
         RangeType rangeType = rangeExpression.getRangeType();
         if(rangeType.equals(RangeType.IDENTIFIER)){
             Type rangeIdentifierType = rangeExpression.getRangeExpressions().getFirst().accept(this);
-            if(!(rangeIdentifierType instanceof IntType)){
+            if(!(rangeIdentifierType instanceof ListType)){
                 typeErrors.add(new IsNotIterable(rangeExpression.getLine()));
                 return new NoType();
             }
@@ -432,7 +433,7 @@ public class TypeChecker extends Visitor<Type> {
 
             if(typesOfElements.size() != 1){
                 typeErrors.add(new ListElementsTypesMisMatch(rangeExpression.getLine()));
-                return new NoType();//TODO:Bad List -- Handled in ListValue/Not handled/check
+                return new NoType();
             }
         }
         else if(rangeType.equals(RangeType.DOUBLE_DOT)){

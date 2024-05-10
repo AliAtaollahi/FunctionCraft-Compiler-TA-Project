@@ -261,7 +261,7 @@ range returns [RangeExpression rangeRet]:
     {
         ArrayList<Expression> exps = new ArrayList<Expression>();
         RangeType rangeType;
-
+        int line = 0;
     }
     (
     (LPAR e1 = expression
@@ -270,6 +270,7 @@ range returns [RangeExpression rangeRet]:
         exps.add($e1.expRet);
         exps.add($e2.expRet);
         rangeType = RangeType.DOUBLE_DOT;
+        line = $DOUBLEDOT.line;
     }
     RPAR)
     |
@@ -279,6 +280,7 @@ range returns [RangeExpression rangeRet]:
      (LBRACK (e3 = expression
     {
         exps.add($e3.expRet);
+        line = $LBRACK.line;
     }
     (COMMA e4 = expression
     {
@@ -292,10 +294,12 @@ range returns [RangeExpression rangeRet]:
         id_.setLine($id.line);
         exps.add(id_);
         rangeType = RangeType.IDENTIFIER;
+        line = $id.line;
     }
     )
     {
         $rangeRet = new RangeExpression(rangeType, exps);
+        $rangeRet.setLine(line);
     }
     ;
 
