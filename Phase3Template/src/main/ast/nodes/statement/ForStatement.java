@@ -1,25 +1,25 @@
 package main.ast.nodes.statement;
 
 
-import main.ast.nodes.expression.Expression;
 import main.ast.nodes.expression.Identifier;
+import main.ast.nodes.expression.RangeExpression;
 import main.visitor.IVisitor;
 
 import java.util.ArrayList;
 
 public class ForStatement extends Statement{
     private Identifier iteratorId;
-    private ArrayList<Expression> rangeExpressions = new ArrayList<>();
-    private ArrayList<Statement> loopBodyStmts = new ArrayList<>();
+    private RangeExpression rangeExpression;
+    private ArrayList<Statement> loopBodyStmts;
 
-    public ForStatement(Identifier identifierId, ArrayList<Expression> rangeExpressions ,ArrayList<Statement> loopBodyStmts){
+    public ForStatement(Identifier identifierId, RangeExpression rangeExpression, ArrayList<Statement> loopBodyStmts){
         this.iteratorId = identifierId;
-        this.rangeExpressions = rangeExpressions;
+        this.rangeExpression = rangeExpression;
         this.loopBodyStmts = loopBodyStmts;
     }
 
-    public ArrayList<Expression> getRangeExpressions() {
-        return rangeExpressions;
+    public RangeExpression getRangeExpression() {
+        return rangeExpression;
     }
 
     public ArrayList<Statement> getLoopBodyStmts() {
@@ -38,8 +38,8 @@ public class ForStatement extends Statement{
         this.loopBodyStmts = loopBodyStmts;
     }
 
-    public void setRangeExpressions(ArrayList<Expression> rangeExpressions) {
-        this.rangeExpressions = rangeExpressions;
+    public void setRangeExpressions(RangeExpression rangeExpression) {
+        this.rangeExpression = rangeExpression;
     }
 
     @Override

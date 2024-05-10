@@ -116,12 +116,6 @@ public interface FunctionCraftVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRange(FunctionCraftParser.RangeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link FunctionCraftParser#filterStatement}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFilterStatement(FunctionCraftParser.FilterStatementContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link FunctionCraftParser#matchPatternStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

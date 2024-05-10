@@ -177,16 +177,6 @@ public interface FunctionCraftListener extends ParseTreeListener {
 	 */
 	void exitRange(FunctionCraftParser.RangeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link FunctionCraftParser#filterStatement}.
-	 * @param ctx the parse tree
-	 */
-	void enterFilterStatement(FunctionCraftParser.FilterStatementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link FunctionCraftParser#filterStatement}.
-	 * @param ctx the parse tree
-	 */
-	void exitFilterStatement(FunctionCraftParser.FilterStatementContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link FunctionCraftParser#matchPatternStatement}.
 	 * @param ctx the parse tree
 	 */

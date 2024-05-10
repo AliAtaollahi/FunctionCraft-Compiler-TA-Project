@@ -257,66 +257,48 @@ forStatement returns [ForStatement forStRet]:
     }
     ;
 
-range returns [ArrayList<Expression> rangeRet]:
+range returns [RangeExpression rangeRet]:
     {
-        $rangeRet = new ArrayList<Expression>();
+        ArrayList<Expression> exps = new ArrayList<Expression>();
+        RangeType rangeType;
+
     }
+    (
     (LPAR e1 = expression
-    {
-        $rangeRet.add($e1.expRet);
-    }
     DOUBLEDOT e2 = expression
     {
-        $rangeRet.add($e2.expRet);
+        exps.add($e1.expRet);
+        exps.add($e2.expRet);
+        rangeType = RangeType.DOUBLE_DOT;
     }
     RPAR)
     |
     {
-        $rangeRet = new ArrayList<Expression>();
+        rangeType = RangeType.LIST;
     }
      (LBRACK (e3 = expression
     {
-        $rangeRet.add($e3.expRet);
+        exps.add($e3.expRet);
     }
     (COMMA e4 = expression
     {
-        $rangeRet.add($e4.expRet);
+        exps.add($e4.expRet);
     }
     )*) RBRACK)
     |
-    {
-        $rangeRet = new ArrayList<Expression>();
-    }
      id = IDENTIFIER
     {
         Identifier id_ = new Identifier($id.text);
         id_.setLine($id.line);
-        $rangeRet.add(id_);
+        exps.add(id_);
+        rangeType = RangeType.IDENTIFIER;
+    }
+    )
+    {
+        $rangeRet = new RangeExpression(rangeType, exps);
     }
     ;
 
-filterStatement returns [FilterStatement filterStatementRet]:
-    {
-        ArrayList<Expression> conditionExps = new ArrayList<Expression>();
-    }
-    brack = LBRACK e1 = expression SEPARATOR id = IDENTIFIER
-    ARROW r = range COMMA e2 = expression
-    {
-        conditionExps.add($e2.expRet);
-    }
-    (COMMA e3 = expression
-    {
-        conditionExps.add($e3.expRet);
-    }
-    )*
-    {
-        Identifier id_ = new Identifier($id.text);
-        id_.setLine($id.line);
-        $filterStatementRet = new FilterStatement(id_, $e1.expRet,
-                                                  conditionExps, $r.rangeRet);
-        $filterStatementRet.setLine($brack.line);
-    }
-    RBRACK;
 
 matchPatternStatement returns [MatchPatternStatement matchPatRet]:
     id = IDENTIFIER DOT m = MATCH LPAR e = expression RPAR
@@ -532,20 +514,11 @@ otherExpression returns [Expression expRet]:
     | chop = chopStatement {$expRet = $chop.chopRet;}
     | chomp = chompStatement {$expRet = $chomp.chompRet;}
     | match = matchPatternStatement {$expRet = $match.matchPatRet;}
-    | f = filterStatement {$expRet = $f.filterStatementRet;}
     | len_ = lenStatement {$expRet = $len_.lenRet;}
     | LPAR (e = expression {$expRet = $e.expRet;})? RPAR;
 
 
 
-//lambdaFunction returns [Expression lambdaRet]:
-//    a = ARROW  fd = functionArgumentsDeclaration
-//     LBRACE b = body RBRACE fa = functionArguments
-//     {
-//        $lambdaRet = new LambdaExpression($fd.argRet, $b.bodyRet, $fa.funcArgsRet);
-//        $lambdaRet.setLine($a.line);
-//     }
-//    ;
 
 lambdaFunction returns [Expression lambdaRet]:
     a = ARROW  fd = functionArgumentsDeclaration

@@ -92,18 +92,12 @@ public class TypeChecker extends Visitor<Type> {
     @Override
     public Type visit(ForStatement forStatement){
         SymbolTable.push(SymbolTable.top.copy());
-        Set<Type> rangeTypes = new LinkedHashSet<>();
-        for(Expression expression : forStatement.getRangeExpressions())
-            rangeTypes.add(expression.accept(this));
-        if(rangeTypes.size() != 1){
-            return null;//TODO:Error
-        }
-        else{
-            VarItem varItem = new VarItem(forStatement.getIteratorId());
-            try{
-                SymbolTable.top.put(varItem);
-            }catch (ItemAlreadyExists ignored){}
-        }
+        forStatement.getRangeExpression().accept(this);
+        VarItem varItem = new VarItem(forStatement.getIteratorId());
+        try{
+            SymbolTable.top.put(varItem);
+        }catch (ItemAlreadyExists ignored){}
+
         for(Statement statement : forStatement.getLoopBodyStmts())
             statement.accept(this);
         SymbolTable.pop();
@@ -133,7 +127,7 @@ public class TypeChecker extends Visitor<Type> {
     @Override
     public Type visit(AssignStatement assignStatement){
         if(assignStatement.isAccessList()){
-            
+
         }
         else{
 
@@ -159,11 +153,17 @@ public class TypeChecker extends Visitor<Type> {
     public Type visit(PushStatement pushStatement){
         Type initType = pushStatement.getInitial().accept(this);
         Type toBeAddedType = pushStatement.getToBeAdded().accept(this);
-        if(!initType.sameType(toBeAddedType)){
-            return null;//TODO:error
+        if(initType instanceof ListType listType){//TODO:handle empty list
+            if(!toBeAddedType.sameType(listType.getType())){
+                return new NoType();//TODO:list error
+            }
+        } else if (initType instanceof StringType) {
+            if(! (toBeAddedType instanceof StringType)){
+                return new NoType();//TODO:string error
+            }
         }
-        if(!(initType instanceof ListType) && ! (initType instanceof StringType)){
-            return null; //TODO:error
+        else{
+            return new NoType();//TODO:not pushable
         }
 
         return null;
@@ -172,10 +172,10 @@ public class TypeChecker extends Visitor<Type> {
     @Override
     public Type visit(PutStatement putStatement){
         Type put = putStatement.getExpression().accept(this);
-        if(!(put instanceof StringType)){
-            return null;//TODO:error?
+        if(put instanceof FptrType){
+            return new NoType();//TODO:not printable
         }
-        return null;
+        return put;
     }
     @Override
     public Type visit(BoolValue boolValue){
@@ -273,6 +273,10 @@ public class TypeChecker extends Visitor<Type> {
             return new NoType();//TODO:error
         }
         return expressionType;
+    }
+    @Override
+    public Type visit(RangeExpression rangeExpression){
+        return new NoType();//TODO:do
     }
 
 

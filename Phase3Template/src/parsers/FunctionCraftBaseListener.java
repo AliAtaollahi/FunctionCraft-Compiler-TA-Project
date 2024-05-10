@@ -218,18 +218,6 @@ public class FunctionCraftBaseListener implements FunctionCraftListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFilterStatement(FunctionCraftParser.FilterStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFilterStatement(FunctionCraftParser.FilterStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterMatchPatternStatement(FunctionCraftParser.MatchPatternStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}

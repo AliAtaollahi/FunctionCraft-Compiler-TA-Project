@@ -28,7 +28,6 @@ public interface IVisitor<T> {
     T visit(PushStatement pushStatement);
     T visit(LoopDoStatement loopDoStatement);
     T visit(ForStatement forStatement);
-    T visit(FilterStatement filterStatement);
     T visit(MatchPatternStatement matchPatternStatement);
     T visit(ChopStatement chopStatement);
     T visit(ChompStatement chompStatement);
@@ -47,4 +46,5 @@ public interface IVisitor<T> {
     T visit(FloatValue floatValue);
     T visit(NextStatement nextStatement);
     T visit(BreakStatement breakStatement);
+    T visit(RangeExpression rangeExpression);
 }
