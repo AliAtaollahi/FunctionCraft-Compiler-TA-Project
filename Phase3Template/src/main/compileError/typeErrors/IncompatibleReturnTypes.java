@@ -2,9 +2,9 @@ package main.compileError.typeErrors;
 
 import main.compileError.CompileError;
 
-public class FunctionReturnsTypesMisMatch extends CompileError {
+public class IncompatibleReturnTypes extends CompileError {
     private final String functionName;
-    public FunctionReturnsTypesMisMatch(int line, String functionName){
+    public IncompatibleReturnTypes(int line, String functionName){
         this.line = line;
         this.functionName = functionName;
     }
