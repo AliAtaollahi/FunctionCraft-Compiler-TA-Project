@@ -1,0 +1,39 @@
+=begin
+Hello World,
+Just a Comment, sad
+Nothing Special
+GoodBye.
+=end
+
+pattern fib(n)
+    | (n == 0) = 1
+    | (n == 1) = 1
+    | (n > 2) = fib (n-1) + fib (n-2)
+;
+
+def loopDoFunc()
+    loop do
+        puts("start");
+        puts("end");
+        break if (num / 2 == 1);
+        if ((a > b) || (a == b))
+            puts("Wow");
+        end
+    end
+end
+
+# this is just a testing comment
+
+def func()
+    start = 1;
+    finish = 20;
+    for num in (start..finish)
+        next if (num / 2 == 1);
+        puts(num);
+    end
+end
+
+def main()
+    a << c;
+    func();
+end

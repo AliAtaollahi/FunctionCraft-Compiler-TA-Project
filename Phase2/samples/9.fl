@@ -1,0 +1,51 @@
+def first_node(a, b)
+    if(a>b)
+        h = 1;
+        loop do
+            b = b+1;
+            break if(a == b);
+        end
+    else
+        h = 1;
+        loop do
+            a = a+1;
+            break if(a == b);
+        end
+    end
+end
+
+def fourth_node(x, y)
+    if(x>y)
+        return x;
+    else
+        return y;
+    end
+end
+
+def fourth_node(x, y, z)
+    if(x>y)
+        return x;
+    else
+        return z;
+    end
+end
+
+def first_node(a)
+    if(a>1)
+        h = 1;
+        loop do
+            b = b+1;
+            break if(a == b);
+        end
+    else
+        h = 1;
+        loop do
+            a = a+1;
+            break if(a == 1);
+        end
+    end
+end
+
+def main()
+    puts(1);
+end

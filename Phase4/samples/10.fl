@@ -1,0 +1,44 @@
+def bubble_sort(arr, length)
+    i = 0;
+    loop do
+        if (i >= length - 1)
+            break;
+        end
+
+        swapped = 10;
+        j = 0;
+        loop do
+            if (j >= length - i - 1)
+                break;
+            end
+            if (arr[j] > arr[j + 1])
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 20;
+            end
+            ++j;
+        end
+
+        if (swapped == 10)
+            break;
+        end
+
+        ++i;
+    end
+
+    i = 0;
+    loop do
+        if (i >= 11)
+            break;
+        end
+        puts(arr[i]);
+        i = i + 1;
+    end
+end
+
+def main()
+    list = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+    # puts(len(list));
+    bubble_sort(list, 11);
+end

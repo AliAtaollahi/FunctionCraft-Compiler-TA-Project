@@ -1,6 +1,0 @@
-main : apppend([]);
-
-
-func apppend(i) : {
-    return []::i::[[]];
-}

@@ -1,0 +1,34 @@
+FuncDec: f1
+Function Call
+Built-In: PUTS
+Operator: *
+Operator: +
+Operator: -
+Operator: +
+Built-In: PUTS
+Function Call
+Function Call
+Built-In: PUTS
+Function Call
+RETURN
+Function Call
+Operator: +
+FuncDec: f2
+Built-In: PUTS
+Function Call
+Operator: +
+RETURN
+FuncDec: f4
+RETURN
+Structure: LAMBDA
+RETURN
+FuncDec: f5
+RETURN
+MAIN
+Built-In: PUTS
+Function Call
+Structure: LAMBDA
+RETURN
+Operator: *
+Operator: +
+Operator: +

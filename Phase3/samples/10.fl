@@ -1,0 +1,47 @@
+def some_func(a)
+    if (a < 0)
+        return -a;
+    else
+        return a;
+    end
+end
+
+def complex_function(a, b)
+    fpt = method(:some_func);
+    sum = 100;
+    if (a > 100)
+        for i in (101..a)
+            if (fpt(i) - fpt(100) > 0)
+                sum = sum + i;
+            else
+                sum = sum - (i - 101);
+            end
+        end
+    else
+        if (a == 200)
+            sum2 = a - b;
+        end
+    end
+
+    return sum;
+end
+
+def main()
+    complex_function(150, 150.1);
+    fpt2 = method(:complex_function);
+    if (fpt2(200, 200) == 100)
+        puts ("Test passed");
+    else
+        puts ("Test failed");
+    end
+    for i in (fpt2(200, 200)..fpt2(200, 200) + 1)
+        chop(fpt2(200, 200));
+        "sss" << "sss" << fpt2(200, 200);
+    end
+    res = fpt2(200, 200);
+    for i in res
+        for j in (res..1.5)
+            puts(chop(res));
+        end
+    end
+end

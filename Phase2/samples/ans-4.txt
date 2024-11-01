@@ -1,0 +1,2 @@
+Line:19-> Redefinition of function f
+Line:24-> function good_test_case_for_arguments is not declared

@@ -1,0 +1,26 @@
+def start(a, b)
+    if ((!(a)) || (b > 100))
+        if (a)
+            puts(b / 30);
+        else
+            puts(b * 30);
+        end
+    end
+    itList();
+end
+
+def itList()
+    printRecursive(["ata", "souri", "javad", "nemati", "darabi"], 0);
+end
+
+def printRecursive(myList, j)
+    if (j == 5)
+        return;
+    end
+    puts(myList[j]);
+    printRecursive(myList, j + 1);
+end
+
+def main()
+    start(true, 300);
+end

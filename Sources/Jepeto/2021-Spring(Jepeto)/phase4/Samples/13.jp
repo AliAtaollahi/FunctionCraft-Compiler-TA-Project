@@ -1,6 +1,0 @@
-main : f();
-
-func f():{
-    print("In Function");
-    return void;
-}

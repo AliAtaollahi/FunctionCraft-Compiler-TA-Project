@@ -1,8 +1,0 @@
-f
-[]
-NoType
-Line 4: Unsupported operand type for operator mult
-Line 5: Unsupported operand type for operator add
-Line 6: Unsupported operand type for operator add
-Line 6: Unsupported operand type for operator mult
-Line 6: Unsupported operand type for operator div

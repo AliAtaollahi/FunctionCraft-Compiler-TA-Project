@@ -1,5 +1,0 @@
-f
-[]
-BoolType
-Line 2: Unsupported operand type for operator mult
-Line 4: Unsupported operand type for operator append

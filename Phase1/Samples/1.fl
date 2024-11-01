@@ -1,7 +1,24 @@
-def main()
-    a << b;
-    push(a, c);
-    puts(a);
+def f1(l, i)
+    puts(l[i][0]);
+    puts(l[i][1]);
 end
 
+def f2(a, [b = 10, c = 20])
+    return a + b + c;
+end
 
+def create2dList(l, i, j)
+    if(i != 10)
+        create2dList(l[i] << i << j * 2, i + 1, j + 1);
+    else
+        printList(l, i);
+    end
+end
+
+def main()
+    a << c;
+    puts(a);
+    f1();
+    create2dList([], 0, 0);
+    puts(chop(chop(chop("painter"))));
+end

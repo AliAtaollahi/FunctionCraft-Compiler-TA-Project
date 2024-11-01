@@ -1,0 +1,16 @@
+def main()
+    a = 10;
+    b = 15;
+    text = "So you are a demon tooooooo";
+    loop do
+        if (a < b)
+            text = chop(text);
+            ++a;
+            next;
+        end
+
+        puts("haha");
+        break;
+    end
+    puts(text);
+end

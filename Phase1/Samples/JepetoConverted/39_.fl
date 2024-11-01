@@ -1,7 +1,0 @@
-def f2()
-    return -> () {return -> (a, b) {return a;};};
-end
-
-def main()
-    puts(2);
-end

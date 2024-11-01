@@ -1,5 +1,19 @@
-def main()
-    puts(len(a));
+# this is just a testing comment
+
+def func(a, b, c)
+    if ((a >= b) && (c < a))
+        func2(10);
+    else
+        func2(90);
+    end
 end
 
+def func2(number)
+    puts("HELLO STUDENT: ");
+    puts(number);
+end
 
+def main()
+    a << c;
+    func(a, c, 29);
+end

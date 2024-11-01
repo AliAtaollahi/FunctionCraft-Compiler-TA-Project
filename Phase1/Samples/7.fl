@@ -1,11 +1,20 @@
-def compare()
-    if (a > b)
-        return "true";
-    else
-        return false;
-    end
+def f(n)
+  ans = -1;
+  if (n == 0)
+    ans = 1;
+  else
+    ans = n * n + n;
+  end
+  return ans;
 end
 
+pattern match_example(x)
+    | (x == 1) = "one"
+    | (x == 2) = "two"
+    | (true) = "other"
+;
+
 def main()
-    puts("salam");
+  puts(f(5));
+  puts(match_example(2));
 end

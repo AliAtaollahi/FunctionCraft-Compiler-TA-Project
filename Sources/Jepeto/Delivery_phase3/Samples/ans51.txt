@@ -1,4 +1,0 @@
-f
-[BoolType, IntType, NoType]
-BoolType
-Line 1: Args in function call do not match with definition

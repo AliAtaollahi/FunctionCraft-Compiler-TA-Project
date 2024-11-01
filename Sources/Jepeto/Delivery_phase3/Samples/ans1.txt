@@ -1,7 +1,0 @@
-f
-[]
-ListType
-Line 5: Unsupported operand type for operator append
-Line 6: Unsupported operand type for operator append
-Line 7: Unsupported operand type for operator append
-Line 8: Unsupported operand type for operator append

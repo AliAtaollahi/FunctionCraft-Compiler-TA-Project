@@ -1,0 +1,2 @@
+Line:11-> function hol is not declared
+Line:15-> function good_test_case_for_arguments is not declared

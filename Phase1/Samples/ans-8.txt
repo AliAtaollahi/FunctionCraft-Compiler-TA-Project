@@ -1,0 +1,26 @@
+FuncDec: power
+Operator: -
+Assignment: result
+Decision: IF
+Operator: ==
+Assignment: result
+Decision: ELSE
+Function Call
+Operator: -
+Operator: *
+Assignment: result
+RETURN
+PatternDec: describe_number
+Operator: <
+Operator: ==
+Operator: >
+MAIN
+Built-In: PUTS
+Function Call
+Built-In: PUTS
+Function Call
+Operator: -
+Built-In: PUTS
+Function Call
+Built-In: PUTS
+Function Call

@@ -1,7 +1,0 @@
-def apppend(a)
-    return [[1,2,3]] << a << [[]];
-end
-
-def main()
-    append([[4,5]]);
-end

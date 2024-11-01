@@ -1,5 +1,0 @@
-f
-[]
-IntType
-Line 5: Get size of a non-list
-Line 6: Get size of a non-list

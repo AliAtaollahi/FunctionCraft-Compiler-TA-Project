@@ -1,0 +1,40 @@
+FuncDec: f
+Assignment: res
+Decision: IF
+Operator: +
+Operator: >
+Assignment: res
+Decision: ELSE
+Operator: -
+Assignment: res
+FuncDec: sum_list
+Assignment: sum
+Loop: FOR
+Operator: +
+Assignment: sum
+RETURN
+MAIN
+Structure: LAMBDA
+RETURN
+Operator: *
+Assignment: lambda_double
+Structure: LAMBDA
+RETURN
+Operator: *
+Assignment: lambda_triple
+Loop: FOR
+Built-In: PUTS
+Function Call
+Assignment: list
+Built-In: PUTS
+Built-In: PUTS
+Function Call
+Built-In: PUTS
+Built-In: PUTS
+Function Call
+Built-In: PUTS
+Function Call
+Built-In: PUTS
+Loop: DO
+Built-In: PUTS
+Control: BREAK

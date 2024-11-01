@@ -1,4 +1,0 @@
-Line 4: Name of argument a conflicts with a function’s name
-Line 4: Name of argument b conflicts with a function’s name
-Line 4: Name of argument c conflicts with a function’s name
-Line 4: Name of argument d conflicts with a function’s name

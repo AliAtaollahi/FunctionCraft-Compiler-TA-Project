@@ -1,5 +1,0 @@
-def main()
-    a = 3;
-    c = 5;
-    b = a = c;
-end

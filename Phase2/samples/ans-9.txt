@@ -1,0 +1,2 @@
+Line:25-> Redefinition of function fourth_node
+Line:33-> Redefinition of function first_node

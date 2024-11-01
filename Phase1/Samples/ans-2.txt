@@ -1,0 +1,14 @@
+FuncDec: func
+Decision: IF
+Operator: >=
+Operator: <
+Operator: &&
+Function Call
+Decision: ELSE
+Function Call
+FuncDec: func2
+Built-In: PUTS
+Built-In: PUTS
+MAIN
+Operator: <<
+Function Call

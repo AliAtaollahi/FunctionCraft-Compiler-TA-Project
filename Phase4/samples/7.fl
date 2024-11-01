@@ -1,0 +1,7 @@
+def f(a)
+    return a * a;
+end
+
+def main()
+    puts(f(f(f(f(2)))));
+end

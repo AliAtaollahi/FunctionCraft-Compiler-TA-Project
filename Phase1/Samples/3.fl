@@ -1,20 +1,26 @@
-def compare()
-    if (a > b)
-        if(b > c)
-            puts(a);
-            return a;
-        else
-            return c;
-        end
-    else
-        if (c > b)
-            return c;
-        else
-            return b;
+# this is just a testing comment
+
+def loopDoFunc()
+    loop do
+        puts("start");
+        puts("end");
+        if ((a > b) || (a == b))
+            puts("Wow");
         end
     end
 end
 
+# this is just a testing comment
+
+def func()
+    start = 1;
+    finish = 20;
+    for num in (start..finish)
+        puts(num);
+    end
+end
+
 def main()
-    puts("salam");
+    a << c;
+    func();
 end

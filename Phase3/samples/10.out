@@ -1,0 +1,6 @@
+Line:22-> operands of operator MINUS must be the same
+Line:38-> type of `chop` function argument must be string
+Line:39-> types of append operands must be string or same as list's type
+Line:42-> only lists can be iterated over
+Line:43-> types of begin and end of ranges can only be integer
+Line:44-> type of `chop` function argument must be string

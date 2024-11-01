@@ -1,9 +1,0 @@
-main : f();
-
-func f() : {
-   return 1 is 2;
-   return 1 not "ss" is true;
-   return 1 not "ss" is [2, 3];
-   return [1, 2, 3] is [];
-   return true not false;
-}

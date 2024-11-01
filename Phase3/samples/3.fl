@@ -1,0 +1,5 @@
+def main()
+    a = "css";
+    chop(3);
+    chop(chop(a));
+end

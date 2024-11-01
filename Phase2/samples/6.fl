@@ -1,0 +1,16 @@
+def h(x, y, z)
+    mult = 1;
+    loop do
+        mult = mult * (x / y);
+        z = z-1;
+        break if(z < (2 + len(z)));
+    end
+end
+
+def get_function_pointer()
+    return method(:hol);
+end
+
+def main()
+    good_test_case_for_arguments(1, 2, 3, 4);
+end

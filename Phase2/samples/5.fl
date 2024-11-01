@@ -1,0 +1,11 @@
+def select_index(list, select_index)
+    return list[select_index];
+end
+
+def good_test_case_for_arguments(a, a, c, d, [e = 5, h=10, g = 12])
+    return (a+b)*(c+d)*(e+h) / g;
+end
+
+def main()
+    good_test_case_for_arguments(1, 2, 3, 4);
+end

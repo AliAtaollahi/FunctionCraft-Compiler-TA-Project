@@ -1,0 +1,23 @@
+def f(a, b, c)
+    if(c == true)
+        return a+b;
+    else
+        return a-b;
+    end
+end
+
+def g(a, b, c, [d = 5])
+    sum = 0;
+    for i in (a..b)
+        sum = (sum + i) / a;
+    end
+    return sum + d;
+end
+
+def f()
+    return 0;
+end
+
+def main()
+    good_test_case_for_arguments(1, 2, 3, 4);
+end

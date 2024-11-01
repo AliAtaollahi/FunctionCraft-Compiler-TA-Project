@@ -1,0 +1,42 @@
+def run_ReLU(command)
+    if (command == 1)
+        return true;
+    else
+        return false;
+    end
+end
+
+
+def ReLU_string(a)
+    if (a>0)
+        return "a itself";
+    else
+        return "zero";
+    end
+end
+
+def ReLU(a)
+    if (a>0)
+        return a;
+    else
+        return 0;
+    end
+end
+
+
+def main()
+    if (run_ReLU(1))
+        puts(chop(ReLU_string(1)));
+    else
+        puts(chop(ReLU_string(-1)));
+    end
+    tmp = ReLU(1);
+    for i in tmp
+        j = 1;
+    end
+    if (run_ReLU(1))
+        puts(chop(ReLU(1)));
+    else
+        puts(chop(ReLU(-1)));
+    end
+end

@@ -1,7 +1,0 @@
-f
-[]
-BoolType
-Line 5: Unsupported operand type for operator neq
-Line 6: Unsupported operand type for operator eq
-Line 6: Unsupported operand type for operator neq
-Line 7: Unsupported operand type for operator eq

@@ -1,6 +1,0 @@
-main : f(b = 1, a = true);
-
-func f(a, b, c) : {
-    return a;
-    f(b = 1, a = true, c = "ss");
-}

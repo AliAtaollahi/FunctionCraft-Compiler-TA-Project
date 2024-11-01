@@ -1,4 +1,0 @@
-main {
-    int num1 = 50;
-    print(num1); # prints 50
-}

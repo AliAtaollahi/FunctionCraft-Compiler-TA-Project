@@ -1,0 +1,3 @@
+Line:3-> variable raiden is not declared
+Line:4-> variable liquid_snake is not declared
+Line:6-> variable solid_snake is not declared

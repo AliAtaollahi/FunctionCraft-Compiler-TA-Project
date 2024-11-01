@@ -1,0 +1,12 @@
+Line:13-> variable mod is not declared
+Line:24-> variable a is not declared
+Line:31-> function hol is not declared
+Line:39-> function dec is not declared
+Line:45-> argument select_index has same name with function
+Line:61-> Redefinition of function f
+Line:106-> variable index is not declared
+Line:116-> number of arguments provided for function first_node does not match with its declaration
+Line:143-> number of arguments provided for function good_test_case_for_arguments does not match with its declaration
+Line:145-> number of arguments provided for function good_test_case_for_arguments does not match with its declaration
+*-> defenition of functions second_node, first_node, fourth_node, find_an_index contains circular dependency
+*-> defenition of functions simple_loop2, simple_loop1 contains circular dependency

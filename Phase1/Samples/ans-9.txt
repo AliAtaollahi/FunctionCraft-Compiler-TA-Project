@@ -1,0 +1,23 @@
+FuncDec: sum_of_squares
+Assignment: sum
+Assignment: list
+Loop: FOR
+Operator: *
+Operator: +
+Assignment: sum
+RETURN
+FuncDec: apply_twice
+RETURN
+Function Call
+MAIN
+Structure: LAMBDA
+RETURN
+Operator: *
+Assignment: lambda_square
+Built-In: PUTS
+Function Call
+Built-In: PUTS
+Function Call
+Loop: DO
+Built-In: PUTS
+Control: BREAK

@@ -1,0 +1,19 @@
+FuncDec: f
+Operator: -
+Assignment: ans
+Decision: IF
+Operator: ==
+Assignment: ans
+Decision: ELSE
+Operator: *
+Operator: +
+Assignment: ans
+RETURN
+PatternDec: match_example
+Operator: ==
+Operator: ==
+MAIN
+Built-In: PUTS
+Function Call
+Built-In: PUTS
+Function Call

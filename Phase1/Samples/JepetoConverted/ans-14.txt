@@ -1,8 +1,0 @@
-Main
-Built-in : puts
-FunctionDec : get_size
-ArgumentDec : i
-Return
-Size
-FunctionDec : g
-Return

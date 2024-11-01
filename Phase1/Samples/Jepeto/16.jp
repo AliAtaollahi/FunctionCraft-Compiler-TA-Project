@@ -1,6 +1,0 @@
-main : append([]);
-
-
-func apppend(a) : {
-    return []::i::[[]];
-}

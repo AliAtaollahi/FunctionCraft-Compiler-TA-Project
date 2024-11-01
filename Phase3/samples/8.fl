@@ -1,0 +1,12 @@
+def wrong_list_maker()
+    return 1 + 2 + 3;
+end
+
+def main()
+    our_not_list = wrong_list_maker();
+    for i in our_not_list
+        puts(i);
+    end
+    a = our_not_list + 2;
+    chop(a);
+end

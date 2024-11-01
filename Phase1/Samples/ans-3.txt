@@ -1,0 +1,17 @@
+FuncDec: loopDoFunc
+Loop: DO
+Built-In: PUTS
+Built-In: PUTS
+Decision: IF
+Operator: >
+Operator: ==
+Operator: ||
+Built-In: PUTS
+FuncDec: func
+Assignment: start
+Assignment: finish
+Loop: FOR
+Built-In: PUTS
+MAIN
+Operator: <<
+Function Call

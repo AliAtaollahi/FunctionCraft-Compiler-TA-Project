@@ -1,0 +1,24 @@
+def main()
+    i = 0;
+    j = 100;
+    z = 1000;
+    loop do
+        if(i < j)
+            ++i;
+            next;
+        end
+
+        if(j < z)
+            ++i;
+            ++j;
+            next;
+        end
+
+        break;
+    end
+
+    puts(i);
+    puts(j);
+    puts(z);
+
+end

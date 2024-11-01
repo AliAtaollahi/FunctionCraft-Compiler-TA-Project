@@ -1,7 +1,0 @@
-f
-[]
-BoolType
-k
-[]
-FptrType
-Line 8: Unsupported operand type for operator not

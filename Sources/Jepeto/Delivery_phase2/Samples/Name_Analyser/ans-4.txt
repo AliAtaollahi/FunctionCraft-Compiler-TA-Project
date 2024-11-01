@@ -1,3 +1,0 @@
-Line 4: Duplicate argument a
-Line 4: Duplicate argument b
-Line 8: Duplicate argument a

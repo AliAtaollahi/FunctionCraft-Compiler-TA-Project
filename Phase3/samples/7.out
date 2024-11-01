@@ -1,0 +1,3 @@
+Line:34-> only lists can be iterated over
+Line:38-> type of `chop` function argument must be string
+Line:40-> type of `chop` function argument must be string

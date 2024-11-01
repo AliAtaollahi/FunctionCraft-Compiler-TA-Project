@@ -1,14 +1,28 @@
-def compare()
+def lambdaIndex(list)
+    a = list[-> (c) {return 20 * c;}];
+    return a + list[-> (b) {return 10 - b;}];
+end
 
-    if(a)
-        puts(1);
-    else
-        puts(1);
+#Just a comment
+#Hello
+
+def exprFunc(x, y)
+    a = b + c * f / h;
+    b = a - y + h * j / l;
+    return a + b - x + y;
+end
+
+def func()
+    cnt = 1;
+    loop do
+        cnt = cnt + 1;
+        break if (cnt > 100);
     end
-
-    return true;
+    return cnt;
 end
 
 def main()
-    puts("salam");
+    list = [1, 2, 3];
+    list = list << [1, 2, 3];
+    return list[10];
 end

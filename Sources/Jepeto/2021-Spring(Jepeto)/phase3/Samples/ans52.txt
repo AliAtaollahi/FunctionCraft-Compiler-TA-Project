@@ -1,8 +1,0 @@
-f
-[IntType, BoolType]
-VoidType
-g
-[IntType, IntType]
-IntType
-Line 5: Args in function call do not match with definition
-Line 9: Args in function call do not match with definition

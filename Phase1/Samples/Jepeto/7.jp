@@ -1,9 +1,0 @@
-func compare() : {
-    if (a > b) : {
-        return "true";
-    }
-    else :
-        return false;
-}
-
-main : print(1);

@@ -1,0 +1,9 @@
+def main()
+    indices = [4, 9, 14, 20, 24];
+    text = ["W", "h", "e", "n", " ", "t", "h", "e", "r", "e", " ", "i", "s", " ", "a", " ", "p", "e", "r", "s", "o", "n", ",", " ", "t", "h", "e", "r", "e", " ", "i", "s", " ", "a", " ", "p", "r", "o", "b", "l", "e", "m", "."];
+    iii = [1, 3, 4];
+    puts(text[indices[iii[0]]]);
+    puts(text[indices[iii[1]]]);
+    puts(text[indices[iii[2]]]);
+
+end

@@ -1,7 +1,0 @@
-f
-[]
-VoidType
-Line 5: Calling a non-callable
-Line 6: Calling a non-callable
-Line 7: Calling a non-callable
-Line 8: Calling a non-callable

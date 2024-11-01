@@ -1,1 +1,0 @@
-main : print((1 is 1) is ("plc" not "PLC"));

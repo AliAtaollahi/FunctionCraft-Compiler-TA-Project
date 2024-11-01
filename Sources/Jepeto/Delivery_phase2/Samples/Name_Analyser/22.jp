@@ -1,5 +1,0 @@
-main : f(a = 1, c = 4);
-
-func f(c, b) : {
-   return g(c = 2);
-}

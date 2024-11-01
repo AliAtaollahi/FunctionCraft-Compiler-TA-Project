@@ -1,7 +1,0 @@
-main : f();
-
-func f() : {
-    return 1 * "str" + 3;
-    return (3 + true) - 4;
-    return 1 + "str" - 2 * false + "s" / 2;
-}

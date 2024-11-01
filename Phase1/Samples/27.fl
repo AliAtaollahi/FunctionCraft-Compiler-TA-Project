@@ -1,8 +1,0 @@
-def f()
-    return a is not b > -c;
-    return a * !b + c;
-end
-
-def main()
-    puts(1);
-end

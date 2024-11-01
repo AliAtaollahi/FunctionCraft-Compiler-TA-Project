@@ -1,8 +1,0 @@
-main : f();
-
-func f() : {
-    return true and f or true;
-    return [1, 2, 3] and ~f;
-    return [1, 2, 3] and f;
-    return [1, 2][0] or true;
-}

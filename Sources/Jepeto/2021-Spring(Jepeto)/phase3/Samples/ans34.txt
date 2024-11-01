@@ -1,9 +1,0 @@
-f
-[NoType]
-NoType
-g
-[NoType]
-NoType
-Line 1: Elements of the list have different types
-Line 10: Elements of the list have different types
-Line 12: Elements of the list have different types

@@ -1,4 +1,0 @@
-def main()
-    puts(chop(chop(chop("painter"))));
-    puts("Hello World!\nThis is my first program\n");
-end

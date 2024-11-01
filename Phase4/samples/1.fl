@@ -1,0 +1,11 @@
+def g(x)
+    return x + x;
+end
+
+def f(x)
+    return x * x;
+end
+
+def main()
+    puts(g(f(3)));
+end

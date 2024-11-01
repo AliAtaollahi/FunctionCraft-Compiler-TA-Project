@@ -1,6 +1,0 @@
-Line 1: Name of argument f conflicts with a function’s name
-Line 1: Name of argument g conflicts with a function’s name
-Line 1: Duplicate argument a
-Line 11: Duplicate function g
-Line 12: Argument a not declared in function g
-Line 12: Argument b not declared in function g

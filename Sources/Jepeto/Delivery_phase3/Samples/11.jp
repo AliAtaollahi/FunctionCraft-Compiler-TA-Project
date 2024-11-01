@@ -1,9 +1,0 @@
-main : f();
-
-func f() : {
-    return 1 > (true < false);
-    return -("hi") * 10;
-    return 1 > true;
-    return (-2 + -true + 3 > 4) > true;
-
-}

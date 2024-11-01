@@ -1,0 +1,11 @@
+def iterate(a, b)
+   for i in (a..b)
+     puts(i);
+   end
+end
+
+def main()
+    iterate(1, 10);
+    iterate(5.5, 15);
+    iterate("str", 1.2);
+end

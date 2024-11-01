@@ -1,0 +1,18 @@
+def iterate(a, b, c)
+    for i in a
+        puts(i);
+    end
+    for i in b
+        puts(i);
+    end
+    for i in c
+        puts(i);
+    end
+    for i in (1..20)
+        puts(i);
+    end
+end
+
+def main()
+   iterate("not_iterable", 2, ["iterable"]);
+end

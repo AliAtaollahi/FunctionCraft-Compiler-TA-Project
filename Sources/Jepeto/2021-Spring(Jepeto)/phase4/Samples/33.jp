@@ -1,1 +1,0 @@
-main : print(~false or (true and (false or ~false or (~true or false and (~true and false)))));

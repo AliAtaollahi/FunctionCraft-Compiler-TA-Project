@@ -1,7 +1,0 @@
-def addToList(a, b, c)
-   return a[i + 1] << b[2] << c[10] << len(b) << 3;
-end
-
-def main()
-   addToList();
-end

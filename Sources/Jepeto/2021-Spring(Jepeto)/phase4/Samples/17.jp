@@ -1,8 +1,0 @@
-main : print(f(1, true, "a", "1", true, false)(1, 2, 3));
-
-func f(a, b, c, d, e, h):{
-    return g;
-}
-
-func g(a, b, c):
-    return 73;

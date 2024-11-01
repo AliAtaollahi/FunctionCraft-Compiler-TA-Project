@@ -1,8 +1,0 @@
-main : f();
-
-func f() : {
-    return [] :: [1, 2, 3];
-    return [] :: 1 :: "str";
-    return [] :: 1 :: 2 :: true;
-    return [] :: [] :: 1;
-}

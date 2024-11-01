@@ -1,9 +1,0 @@
-f
-[]
-IntType
-g
-[]
-VoidType
-Line 7: Return value does not match with function return type
-Line 8: Return value does not match with function return type
-Line 14: Unsupported operand type for operator mult

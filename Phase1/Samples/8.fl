@@ -1,7 +1,23 @@
-def compare()
-    return -> (a) {return a;} (1);
+def power(base, exponent)
+  result = -1;
+  if (exponent == 0)
+    result = 1;
+  else
+    result = base * power(base, exponent - 1);
+  end
+  return result;
 end
 
+pattern describe_number(n)
+    | (n < 0) = "negative"
+    | (n == 0) = "zero"
+    | (n > 0) = "positive"
+    | (true) = "unknown"
+;
+
 def main()
-    puts("salam");
+  puts(power(2, 3));
+  puts(describe_number(-1));
+  puts(describe_number(0));
+  puts(describe_number(5));
 end

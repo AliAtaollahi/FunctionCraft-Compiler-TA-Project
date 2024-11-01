@@ -1,9 +1,0 @@
-Main
-FunctionCall
-Operator : +
-FunctionDec : f
-FunctionCall
-Anonymous Function
-Return
-Operator : +
-Return

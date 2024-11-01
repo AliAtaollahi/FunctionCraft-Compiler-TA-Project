@@ -1,0 +1,71 @@
+def first_node(a, b)
+    if(a>b)
+        h = 1;
+        loop do
+            h *= second_node(b);
+            b = b+1;
+            break if(a == b);
+        end
+    else
+        h = 1;
+        loop do
+            h *= second_node(a);
+            a = a+1;
+            break if(a == b);
+        end
+    end
+end
+
+
+def second_node(a)
+    return find_an_index(a);
+end
+
+
+
+def find_an_index(a)
+    if(a > 0)
+        for i in (a..a*a)
+            if(i == 2*a)
+                return fourth_node(a, a);
+            else
+                return fourth_node(a, i);
+            end
+        end
+    else
+        index = 0;
+        loop do
+            index += 1;
+            break if(index == 0);
+        end
+        return fourth_node(a, 2);
+
+    end
+end
+
+
+def fourth_node(x, y)
+    if(x>y)
+        return x;
+    else
+        return first_node(1, 2);
+    end
+end
+
+
+
+
+def simple_loop1(a)
+    b = a + simple_loop2(2);
+    return b;
+end
+
+
+def simple_loop2(a)
+    c = a + simple_loop1(3);
+    return 3;
+end
+
+def main()
+    puts(10);
+end

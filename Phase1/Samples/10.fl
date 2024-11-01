@@ -1,10 +1,39 @@
-def f()
-    puts(f());
-    puts([1,2,3,4]);
-    puts(true);
-    puts(false);
+def f(a)
+  res = 0;
+  if ((a + 5) > 10)
+    res = 1;
+  else 
+    res = -1;
+  end
+end
+
+def sum_list(lst)
+  sum = 0;
+  for i in lst
+    sum = sum + i;
+  end
+  return sum;
 end
 
 def main()
-    puts("salam");
+  lambda_double = -> (x) { return x * 2; };
+  lambda_triple = -> (x) { return x * 3; };
+
+  for i in newList
+    puts(f(i));
+  end
+
+  list = [1, 2, 3, 4, 5];
+  puts("Sum of list:");
+  puts(sum_list(list));
+
+  puts("Applying lambdas to 4:");
+  puts(lambda_double(4));
+  puts(lambda_triple(4));
+
+  puts("Counting down from 5:");
+  loop do
+    puts(5);
+    break;
+  end
 end

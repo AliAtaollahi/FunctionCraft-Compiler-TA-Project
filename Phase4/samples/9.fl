@@ -1,0 +1,38 @@
+def insertion_sort(arr, length)
+    i = 1;
+    loop do
+        if (i >= length)
+            break;
+        end
+        j = i;
+        loop do
+            if (j <= 0)
+                break;
+            end
+            if (arr[j] < arr[j - 1])
+                temp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = temp;
+            else
+                break;
+            end
+            j = j - 1;
+        end
+        i = i + 1;
+    end
+
+    i = 0;
+    loop do
+        if (i >= 11)
+            break;
+        end
+        puts(arr[i]);
+        i = i + 1;
+    end
+end
+
+def main()
+    list = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+    # puts(len(list));
+    insertion_sort(list, 11);
+end

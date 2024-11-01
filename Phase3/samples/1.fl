@@ -1,0 +1,26 @@
+def sum(a, b)
+    return a+b;
+end
+
+
+
+def subtract(a, b)
+
+    return a - b;
+end
+
+
+
+def main()
+
+    x1 = 11.8;
+    x2 = 12.1;
+    a1 = 5;
+    a2 = 6;
+    e = sum(x1, x2)*subtract(a1 ,a2);
+
+    d = subtract(x1, a1);
+    f = sum(x2, a2);
+
+
+end

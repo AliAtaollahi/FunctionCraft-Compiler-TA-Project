@@ -1,0 +1,3 @@
+Line:1-> argument select_index has same name with function
+Line:5-> argument a is duplicated
+Line:6-> variable b is not declared

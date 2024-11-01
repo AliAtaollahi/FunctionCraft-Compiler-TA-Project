@@ -1,0 +1,16 @@
+def give_string()
+    return "Hello CS";
+end
+
+def main()
+    for i in (give_string()..200)
+        for j in (200.1 + 1.5..1)
+            puts(i);
+            puts(j);
+        end
+    end
+
+    err2 = give_string() + 1.55;
+
+    give_string() << "vs. CE" << 155;
+end

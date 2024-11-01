@@ -1,5 +1,0 @@
-main : print(2);
-
-func f(f, f, a) : {
-    return (a, a, b) -> {return 2;};
-}

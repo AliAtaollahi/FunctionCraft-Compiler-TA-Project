@@ -1,8 +1,0 @@
-FunctionDec : f
-Built-in : puts
-Size
-Built-in : puts
-Built-in : puts
-Return
-Main
-Built-in : puts

@@ -1,0 +1,37 @@
+FuncDec: lambdaIndex
+Structure: LAMBDA
+RETURN
+Operator: *
+Assignment: a
+RETURN
+Structure: LAMBDA
+RETURN
+Operator: -
+Operator: +
+FuncDec: exprFunc
+Operator: *
+Operator: /
+Operator: +
+Assignment: a
+Operator: -
+Operator: *
+Operator: /
+Operator: +
+Assignment: b
+RETURN
+Operator: +
+Operator: -
+Operator: +
+FuncDec: func
+Assignment: cnt
+Loop: DO
+Operator: +
+Assignment: cnt
+Control: BREAK
+Operator: >
+RETURN
+MAIN
+Assignment: list
+Operator: <<
+Assignment: list
+RETURN

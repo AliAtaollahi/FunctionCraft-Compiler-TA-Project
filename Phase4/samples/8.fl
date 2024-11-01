@@ -1,0 +1,13 @@
+def main()
+    a = false;
+    b = true;
+    c = false;
+    if(!a)
+        if(!b)
+            puts(100);
+        else
+            puts(300);
+        end
+
+    end
+end

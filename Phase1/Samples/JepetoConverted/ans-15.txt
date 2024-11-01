@@ -1,7 +1,0 @@
-Main
-FunctionCall
-FunctionDec : apppend
-ArgumentDec : a
-FunctionCall
-Return
-Operator : ::

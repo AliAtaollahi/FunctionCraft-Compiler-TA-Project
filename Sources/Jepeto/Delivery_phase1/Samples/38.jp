@@ -1,5 +1,0 @@
-main : print(2);
-
-func f() : {
-    return () -> {return 2;};
-}

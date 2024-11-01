@@ -1,0 +1,9 @@
+def get_i_th_item(list, [index = 0])
+    return list[index];
+end
+
+def main()
+    my_list = ["hello", "this", "is", "sample", "testCase", "for", "CE", "Students"];
+    hope_fully_hello = get_i_th_item(my_list);
+    hope_fully_CE = get_i_th_item(my_list, 10);
+end

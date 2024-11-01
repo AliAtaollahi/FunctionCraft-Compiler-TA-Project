@@ -1,8 +1,0 @@
-Line 10: Argument c not declared in function f
-Line 2: Variable c not declared
-Line 2: Variable d not declared
-Line 3: Variable c not declared
-Line 3: Variable d not declared
-Line 5: Variable d not declared
-Line 13: Duplicate function f
-Line 14: Function k not declared

@@ -1,8 +1,0 @@
-FunctionDec : compare
-Conditional : if
-Operator : >
-Return
-Conditional : else
-Return
-Main
-Built-in : print

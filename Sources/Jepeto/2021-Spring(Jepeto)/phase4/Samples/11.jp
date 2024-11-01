@@ -1,5 +1,0 @@
-main : print(1);
-
-func f(a, b):{
-    return void;
-}
